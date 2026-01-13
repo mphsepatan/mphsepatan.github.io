@@ -186,6 +186,167 @@
       font-weight: 400;
     }
 
+    /* Call to Action Button */
+    .cta-button {
+      display: inline-block;
+      background: linear-gradient(to right, var(--accent), #ff8f00);
+      color: white;
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      text-decoration: none;
+      margin-top: 1.5rem;
+      box-shadow: 0 4px 15px rgba(255, 152, 0, 0.4);
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(255, 152, 0, 0.5);
+      background: linear-gradient(to right, #ff8f00, var(--accent));
+    }
+
+    /* WhatsApp Button */
+    .whatsapp-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: linear-gradient(to right, #25D366, #128C7E);
+      color: white;
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      text-decoration: none;
+      margin-top: 1.5rem;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+    }
+
+    .whatsapp-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.5);
+      background: linear-gradient(to right, #128C7E, #25D366);
+    }
+
+    /* Donasi Section */
+    .donasi-section {
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-lg);
+      margin: 3rem auto;
+      padding: 2.5rem;
+      max-width: 800px;
+      border: 1px solid rgba(26, 115, 232, 0.1);
+    }
+
+    .donasi-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .donasi-header h2 {
+      color: var(--primary);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .donasi-header p {
+      color: var(--gray);
+      font-size: 1rem;
+    }
+
+    .donasi-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .donasi-option {
+      background: var(--light-gray);
+      border-radius: var(--border-radius);
+      padding: 1.5rem 1rem;
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition);
+      border: 2px solid transparent;
+    }
+
+    .donasi-option:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+      border-color: var(--primary);
+    }
+
+    .donasi-option.selected {
+      background: var(--blue-light);
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .donasi-amount {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .donasi-label {
+      font-size: 0.9rem;
+      color: var(--gray);
+    }
+
+    .custom-amount {
+      margin-bottom: 2rem;
+    }
+
+    .custom-amount input {
+      width: 100%;
+      padding: 1rem;
+      border: 2px solid var(--light-gray);
+      border-radius: var(--border-radius);
+      font-size: 1.2rem;
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .custom-amount input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.1);
+    }
+
+    .payment-instruction {
+      background: var(--green-light);
+      border-radius: var(--border-radius);
+      padding: 1.5rem;
+      margin-top: 2rem;
+      border-left: 4px solid var(--secondary);
+    }
+
+    .payment-instruction h4 {
+      color: var(--secondary);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .payment-instruction ol {
+      margin-left: 1.5rem;
+      color: var(--dark);
+    }
+
+    .payment-instruction li {
+      margin-bottom: 0.5rem;
+    }
+
     /* Dashboard Sections */
     .dashboard-section {
       background: white;
@@ -421,6 +582,15 @@
         font-size: 1.8rem;
       }
 
+      .donasi-section {
+        padding: 1.5rem;
+        margin: 2rem auto;
+      }
+
+      .donasi-options {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
       .section-header {
         flex-direction: column;
         align-items: flex-start;
@@ -458,6 +628,10 @@
 
       .logo-text h1 {
         font-size: 1.2rem;
+      }
+
+      .donasi-options {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -524,7 +698,7 @@
       position: fixed;
       bottom: 25px;
       right: 25px;
-      background: linear-gradient(135deg, var(--accent) 0%, #ff8f00 100%);
+      background: linear-gradient(135deg, #25D366, #128C7E);
       color: white;
       width: 60px;
       height: 60px;
@@ -542,7 +716,7 @@
 
     .fab:hover {
       transform: scale(1.1);
-      box-shadow: 0 8px 20px rgba(255, 152, 0, 0.4);
+      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
     }
 
     /* Location Badge */
@@ -590,8 +764,18 @@
       height: 100%;
       background: linear-gradient(to right, var(--accent-light), var(--accent));
       border-radius: 6px;
-      width: 35%; /* Will be updated by JavaScript */
+      width: 0%;
       transition: width 1s ease;
+    }
+
+    /* Status Badge */
+    .status-badge {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      border: 1px solid rgba(255, 255, 255, 0.3);
     }
   </style>
 </head>
@@ -629,7 +813,7 @@
       <div class="progress-container">
         <div class="progress-label">
           <span>Progress Pembangunan</span>
-          <span id="progressPercent">35%</span>
+          <span id="progressPercent">0%</span>
         </div>
         <div class="progress-bar">
           <div class="progress-fill" id="progressFill"></div>
@@ -638,18 +822,77 @@
       
       <div class="stats">
         <div class="stat-item">
-          <div class="stat-value" id="totalDonatur">47</div>
+          <div class="stat-value" id="totalDonatur">0</div>
           <div class="stat-label">Donatur Bergabung</div>
         </div>
         <div class="stat-item">
-          <div class="stat-value" id="totalFunds">Rp 0 Jt</div>
+          <div class="stat-value" id="totalFunds">Rp 0</div>
           <div class="stat-label">Dana Terkumpul</div>
         </div>
         <div class="stat-item">
-          <div class="stat-value" id="daysLeft">128</div>
+          <div class="stat-value" id="daysLeft">0</div>
           <div class="stat-label">Hari Tersisa</div>
         </div>
       </div>
+      
+      <a href="#donasiSection" class="cta-button">
+        <i class="fas fa-hand-holding-heart"></i> Donasi Sekarang
+      </a>
+    </div>
+  </section>
+
+  <!-- Donasi Section -->
+  <section class="donasi-section" id="donasiSection">
+    <div class="donasi-header">
+      <h2>Dukung Pembangunan Musholla</h2>
+      <p>Pilih nominal donasi dan hubungi admin via WhatsApp</p>
+    </div>
+    
+    <div class="donasi-options">
+      <div class="donasi-option" data-amount="50000">
+        <div class="donasi-amount">Rp 50.000</div>
+        <div class="donasi-label">Donasi Umum</div>
+      </div>
+      <div class="donasi-option" data-amount="100000">
+        <div class="donasi-amount">Rp 100.000</div>
+        <div class="donasi-label">Donasi Khusus</div>
+      </div>
+      <div class="donasi-option" data-amount="250000">
+        <div class="donasi-amount">Rp 250.000</div>
+        <div class="donasi-label">Donasi Sponsor</div>
+      </div>
+      <div class="donasi-option" data-amount="500000">
+        <div class="donasi-amount">Rp 500.000</div>
+        <div class="donasi-label">Donasi Utama</div>
+      </div>
+    </div>
+    
+    <div class="custom-amount">
+      <input type="number" id="customAmount" placeholder="Masukkan nominal donasi lainnya (Rp)">
+    </div>
+    
+    <div style="text-align: center; margin-top: 2rem;">
+      <button class="whatsapp-button" id="whatsappDonasi">
+        <i class="fab fa-whatsapp"></i> Donasi via WhatsApp
+      </button>
+    </div>
+    
+    <div class="payment-instruction">
+      <h4><i class="fas fa-info-circle"></i> Cara Donasi:</h4>
+      <ol>
+        <li>Pilih nominal donasi atau masukkan jumlah sendiri</li>
+        <li>Klik tombol "Donasi via WhatsApp"</li>
+        <li>Anda akan diarahkan ke chat WhatsApp dengan admin</li>
+        <li>Kirim konfirmasi donasi beserta bukti transfer (jika transfer)</li>
+        <li>Admin akan mencatat donasi Anda di sistem</li>
+        <li>Nama Anda akan muncul di daftar donatur setelah diproses</li>
+      </ol>
+    </div>
+    
+    <div style="margin-top: 1.5rem; padding: 1rem; background: var(--blue-light); border-radius: var(--border-radius);">
+      <p style="color: var(--primary); font-weight: 500;">
+        <i class="fas fa-comment-alt"></i> <strong>Informasi Penting:</strong> Semua donasi akan dicatat secara transparan dan dapat dilihat di halaman Donatur. Admin akan mengupdate data maksimal 24 jam setelah donasi diterima.
+      </p>
     </div>
   </section>
 
@@ -737,7 +980,7 @@
           <h3>Musholla Mutiara Puri Harmoni</h3>
           <p style="margin-bottom: 15px; color: #d1d5db;">Proyek pembangunan musholla untuk lingkungan Perumahan Mutiara Puri Harmoni Sepatan dengan prinsip transparansi dan akuntabilitas.</p>
           <div style="margin-top: 20px;">
-            <a href="#" style="margin-right: 15px; font-size: 1.3rem;"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://wa.me/6281234567890?text=Halo,%20saya%20ingin%20bertanya%20tentang%20pembangunan%20Musholla%20Mutiara%20Puri%20Harmoni" style="margin-right: 15px; font-size: 1.3rem;"><i class="fab fa-whatsapp"></i></a>
             <a href="#" style="margin-right: 15px; font-size: 1.3rem;"><i class="fab fa-facebook"></i></a>
             <a href="#" style="margin-right: 15px; font-size: 1.3rem;"><i class="fab fa-instagram"></i></a>
             <a href="#" style="margin-right: 15px; font-size: 1.3rem;"><i class="fab fa-youtube"></i></a>
@@ -748,9 +991,9 @@
           <h3>Kontak & Lokasi</h3>
           <ul>
             <li><i class="fas fa-map-marker-alt"></i> <span>Jl. Ahmad Yani, Sukasari, Kec. Rajeg, Kabupaten Tangerang, Banten 15540</span></li>
+            <li><i class="fab fa-whatsapp"></i> <span><a href="https://wa.me/6281234567890" style="color: #d1d5db;">+62 812-3456-7890</a></span></li>
             <li><i class="fas fa-phone"></i> <span>(021) 1234-5678</span></li>
             <li><i class="fas fa-envelope"></i> <span>musholla@mutiarapuriharmoni.id</span></li>
-            <li><i class="fas fa-clock"></i> <span>Senin - Jumat: 08.00 - 17.00 WIB</span></li>
           </ul>
         </div>
         
@@ -758,7 +1001,7 @@
           <h3>Informasi</h3>
           <ul>
             <li><a href="#"><i class="fas fa-chevron-right"></i> Tentang Proyek</a></li>
-            <li><a href="#"><i class="fas fa-chevron-right"></i> Cara Berdonasi</a></li>
+            <li><a href="#donasiSection"><i class="fas fa-chevron-right"></i> Cara Berdonasi</a></li>
             <li><a href="#"><i class="fas fa-chevron-right"></i> Laporan Keuangan</a></li>
             <li><a href="#"><i class="fas fa-chevron-right"></i> Dokumentasi</a></li>
             <li><a href="#"><i class="fas fa-chevron-right"></i> FAQ</a></li>
@@ -773,17 +1016,18 @@
     </div>
   </footer>
 
-  <!-- Floating Action Button (Mobile) -->
-  <button class="fab" id="shareFab">
-    <i class="fas fa-share-alt"></i>
-  </button>
+  <!-- Floating Action Button (Mobile) - WhatsApp -->
+  <a href="https://wa.me/6281234567890?text=Halo,%20saya%20ingin%20bertanya%20tentang%20pembangunan%20Musholla%20Mutiara%20Puri%20Harmoni" class="fab" id="whatsappFab">
+    <i class="fab fa-whatsapp"></i>
+  </a>
 
   <script>
     google.charts.load('current', {'packages':['table']});
     google.charts.setOnLoadCallback(loadAll);
 
     const SPREADSHEET_ID = '1rt46OlhUWLQuNgNMBx9jmMpXWYr7iiw1A4PS80j_qiY';
-    let lastUpdateTime = new Date();
+    let selectedAmount = 0;
+    const whatsappNumber = "6281219041850"; // Ganti dengan nomor WhatsApp admin yang sebenarnya
 
     function loadAll() {
       // Update last update time
@@ -793,9 +1037,6 @@
       loadSheet('Timeline', 'timeline_div', 'timeline_loading');
       loadSheet('RAB', 'rab_div', 'rab_loading');
       loadSheet('Donatur', 'donatur_div', 'donatur_loading');
-      
-      // Update progress bar
-      updateProgressBar();
       
       // Update stats
       updateStats();
@@ -843,56 +1084,64 @@
       });
     }
 
-function updateStats() {
-  const query = new google.visualization.Query(
-    `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/gviz/tq?sheet=Donatur`
-  );
+    function updateStats() {
+      const query = new google.visualization.Query(
+        `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/gviz/tq?sheet=Donatur`
+      );
 
-  query.send(response => {
-    if (response.isError()) {
-      console.error(response.getMessage());
-      return;
+      query.send(response => {
+        if (response.isError()) {
+          console.error(response.getMessage());
+          return;
+        }
+
+        const data = response.getDataTable();
+        const rows = data.getNumberOfRows();
+
+        let totalDana = 0;
+        let totalDonatur = 0;
+
+        for (let i = 0; i < rows; i++) {
+          const no = data.getValue(i, 0);
+          if (typeof no !== 'number') continue; // skip TOTAL & footer
+
+          totalDonatur++;
+
+          let nominal = data.getValue(i, 4); // JUMLAH
+          if (typeof nominal === 'string') {
+            nominal = nominal.replace(/Rp/gi, '').replace(/,/g, '').trim();
+          }
+
+          const angka = parseInt(nominal, 10);
+          if (!isNaN(angka)) totalDana += angka;
+        }
+
+        document.getElementById('totalDonatur').textContent = totalDonatur;
+        document.getElementById('totalFunds').textContent = formatRupiah(totalDana);
+        
+        // Update progress bar based on total funds (assuming target is 500 juta)
+        const target = 500000000;
+        const progress = Math.min(100, Math.round((totalDana / target) * 100));
+        document.getElementById('progressPercent').textContent = progress + '%';
+        document.getElementById('progressFill').style.width = progress + '%';
+        
+        // Calculate days left until target completion (example: December 31, 2024)
+        const targetDate = new Date('2024-12-31');
+        const today = new Date();
+        const diffTime = targetDate - today;
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        document.getElementById('daysLeft').textContent = diffDays > 0 ? diffDays : '0';
+      });
     }
 
-    const data = response.getDataTable();
-    const rows = data.getNumberOfRows();
-
-    let totalDana = 0;
-    let totalDonatur = 0;
-
-    for (let i = 0; i < rows; i++) {
-      const no = data.getValue(i, 0);
-      if (typeof no !== 'number') continue; // skip TOTAL & footer
-
-      totalDonatur++;
-
-      let nominal = data.getValue(i, 4); // JUMLAH
-      if (typeof nominal === 'string') {
-        nominal = nominal.replace(/Rp/gi, '').replace(/,/g, '').trim();
+    // Helper format Rupiah
+    function formatRupiah(angka) {
+      if (angka >= 1_000_000_000) {
+        return 'Rp ' + (angka / 1_000_000_000).toFixed(1).replace('.', ',') + ' M';
+      } else if (angka >= 1_000_000) {
+        return 'Rp ' + (angka / 1_000_000).toFixed(1).replace('.', ',') + ' Jt';
       }
-
-      const angka = parseInt(nominal, 10);
-      if (!isNaN(angka)) totalDana += angka;
-    }
-
-    document.getElementById('totalDonatur').textContent = totalDonatur;
-    document.getElementById('totalFunds').textContent = formatRupiah(totalDana);
-  });
-}
-
-
-// Helper format Rupiah
-function formatRupiah(angka) {
-  if (angka >= 1_000_000) {
-    return 'Rp ' + (angka / 1_000_000).toFixed(1).replace('.', ',') + ' Jt';
-  }
-  return 'Rp ' + angka.toLocaleString('id-ID');
-}
-
-    function updateProgressBar() {
-      const progressPercent = 35; // This would come from your data
-      document.getElementById('progressPercent').textContent = progressPercent + '%';
-      document.getElementById('progressFill').style.width = progressPercent + '%';
+      return 'Rp ' + angka.toLocaleString('id-ID');
     }
 
     // Tab functionality
@@ -914,23 +1163,54 @@ function formatRupiah(angka) {
         });
       });
       
-      // Share button functionality
-      document.getElementById('shareFab').addEventListener('click', function() {
-        if (navigator.share) {
-          navigator.share({
-            title: 'Pembangunan Musholla Mutiara Puri Harmoni',
-            text: 'Lihat perkembangan transparan proyek pembangunan musholla Mutiara Puri Harmoni Sepatan',
-            url: window.location.href
-          });
-        } else {
-          // Fallback for browsers that don't support Web Share API
-          const shareUrl = window.location.href;
-          navigator.clipboard.writeText(shareUrl).then(() => {
-            alert('Link berhasil disalin ke clipboard!');
-          });
-        }
+      // Donasi options selection
+      const donasiOptions = document.querySelectorAll('.donasi-option');
+      donasiOptions.forEach(option => {
+        option.addEventListener('click', function() {
+          donasiOptions.forEach(opt => opt.classList.remove('selected'));
+          this.classList.add('selected');
+          selectedAmount = parseInt(this.getAttribute('data-amount'));
+          document.getElementById('customAmount').value = '';
+        });
       });
+      
+      // Custom amount input
+      document.getElementById('customAmount').addEventListener('input', function() {
+        donasiOptions.forEach(opt => opt.classList.remove('selected'));
+        selectedAmount = parseInt(this.value) || 0;
+      });
+      
+      // WhatsApp donasi button
+      document.getElementById('whatsappDonasi').addEventListener('click', function() {
+        if (selectedAmount <= 0) {
+          alert('Silakan pilih atau masukkan nominal donasi terlebih dahulu');
+          return;
+        }
+        
+        sendWhatsAppMessage(selectedAmount);
+      });
+      
+      // Set default selected amount
+      donasiOptions[0].click();
     });
+    
+    function sendWhatsAppMessage(amount) {
+      // Format pesan WhatsApp
+      const formattedAmount = formatRupiah(amount);
+      const message = `Halo admin, saya ingin berdonasi untuk pembangunan Musholla Mutiara Puri Harmoni sebesar ${formattedAmount}. Bagaimana cara transfernya?`;
+      
+      // Encode message for URL
+      const encodedMessage = encodeURIComponent(message);
+      
+      // Create WhatsApp URL
+      const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+      
+      // Open WhatsApp in new tab
+      window.open(whatsappURL, '_blank');
+      
+      // Show confirmation
+      alert(`Anda akan diarahkan ke WhatsApp untuk konfirmasi donasi sebesar ${formattedAmount}. Silakan sampaikan ke admin bahwa Anda ingin berdonasi.`);
+    }
   </script>
 </body>
 </html>
