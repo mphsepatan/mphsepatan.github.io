@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pembangunan Musholla Mutiara Puri Harmoni Sepatan</title>
+  <!-- Load Google Charts / Table -->
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Amiri:wght@400;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #1a73e8;
+      --primary-dark: #0d47a1;
+      --secondary: #2e7d32;
+      --secondary-light: #4caf50;
+      --accent: #ff9800;
+      --accent-light: #ffb74d;
+      --light: #f8f9fa;
+      --dark: #1a237e;
+      --gray: #5f6368;
+      --light-gray: #f1f3f4;
+      --green-light: #e8f5e9;
+      --blue-light: #e8f0fe;
+      --shadow: 0 4px 12px rgba(26, 115, 232, 0.15);
+      --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+      --border-radius: 12px;
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background-color: #f5f7ff;
+      background-image: linear-gradient(135deg, #f5f7ff 0%, #e3f2fd 100%);
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header Styles */
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      padding: 1.2rem 0;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo-icon {
+      font-size: 2.2rem;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .logo-text h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.5px;
+    }
+
+    .logo-text p {
+      font-size: 0.85rem;
+      opacity: 0.9;
+      font-weight: 300;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(26, 115, 232, 0.85), rgba(13, 71, 161, 0.9)), url('https://images.unsplash.com/photo-1544027993-37dbfe43562a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 4rem 0;
+      text-align: center;
+      border-radius: 0 0 var(--border-radius) var(--border-radius);
+      margin-bottom: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+      opacity: 0.3;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h2 {
+      font-family: 'Amiri', serif;
+      font-size: 2.8rem;
+      margin-bottom: 1.2rem;
+      font-weight: 700;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      max-width: 700px;
+      margin: 0 auto 1.5rem;
+      opacity: 0.95;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+
+    .stat-item {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 1.2rem 1.8rem;
+      border-radius: var(--border-radius);
+      min-width: 160px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: var(--transition);
+    }
+
+    .stat-item:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .stat-value {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+      color: var(--accent-light);
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      opacity: 0.9;
+      font-weight: 400;
+    }
+
+    /* Dashboard Sections */
+    .dashboard-section {
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 2.5rem;
+      overflow: hidden;
+      border: 1px solid rgba(26, 115, 232, 0.1);
+      transition: var(--transition);
+    }
+
+    .dashboard-section:hover {
+      box-shadow: 0 8px 20px rgba(26, 115, 232, 0.18);
+    }
+
+    .section-header {
+      background: linear-gradient(to right, var(--primary), var(--primary-dark));
+      color: white;
+      padding: 1.4rem 1.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 3px solid var(--accent);
+    }
+
+    .section-header h2 {
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 600;
+    }
+
+    .section-header i {
+      font-size: 1.3rem;
+      color: var(--accent-light);
+    }
+
+    .section-header p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+      font-weight: 300;
+    }
+
+    .section-content {
+      padding: 1.8rem;
+      overflow-x: auto;
+    }
+
+    /* Table Styling */
+    .google-visualization-table {
+      width: 100% !important;
+    }
+
+    .google-visualization-table-table {
+      border-collapse: collapse;
+      width: 100%;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .google-visualization-table-tr-head {
+      background: linear-gradient(to right, var(--secondary), var(--secondary-light)) !important;
+    }
+
+    .google-visualization-table-th {
+      font-weight: 600 !important;
+      color: white !important;
+      border: none !important;
+      padding: 14px 12px !important;
+      text-align: center !important;
+      font-size: 0.95rem !important;
+      letter-spacing: 0.3px;
+    }
+
+    .google-visualization-table-td {
+      border: 1px solid var(--light-gray) !important;
+      padding: 12px 10px !important;
+      font-size: 0.9rem;
+    }
+
+    .google-visualization-table-tr-odd {
+      background-color: white !important;
+    }
+
+    .google-visualization-table-tr-even {
+      background-color: var(--light-gray) !important;
+    }
+
+    .google-visualization-table-tr-odd:hover,
+    .google-visualization-table-tr-even:hover {
+      background-color: var(--blue-light) !important;
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, var(--dark) 0%, #0d1938 100%);
+      color: white;
+      padding: 3rem 0 1.5rem;
+      margin-top: 4rem;
+      position: relative;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(to right, var(--primary), var(--accent), var(--secondary));
+    }
+
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2.5rem;
+    }
+
+    .footer-column {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .footer-column h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1.4rem;
+      color: var(--accent-light);
+      font-weight: 600;
+      position: relative;
+      padding-bottom: 8px;
+    }
+
+    .footer-column h3::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 40px;
+      height: 3px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+
+    .footer-column ul {
+      list-style: none;
+    }
+
+    .footer-column li {
+      margin-bottom: 0.7rem;
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .footer-column i {
+      margin-right: 10px;
+      color: var(--accent-light);
+      margin-top: 3px;
+    }
+
+    .footer-column a {
+      color: #d1d5db;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-column a:hover {
+      color: white;
+      padding-left: 5px;
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 2rem;
+      margin-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+      color: #9ca3af;
+    }
+
+    /* Loading Spinner */
+    .spinner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 200px;
+    }
+
+    .spinner i {
+      font-size: 3rem;
+      color: var(--primary);
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+      }
+
+      .hero {
+        padding: 3rem 0;
+      }
+
+      .hero h2 {
+        font-size: 2.2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+        padding: 0 10px;
+      }
+
+      .stats {
+        gap: 1rem;
+        padding: 0 10px;
+      }
+
+      .stat-item {
+        min-width: 140px;
+        padding: 1rem 1.2rem;
+      }
+
+      .stat-value {
+        font-size: 1.8rem;
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 1.2rem 1.5rem;
+      }
+
+      .section-content {
+        padding: 1.2rem;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        gap: 2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h2 {
+        font-size: 1.9rem;
+      }
+
+      .hero p {
+        font-size: 0.95rem;
+      }
+
+      .stats {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .stat-item {
+        width: 90%;
+      }
+
+      .logo-text h1 {
+        font-size: 1.2rem;
+      }
+    }
+
+    /* Tabs for better mobile experience */
+    .tabs {
+      display: flex;
+      overflow-x: auto;
+      background: white;
+      border-radius: var(--border-radius) var(--border-radius) 0 0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      margin-bottom: -1px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .tab-button {
+      flex: 1;
+      min-width: 120px;
+      padding: 1.2rem 0.5rem;
+      background: white;
+      border: none;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+      color: var(--gray);
+      cursor: pointer;
+      transition: var(--transition);
+      text-align: center;
+      white-space: nowrap;
+      border-bottom: 3px solid transparent;
+      font-size: 0.95rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tab-button i {
+      font-size: 1.2rem;
+    }
+
+    .tab-button.active {
+      background: var(--blue-light);
+      color: var(--primary);
+      border-bottom: 3px solid var(--primary);
+      font-weight: 600;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Floating Action Button for mobile */
+    .fab {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: linear-gradient(135deg, var(--accent) 0%, #ff8f00 100%);
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      box-shadow: var(--shadow-lg);
+      cursor: pointer;
+      z-index: 100;
+      transition: var(--transition);
+      border: none;
+    }
+
+    .fab:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 20px rgba(255, 152, 0, 0.4);
+    }
+
+    /* Location Badge */
+    .location-badge {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 8px 15px;
+      border-radius: 50px;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .location-badge i {
+      margin-right: 8px;
+      color: var(--accent-light);
+    }
+
+    /* Progress Bar */
+    .progress-container {
+      margin-top: 2rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 1.5rem;
+      backdrop-filter: blur(5px);
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+
+    .progress-bar {
+      height: 12px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(to right, var(--accent-light), var(--accent));
+      border-radius: 6px;
+      width: 35%; /* Will be updated by JavaScript */
+      transition: width 1s ease;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-content">
+      <div class="logo-container">
+        <div class="logo-icon">
+          <i class="fas fa-mosque"></i>
+        </div>
+        <div class="logo-text">
+          <h1>Musholla Mutiara Puri Harmoni</h1>
+          <p>Perumahan Mutiara Puri Harmoni Sepatan</p>
+        </div>
+      </div>
+      <div class="last-update">
+        <p><i class="fas fa-sync-alt"></i> Update: <span id="lastUpdate">Memuat...</span></p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-content">
+      <h2>Bersama Membangun Musholla Mutiara Puri Harmoni</h2>
+      <p>Mari wujudkan tempat ibadah yang nyaman dan representatif untuk kegiatan keagamaan di lingkungan Perumahan Mutiara Puri Harmoni Sepatan. Semua data perkembangan proyek, donatur, dan keuangan tersedia transparan di sini.</p>
+      
+      <div class="location-badge">
+        <i class="fas fa-map-marker-alt"></i>
+        <span>Jl. Ahmad Yani, Sukasari, Kec. Rajeg, Kabupaten Tangerang, Banten 15540</span>
+      </div>
+      
+      <div class="progress-container">
+        <div class="progress-label">
+          <span>Progress Pembangunan</span>
+          <span id="progressPercent">35%</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+      </div>
+      
+      <div class="stats">
+        <div class="stat-item">
+          <div class="stat-value" id="totalDonatur">47</div>
+          <div class="stat-label">Donatur Bergabung</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="totalFunds">Rp 0 Jt</div>
+          <div class="stat-label">Dana Terkumpul</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="daysLeft">128</div>
+          <div class="stat-label">Hari Tersisa</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dashboard Content -->
+  <div class="container">
+    <!-- Tabs for Mobile -->
+    <div class="tabs">
+      <button class="tab-button active" data-tab="timeline">
+        <i class="far fa-calendar-alt"></i>
+        <span>Timeline</span>
+      </button>
+      <button class="tab-button" data-tab="rab">
+        <i class="fas fa-calculator"></i>
+        <span>RAB</span>
+      </button>
+      <button class="tab-button" data-tab="donatur">
+        <i class="fas fa-users"></i>
+        <span>Donatur</span>
+      </button>
+    </div>
+
+    <!-- Timeline Section -->
+    <section class="dashboard-section tab-content active" id="timeline-section">
+      <div class="section-header">
+        <div>
+          <h2><i class="far fa-calendar-alt"></i> Timeline Proyek</h2>
+          <p>Jadwal dan perkembangan pembangunan Musholla Mutiara Puri Harmoni</p>
+        </div>
+        <div>
+          <span class="status-badge">Aktif</span>
+        </div>
+      </div>
+      <div class="section-content">
+        <div class="spinner" id="timeline_loading">
+          <i class="fas fa-spinner"></i>
+        </div>
+        <div id="timeline_div"></div>
+      </div>
+    </section>
+
+    <!-- RAB Section -->
+    <section class="dashboard-section tab-content" id="rab-section">
+      <div class="section-header">
+        <div>
+          <h2><i class="fas fa-calculator"></i> Rencana Anggaran Biaya (RAB)</h2>
+          <p>Detail anggaran dan realisasi pembangunan Musholla</p>
+        </div>
+        <div>
+          <span class="status-badge">Transparan</span>
+        </div>
+      </div>
+      <div class="section-content">
+        <div class="spinner" id="rab_loading">
+          <i class="fas fa-spinner"></i>
+        </div>
+        <div id="rab_div"></div>
+      </div>
+    </section>
+
+    <!-- Donatur Section -->
+    <section class="dashboard-section tab-content" id="donatur-section">
+      <div class="section-header">
+        <div>
+          <h2><i class="fas fa-users"></i> Daftar Donatur</h2>
+          <p>Para dermawan yang mendukung pembangunan Musholla Mutiara Puri Harmoni</p>
+        </div>
+        <div>
+          <span class="status-badge">Terima Kasih</span>
+        </div>
+      </div>
+      <div class="section-content">
+        <div class="spinner" id="donatur_loading">
+          <i class="fas fa-spinner"></i>
+        </div>
+        <div id="donatur_div"></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>Musholla Mutiara Puri Harmoni</h3>
+          <p style="margin-bottom: 15px; color: #d1d5db;">Proyek pembangunan musholla untuk lingkungan Perumahan Mutiara Puri Harmoni Sepatan dengan prinsip transparansi dan akuntabilitas.</p>
+          <div style="margin-top: 20px;">
+            <a href="#" style="margin-right: 15px; font-size: 1.3rem;"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" style="margin-right: 15px; font-size: 1.3rem;"><i class="fab fa-facebook"></i></a>
+            <a href="#" style="margin-right: 15px; font-size: 1.3rem;"><i class="fab fa-instagram"></i></a>
+            <a href="#" style="margin-right: 15px; font-size: 1.3rem;"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Kontak & Lokasi</h3>
+          <ul>
+            <li><i class="fas fa-map-marker-alt"></i> <span>Jl. Ahmad Yani, Sukasari, Kec. Rajeg, Kabupaten Tangerang, Banten 15540</span></li>
+            <li><i class="fas fa-phone"></i> <span>(021) 1234-5678</span></li>
+            <li><i class="fas fa-envelope"></i> <span>musholla@mutiarapuriharmoni.id</span></li>
+            <li><i class="fas fa-clock"></i> <span>Senin - Jumat: 08.00 - 17.00 WIB</span></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Informasi</h3>
+          <ul>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Tentang Proyek</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Cara Berdonasi</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Laporan Keuangan</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Dokumentasi</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="copyright">
+        <p>&copy; 2023 Pembangunan Musholla Mutiara Puri Harmoni Sepatan. Semua hak dilindungi.</p>
+        <p style="margin-top: 5px; font-size: 0.85rem;">Dibuat dengan <i class="fas fa-heart" style="color: #ff6b6b;"></i> untuk kemajuan bersama</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Action Button (Mobile) -->
+  <button class="fab" id="shareFab">
+    <i class="fas fa-share-alt"></i>
+  </button>
+
+  <script>
+    google.charts.load('current', {'packages':['table']});
+    google.charts.setOnLoadCallback(loadAll);
+
+    const SPREADSHEET_ID = '1rt46OlhUWLQuNgNMBx9jmMpXWYr7iiw1A4PS80j_qiY';
+    let lastUpdateTime = new Date();
+
+    function loadAll() {
+      // Update last update time
+      document.getElementById('lastUpdate').textContent = new Date().toLocaleString('id-ID');
+      
+      // Load each sheet
+      loadSheet('Timeline', 'timeline_div', 'timeline_loading');
+      loadSheet('RAB', 'rab_div', 'rab_loading');
+      loadSheet('Donatur', 'donatur_div', 'donatur_loading');
+      
+      // Update progress bar
+      updateProgressBar();
+      
+      // Update stats
+      updateStats();
+    }
+
+    function loadSheet(sheetName, divId, loadingId) {
+      const queryString = encodeURIComponent('SELECT *');
+      const query = new google.visualization.Query(
+        `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/gviz/tq?sheet=${sheetName}&tq=${queryString}`
+      );
+
+      query.send(response => {
+        // Hide loading spinner
+        document.getElementById(loadingId).style.display = 'none';
+        
+        if (response.isError()) {
+          document.getElementById(divId).innerHTML = 
+            `<div style="text-align:center; padding: 40px; color: #e53e3e;">
+              <i class="fas fa-exclamation-triangle fa-2x" style="margin-bottom: 15px;"></i>
+              <h3>Error Memuat Data</h3>
+              <p>${response.getMessage()}</p>
+              <button onclick="loadSheet('${sheetName}', '${divId}', '${loadingId}')" style="margin-top: 15px; padding: 10px 20px; background: linear-gradient(to right, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: 500;">
+                <i class="fas fa-redo"></i> Coba Lagi
+              </button>
+            </div>`;
+          return;
+        }
+        
+        const data = response.getDataTable();
+        const table = new google.visualization.Table(document.getElementById(divId));
+        table.draw(data, {
+          showRowNumber: true,
+          width: '100%',
+          height: '100%',
+          allowHtml: true,
+          cssClassNames: {
+            headerRow: 'google-visualization-table-tr-head',
+            tableRow: 'google-visualization-table-tr',
+            oddTableRow: 'google-visualization-table-tr-odd',
+            evenTableRow: 'google-visualization-table-tr-even',
+            headerCell: 'google-visualization-table-th',
+            tableCell: 'google-visualization-table-td'
+          }
+        });
+      });
+    }
+
+function updateStats() {
+  const query = new google.visualization.Query(
+    `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/gviz/tq?sheet=Donatur`
+  );
+
+  query.send(response => {
+    if (response.isError()) {
+      console.error(response.getMessage());
+      return;
+    }
+
+    const data = response.getDataTable();
+    const rows = data.getNumberOfRows();
+
+    let totalDana = 0;
+    let totalDonatur = 0;
+
+    for (let i = 0; i < rows; i++) {
+      const no = data.getValue(i, 0);
+      if (typeof no !== 'number') continue; // skip TOTAL & footer
+
+      totalDonatur++;
+
+      let nominal = data.getValue(i, 4); // JUMLAH
+      if (typeof nominal === 'string') {
+        nominal = nominal.replace(/Rp/gi, '').replace(/,/g, '').trim();
+      }
+
+      const angka = parseInt(nominal, 10);
+      if (!isNaN(angka)) totalDana += angka;
+    }
+
+    document.getElementById('totalDonatur').textContent = totalDonatur;
+    document.getElementById('totalFunds').textContent = formatRupiah(totalDana);
+  });
+}
+
+
+// Helper format Rupiah
+function formatRupiah(angka) {
+  if (angka >= 1_000_000) {
+    return 'Rp ' + (angka / 1_000_000).toFixed(1).replace('.', ',') + ' Jt';
+  }
+  return 'Rp ' + angka.toLocaleString('id-ID');
+}
+
+    function updateProgressBar() {
+      const progressPercent = 35; // This would come from your data
+      document.getElementById('progressPercent').textContent = progressPercent + '%';
+      document.getElementById('progressFill').style.width = progressPercent + '%';
+    }
+
+    // Tab functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const tabButtons = document.querySelectorAll('.tab-button');
+      const tabContents = document.querySelectorAll('.tab-content');
+      
+      tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const tabId = button.getAttribute('data-tab');
+          
+          // Update active tab button
+          tabButtons.forEach(btn => btn.classList.remove('active'));
+          button.classList.add('active');
+          
+          // Show active tab content
+          tabContents.forEach(content => content.classList.remove('active'));
+          document.getElementById(`${tabId}-section`).classList.add('active');
+        });
+      });
+      
+      // Share button functionality
+      document.getElementById('shareFab').addEventListener('click', function() {
+        if (navigator.share) {
+          navigator.share({
+            title: 'Pembangunan Musholla Mutiara Puri Harmoni',
+            text: 'Lihat perkembangan transparan proyek pembangunan musholla Mutiara Puri Harmoni Sepatan',
+            url: window.location.href
+          });
+        } else {
+          // Fallback for browsers that don't support Web Share API
+          const shareUrl = window.location.href;
+          navigator.clipboard.writeText(shareUrl).then(() => {
+            alert('Link berhasil disalin ke clipboard!');
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
