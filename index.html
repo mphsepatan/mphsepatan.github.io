@@ -441,6 +441,180 @@
       background-color: var(--blue-light) !important;
     }
 
+    /* New Section: Gallery Grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .gallery-item {
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery-info {
+      padding: 15px;
+      background: white;
+    }
+
+    .gallery-info h4 {
+      margin-bottom: 5px;
+      color: var(--primary);
+    }
+
+    .gallery-info p {
+      font-size: 0.85rem;
+      color: var(--gray);
+    }
+
+    /* New Section: Organization Chart */
+    .org-chart {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+      padding: 20px;
+    }
+
+    /* Tree layout for organization (added to match gambar) */
+    .org-container {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .advisors {
+      min-width: 220px;
+      background: white;
+      padding: 14px;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      border-top: 4px solid var(--primary);
+      font-size: 0.95rem;
+    }
+
+    .advisors h4 { margin-bottom: 8px; color: var(--primary); }
+    .advisors ul { margin-left: 16px; color: var(--dark); }
+
+    .org-tree {
+      flex: 1;
+      min-width: 600px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .tree-row {
+      display: flex;
+      gap: 18px;
+      justify-content: center;
+      align-items: flex-start;
+      width: 100%;
+    }
+
+    .node {
+      background: white;
+      padding: 14px 18px;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      border-top: 4px solid var(--primary);
+      text-align: center;
+      min-width: 180px;
+    }
+
+    .node .title { font-weight: 700; color: var(--primary); margin-bottom: 4px; }
+    .node .role { font-size: 0.9rem; color: var(--gray); margin-bottom: 6px; }
+    .node .phone { color: var(--secondary); font-weight: 600; font-size: 0.9rem; }
+
+    /* Simple connectors (visual only) */
+    .connector-vert {
+      width: 4px;
+      height: 18px;
+      background: rgba(0,0,0,0.06);
+      border-radius: 2px;
+    }
+
+    .branch {
+      display: flex;
+      gap: 18px;
+      justify-content: center;
+      width: 100%;
+      flex-wrap: wrap;
+    }
+
+    /* Weekly Progress */
+    .weekly-progress {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .week-card {
+      background: var(--light-gray);
+      border-radius: var(--border-radius);
+      padding: 20px;
+      border-left: 4px solid var(--accent);
+      transition: var(--transition);
+    }
+
+    .week-card:hover {
+      background: var(--blue-light);
+      transform: translateY(-3px);
+    }
+
+    .week-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .week-title {
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .week-date {
+      font-size: 0.85rem;
+      color: var(--gray);
+    }
+
+    .week-progress-bar {
+      height: 8px;
+      background: #e0e0e0;
+      border-radius: 4px;
+      margin: 15px 0;
+      overflow: hidden;
+    }
+
+    .week-progress-fill {
+      height: 100%;
+      background: linear-gradient(to right, var(--secondary-light), var(--secondary));
+      border-radius: 4px;
+    }
+
     /* Footer */
     footer {
       background: linear-gradient(135deg, var(--dark) 0%, #0d1938 100%);
@@ -605,6 +779,15 @@
       .footer-content {
         flex-direction: column;
         gap: 2rem;
+      }
+
+      .org-level {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -829,10 +1012,10 @@
           <div class="stat-value" id="totalFunds">Rp 0</div>
           <div class="stat-label">Dana Terkumpul</div>
         </div>
-        <!-- <div class="stat-item">
+        <div class="stat-item">
           <div class="stat-value" id="daysLeft">0</div>
           <div class="stat-label">Hari Tersisa</div>
-        </div> -->
+        </div>
       </div>
       
       <a href="#donasiSection" class="cta-button">
@@ -912,6 +1095,18 @@
         <i class="fas fa-users"></i>
         <span>Donatur</span>
       </button>
+      <button class="tab-button" data-tab="dokumentasi">
+        <i class="fas fa-images"></i>
+        <span>Dokumentasi</span>
+      </button>
+      <button class="tab-button" data-tab="organisasi">
+        <i class="fas fa-sitemap"></i>
+        <span>Organisasi</span>
+      </button>
+      <button class="tab-button" data-tab="mingguan">
+        <i class="fas fa-chart-line"></i>
+        <span>Mingguan</span>
+      </button>
     </div>
 
     <!-- Timeline Section -->
@@ -970,6 +1165,168 @@
         <div id="donatur_div"></div>
       </div>
     </section>
+
+    <!-- Dokumentasi Section -->
+    <section class="dashboard-section tab-content" id="dokumentasi-section">
+      <div class="section-header">
+        <div>
+          <h2><i class="fas fa-images"></i> Dokumentasi Pembangunan</h2>
+          <p>Foto-foto perkembangan pembangunan Musholla dari awal hingga selesai</p>
+        </div>
+        <div>
+          <span class="status-badge">Terbaru</span>
+        </div>
+      </div>
+      <div class="section-content">
+        <div class="gallery-grid" id="galleryContainer">
+          <!-- Gambar akan dimuat melalui JavaScript -->
+        </div>
+        <div style="text-align: center; margin-top: 20px;">
+          <p style="color: var(--gray); font-style: italic;">
+            <i class="fas fa-info-circle"></i> Dokumentasi diperbarui setiap minggu. Foto-foto baru akan ditambahkan setiap ada perkembangan pembangunan.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Organisasi Section -->
+    <section class="dashboard-section tab-content" id="organisasi-section">
+      <div class="section-header">
+        <div>
+          <h2><i class="fas fa-sitemap"></i> Struktur Organisasi</h2>
+          <p>Tim pengelola pembangunan Musholla An-Nur MPHS</p>
+        </div>
+        <div>
+          <span class="status-badge">Pengurus</span>
+        </div>
+      </div>
+      <div class="section-content">
+        <div class="org-container">
+          <!-- Penasihat (left column) -->
+          <div class="advisors">
+            <h4>Penasihat</h4>
+            <ul>
+              <li>  Khatib</li>
+              <li>  A. Zai</li>
+              <li>  Wahyudi</li>
+            </ul>
+          </div>
+
+          <!-- Tree (center) -->
+          <div class="org-tree">
+            <!-- Level 1 -->
+            <div class="tree-row" style="justify-content:center;">
+              <div class="node">
+                <div class="title">M. RIDWAN</div>
+                <div class="role">Ketua</div>
+              </div>
+            </div>
+
+            <div class="connector-vert" aria-hidden="true"></div>
+
+            <!-- Level 2 -->
+            <div class="tree-row branch">
+              <div class="node">
+                <div class="title">Sekretaris</div>
+                <div class="role">Ali Budi</div>
+              </div>
+              <div class="node">
+                <div class="title">Wakil Ketua</div>
+                <div class="role">Eko</div>
+              </div>
+              
+              <div class="node">
+                <div class="title"> Bendahara</div>
+                <div class="role">Sykuran</div>
+              </div>
+            </div>
+
+            <div class="connector-vert" aria-hidden="true"></div>
+
+            <!-- Level 3: Bidang -->
+            <div class="tree-row branch" style="flex-wrap:wrap; gap:12px;">
+              <div class="node">
+                <div class="title">Bidang Perencanaan & Teknis</div>
+                <div class="role">  Rio</div>
+              </div>
+              <div class="node">
+                <div class="title">Bidang Dana & Usaha</div>
+                <div class="role">  Abdul</div>
+              </div>
+              <div class="node">
+                <div class="title">Bidang Pelaksana Lapangan</div>
+                <div class="role">  Anam</div>
+              </div>
+              <div class="node">
+                <div class="title">Bidang Humas & Dokumentasi</div>
+                <div class="role">  Marvin</div>
+              </div>
+              <div class="node">
+                <div class="title">Bidang Logistik & Konsumsi</div>
+                <div class="role">  Agus</div>
+              </div>
+              <div class="node">
+                <div class="title">Bidang Keamanan & Ketertiban</div>
+                <div class="role">  Mulyadi</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div style="margin-top: 30px; padding: 20px; background: var(--light-gray); border-radius: var(--border-radius);">
+          <h3 style="color: var(--primary); margin-bottom: 10px;">
+            <i class="fas fa-users"></i> Tugas Pokok Tim
+          </h3>
+          <ul style="margin-left: 20px; color: var(--dark);">
+            <li><strong>Ketua Pelaksana:</strong> Mengawasi seluruh proses pembangunan</li>
+            <li><strong>Sekretaris:</strong> Dokumentasi administrasi dan pelaporan</li>
+            <li><strong>Bendahara:</strong> Pengelolaan keuangan dan transparansi dana</li>
+            <li><strong>Divisi Konstruksi:</strong> Pelaksanaan pembangunan fisik</li>
+            <li><strong>Divisi Dana & Donasi:</strong> Penggalangan dana dan komunikasi donatur</li>
+            <li><strong>Divisi Dokumentasi:</strong> Perekaman perkembangan pembangunan</li>
+            <li><strong>Divisi Hub. Masyarakat:</strong> Sosialisasi dan koordinasi warga</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mingguan Section -->
+    <section class="dashboard-section tab-content" id="mingguan-section">
+      <div class="section-header">
+        <div>
+          <h2><i class="fas fa-chart-line"></i> Perkembangan Mingguan</h2>
+          <p>Update progress pembangunan setiap minggu</p>
+        </div>
+        <div>
+          <span class="status-badge">Update Terbaru</span>
+        </div>
+      </div>
+      <div class="section-content">
+        <div class="spinner" id="weekly_loading">
+          <i class="fas fa-spinner"></i>
+        </div>
+        <div id="weekly_div"></div>
+        
+        <div class="weekly-progress" id="weeklyCards">
+          <!-- Kartu perkembangan mingguan akan dimuat melalui JavaScript -->
+        </div>
+        
+        <div style="margin-top: 30px; padding: 20px; background: var(--green-light); border-radius: var(--border-radius);">
+          <h3 style="color: var(--secondary); margin-bottom: 10px;">
+            <i class="fas fa-bullhorn"></i> Catatan Penting
+          </h3>
+          <p style="color: var(--dark);">
+            Update perkembangan mingguan ini akan diperbarui setiap Jumat sore. Jika ada pertanyaan atau ingin melihat dokumentasi lebih detail, silakan hubungi divisi dokumentasi melalui WhatsApp.
+          </p>
+          <div style="text-align: center; margin-top: 15px;">
+            <a href="https://wa.me/6281219041850?text=Halo,%20saya%20ingin%20bertanya%20tentang%20perkembangan%20pembangunan%20minggu%20ini" 
+               class="whatsapp-button" style="padding: 0.8rem 1.5rem; font-size: 1rem;">
+              <i class="fab fa-whatsapp"></i> Tanya Perkembangan Terbaru
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 
   <!-- Footer -->
@@ -992,8 +1349,7 @@
           <ul>
             <li><i class="fas fa-map-marker-alt"></i> <span>Jl. Ahmad Yani, Sukasari, Kec. Rajeg, Kabupaten Tangerang, Banten 15540</span></li>
             <li><i class="fas fa-phone"></i> <span><a href="https://wa.me/6281219041850" style="color: #d1d5db;">+62 8121-904-1850</a></span></li>
-            <!-- <li><i class="fas fa-phone"></i> <span>(021) 1234-5678</span></li> -->
-            <!-- <li><i class="fas fa-envelope"></i> <span>musholla@mutiarapuriharmoni.id</span></li> -->
+            <li><i class="fas fa-envelope"></i> <span>musholla@mutiarapuriharmoni.id</span></li>
           </ul>
         </div>
         
@@ -1002,9 +1358,9 @@
           <ul>
             <li><a href="#"><i class="fas fa-chevron-right"></i> Tentang Proyek</a></li>
             <li><a href="#donasiSection"><i class="fas fa-chevron-right"></i> Cara Berdonasi</a></li>
-            <li><a href="#"><i class="fas fa-chevron-right"></i> Laporan Keuangan</a></li>
-            <li><a href="#"><i class="fas fa-chevron-right"></i> Dokumentasi</a></li>
-            <li><a href="#"><i class="fas fa-chevron-right"></i> FAQ</a></li>
+            <li><a href="#dokumentasi-section"><i class="fas fa-chevron-right"></i> Dokumentasi</a></li>
+            <li><a href="#organisasi-section"><i class="fas fa-chevron-right"></i> Struktur Organisasi</a></li>
+            <li><a href="#mingguan-section"><i class="fas fa-chevron-right"></i> Perkembangan Mingguan</a></li>
           </ul>
         </div>
       </div>
@@ -1027,7 +1383,70 @@
 
     const SPREADSHEET_ID = '1rt46OlhUWLQuNgNMBx9jmMpXWYr7iiw1A4PS80j_qiY';
     let selectedAmount = 0;
-    const whatsappNumber = "6281219041850"; // Ganti dengan nomor WhatsApp admin yang sebenarnya
+    const whatsappNumber = "6281219041850";
+
+    // Gambar dokumentasi (hardcoded)
+    const galleryImages = [
+      {
+        url: "https://raw.githubusercontent.com/mphsepatan/mphsepatan.github.io/refs/heads/main/gambar1.jpeg",
+        title: "Musholla - Tam  Depan",
+        date: "Foto Proyek",
+        desc: "Gambar musholla (tam  depan)"
+      },
+      {
+        url: "https://raw.githubusercontent.com/mphsepatan/mphsepatan.github.io/refs/heads/main/gambar2.jpeg",
+        title: "Musholla - Interior / Lokasi",
+        date: "Foto Proyek",
+        desc: "Gambar musholla (lokasi / interior)"
+      },
+      // {
+      //   url: "https://images.unsplash.com/photo-1544027993-37dbfe43562a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      //   title: "Lokasi Awal Musholla",
+      //   date: "15 Januari 2024",
+      //   desc: "Lahan yang akan dibangun musholla"
+      // },
+      // {
+      //   url: "https://images.unsplash.com/photo-1583339793403-3d9b001b6008?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      //   title: "Pembersihan Lahan",
+      //   date: "22 Januari 2024",
+      //   desc: "Proses pembersihan dan persiapan lahan"
+      // },
+      // {
+      //   url: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      //   title: "Pondasi Awal",
+      //   date: "5 Februari 2024",
+      //   desc: "Pembuatan pondasi dasar bangunan"
+      // },
+      // {
+      //   url: "https://images.unsplash.com/photo-1514890547357-a9ee288728e0?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      //   title: "Struktur Baja",
+      //   date: "20 Februari 2024",
+      //   desc: "Pemasangan struktur utama bangunan"
+      // },
+      // {
+      //   url: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      //   title: "Dinding & Atap",
+      //   date: "10 Maret 2024",
+      //   desc: "Penyelesaian dinding dan pemasangan atap"
+      // },
+      // {
+      //   url: "https://images.unsplash.com/photo-1524178234883-043d5c3f3cf4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      //   title: "Interior Awal",
+      //   date: "25 Maret 2024",
+      //   desc: "Pekerjaan interior dan pemasangan lantai"
+      // }
+    ];
+
+    // Data perkembangan mingguan
+    // const weeklyProgress = [
+    //   { week: "Minggu 1", date: "15-21 Jan 2024", progress: 15, activities: "Survey lokasi, persiapan administrasi" },
+    //   { week: "Minggu 2", date: "22-28 Jan 2024", progress: 30, activities: "Pembersihan lahan, pengukuran" },
+    //   { week: "Minggu 3", date: "29 Jan-4 Feb 2024", progress: 45, activities: "Pembuatan pondasi dasar" },
+    //   { week: "Minggu 4", date: "5-11 Feb 2024", progress: 60, activities: "Pemasangan struktur utama" },
+    //   { week: "Minggu 5", date: "12-18 Feb 2024", progress: 70, activities: "Pembangunan dinding" },
+    //   { week: "Minggu 6", date: "19-25 Feb 2024", progress: 80, activities: "Pemasangan atap, instalasi listrik" },
+    //   { week: "Minggu 7", date: "26 Feb-3 Mar 2024", progress: 90, activities: "Pekerjaan interior, finishing" }
+    // ];
 
     function loadAll() {
       // Update last update time
@@ -1037,9 +1456,17 @@
       loadSheet('Timeline', 'timeline_div', 'timeline_loading');
       loadSheet('RAB', 'rab_div', 'rab_loading');
       loadSheet('Donatur', 'donatur_div', 'donatur_loading');
+      // Mingguan sekarang mengambil data dari sheet "prelek"
+      loadSheet('prelek', 'weekly_div', 'weekly_loading');
       
       // Update stats
       updateStats();
+      
+      // Load gallery
+      loadGallery();
+      
+      // Load weekly progress cards
+      loadWeeklyCards();
     }
 
     function loadSheet(sheetName, divId, loadingId) {
@@ -1050,7 +1477,9 @@
 
       query.send(response => {
         // Hide loading spinner
-        document.getElementById(loadingId).style.display = 'none';
+        if (document.getElementById(loadingId)) {
+          document.getElementById(loadingId).style.display = 'none';
+        }
         
         if (response.isError()) {
           document.getElementById(divId).innerHTML = 
@@ -1065,7 +1494,7 @@
           return;
         }
         
-       const data = response.getDataTable();
+        const data = response.getDataTable();
         const table = new google.visualization.Table(document.getElementById(divId));
         table.draw(data, {
           showRowNumber: false,
@@ -1142,6 +1571,47 @@
         return 'Rp ' + (angka / 1_000_000).toFixed(1).replace('.', ',') + ' Jt';
       }
       return 'Rp ' + angka.toLocaleString('id-ID');
+    }
+
+    // Load gallery images
+    function loadGallery() {
+      const galleryContainer = document.getElementById('galleryContainer');
+      if (!galleryContainer) return;
+      
+      galleryContainer.innerHTML = galleryImages.map(img => `
+        <div class="gallery-item">
+          <img src="${img.url}" alt="${img.title}" loading="lazy">
+          <div class="gallery-info">
+            <h4>${img.title}</h4>
+            <p><i class="far fa-calendar"></i> ${img.date}</p>
+            <p>${img.desc}</p>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Load weekly progress cards
+    function loadWeeklyCards() {
+      const weeklyContainer = document.getElementById('weeklyCards');
+      if (!weeklyContainer) return;
+      
+      weeklyContainer.innerHTML = weeklyProgress.map(week => `
+        <div class="week-card">
+          <div class="week-header">
+            <div class="week-title">${week.week}</div>
+            <div class="week-date">${week.date}</div>
+          </div>
+          <div class="week-progress-bar">
+            <div class="week-progress-fill" style="width: ${week.progress}%"></div>
+          </div>
+          <div style="text-align: right; font-size: 0.9rem; color: var(--secondary); font-weight: 600;">
+            ${week.progress}% selesai
+          </div>
+          <p style="margin-top: 10px; font-size: 0.9rem;">
+            <strong>Aktivitas:</strong> ${week.activities}
+          </p>
+        </div>
+      `).join('');
     }
 
     // Tab functionality
