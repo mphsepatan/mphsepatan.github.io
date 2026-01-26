@@ -286,7 +286,7 @@
             line-height: 1.5;
         }
         
-        /* Tools Grid */
+        /* PERBAIKAN: Tools Grid yang Responsif */
         .tools-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -301,17 +301,32 @@
             text-align: center;
             transition: all 0.3s ease;
             border: 1px solid #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 140px;
         }
         
         .tool-item:hover {
             background-color: #E8F5E9;
             transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
         }
         
         .tool-item i {
             color: var(--primary);
-            font-size: 2rem;
+            font-size: 2.2rem;
             margin-bottom: 15px;
+            display: block;
+        }
+        
+        .tool-item div {
+            font-weight: 500;
+            color: var(--dark);
+            font-size: 0.95rem;
+            line-height: 1.4;
+            word-break: break-word;
         }
         
         /* Button Styles */
@@ -434,7 +449,62 @@
             font-size: 0.9rem;
         }
         
-        /* Responsive */
+        /* Progress Bar */
+        .progress-container {
+            margin: 30px 0;
+        }
+        
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .progress-bar {
+            height: 15px;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(to right, var(--primary), var(--primary-light));
+            border-radius: 10px;
+            width: 25%; /* Tahap awal pembangunan */
+            transition: width 1s ease;
+        }
+        
+        .progress-text {
+            text-align: center;
+            margin-top: 10px;
+            font-style: italic;
+            color: var(--gray);
+        }
+        
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 1200px) {
+            .container {
+                max-width: 95%;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .tools-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                gap: 18px;
+            }
+            
+            .tool-item {
+                padding: 18px 12px;
+                min-height: 130px;
+            }
+            
+            .tool-item i {
+                font-size: 2rem;
+            }
+        }
+        
         @media (max-width: 768px) {
             .container {
                 padding: 15px;
@@ -487,8 +557,106 @@
                 max-width: 300px;
             }
             
+            /* PERBAIKAN: Grid perlengkapan untuk tablet */
+            .tools-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 15px;
+            }
+            
+            .tool-item {
+                min-height: 120px;
+                padding: 15px 10px;
+            }
+            
+            .tool-item i {
+                font-size: 1.8rem;
+                margin-bottom: 10px;
+            }
+            
+            .tool-item div {
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .site-title {
+                font-size: 1.6rem;
+            }
+            
+            .hero-title {
+                font-size: 1.7rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .greeting {
+                font-size: 1.5rem;
+            }
+            
+            /* PERBAIKAN: Grid perlengkapan untuk mobile kecil */
             .tools-grid {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+            
+            .tool-item {
+                min-height: 110px;
+                padding: 12px 8px;
+            }
+            
+            .tool-item i {
+                font-size: 1.6rem;
+                margin-bottom: 8px;
+            }
+            
+            .tool-item div {
+                font-size: 0.85rem;
+            }
+            
+            .kegiatan-list li {
+                font-size: 0.95rem;
+                padding: 12px 0;
+            }
+            
+            .hadith-arabic {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            /* PERBAIKAN: Grid perlengkapan untuk mobile sangat kecil */
+            .tools-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            
+            .tool-item {
+                min-height: 100px;
+                padding: 10px 6px;
+            }
+            
+            .tool-item i {
+                font-size: 1.4rem;
+            }
+            
+            .tool-item div {
+                font-size: 0.8rem;
+            }
+            
+            .countdown-item {
+                min-width: 60px;
+                padding: 12px 8px;
+            }
+            
+            .countdown-value {
+                font-size: 1.5rem;
+            }
+            
+            .btn {
+                padding: 14px 25px;
+                font-size: 1rem;
             }
         }
         
@@ -500,39 +668,6 @@
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
-        }
-        
-        /* Progress Bar */
-        .progress-container {
-            margin: 30px 0;
-        }
-        
-        .progress-label {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-        }
-        
-        .progress-bar {
-            height: 15px;
-            background-color: #e0e0e0;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(to right, var(--primary), var(--primary-light));
-            border-radius: 10px;
-            width: 25%; /* Tahap awal pembangunan */
-            transition: width 1s ease;
-        }
-        
-        .progress-text {
-            text-align: center;
-            margin-top: 10px;
-            font-style: italic;
-            color: var(--gray);
         }
     </style>
 </head>
@@ -606,7 +741,7 @@
                     <p><strong>Musholla An-Nur</strong><br>
                     Perumahan Mutiara Puri Harmoni<br>
                     Sepatan, Tangerang<br>
-                    <em>(Lokasi akan diinformasikan lebih detail di grup WhatsApp warga)</em></p>
+                  </p>
                 </div>
             </div>
         </div>
@@ -643,7 +778,7 @@
                 <li><i class="fas fa-truck-loading"></i> Pengaturan material bangunan</li>
                 <li><i class="fas fa-water"></i> Penyiapan akses air bersih</li>
                 <li><i class="fas fa-trash-alt"></i> Pembuangan sampah dan sisa material</li>
-                <li><i class="fas fa-utensils"></i> Makan siang bersama (disediakan panitia)</li>
+                <li><i class="fas fa-utensils"></i> Potong Tumpeng Bersama</li>
             </ul>
             
             <div class="hadith-box">
@@ -652,19 +787,16 @@
             </div>
         </div>
         
-        <!-- Perlengkapan -->
+        <!-- PERBAIKAN: Bagian Perlengkapan yang Responsif -->
         <div class="section fade-in">
             <h2 class="section-title"><i class="fas fa-tools"></i> Perlengkapan yang Dibutuhkan</h2>
             <p>Bawa perlengkapan berikut jika memungkinkan:</p>
             
             <div class="tools-grid">
-                <div class="tool-item">
-                    <i class="fas fa-shovel"></i>
-                    <div>Sekop</div>
-                </div>
+                
                 <div class="tool-item">
                     <i class="fas fa-hammer"></i>
-                    <div>Palu</li>
+                    <div>Palu</div>
                 </div>
                 <div class="tool-item">
                     <i class="fas fa-ruler-combined"></i>
@@ -682,13 +814,18 @@
                     <i class="fas fa-box"></i>
                     <div>Kardus</div>
                 </div>
+            
                 <div class="tool-item">
-                    <i class="fas fa-gloves"></i>
-                    <div>Sarung Tangan</div>
+                    <i class="fas fa-tape"></i>
+                    <div>Meteran Las</div>
                 </div>
                 <div class="tool-item">
-                    <i class="fas fa-boot"></i>
-                    <div>Sepatu Boot</div>
+                    <i class="fas fa-broom"></i>
+                    <div>Sapu</div>
+                </div>
+                <div class="tool-item">
+                    <i class="fas fa-bucket"></i>
+                    <div>Ember</div>
                 </div>
             </div>
             
@@ -703,11 +840,10 @@
             
             <ul class="kegiatan-list">
                 <li><i class="fas fa-check-circle" style="color: var(--accent);"></i> Gunakan pakaian kerja yang nyaman dan tertutup</li>
-                <li><i class="fas fa-check-circle" style="color: var(--accent);"></i> Bawa air minum untuk diri sendiri</li>
-                <li><i class="fas fa-check-circle" style="color: var(--accent);"></i> Makan siang akan disediakan panitia</li>
+            
                 <li><i class="fas fa-check-circle" style="color: var(--accent);"></i> Kegiatan dimulai tepat pukul 07.30 WIB</li>
                 <li><i class="fas fa-check-circle" style="color: var(--accent);"></i> Mari datang tepat waktu untuk koordinasi awal</li>
-                <li><i class="fas fa-check-circle" style="color: var(--accent);"></i> Untuk keamanan, anak-anak di bawah 12 tahun sebaiknya tidak ikut kerja fisik</li>
+               
             </ul>
         </div>
         
@@ -731,8 +867,7 @@
             <ul class="kegiatan-list">
                 <li><i class="fas fa-calendar-check"></i> Jadwal pembangunan tahap selanjutnya</li>
                 <li><i class="fas fa-donate"></i> Program infak dan wakaf pembangunan</li>
-                <li><i class="fas fa-users"></i> Pembentukan kepanitiaan tetap</li>
-                <li><i class="fas fa-file-contract"></i> Rencana anggaran dan kebutuhan material</li>
+            
             </ul>
         </div>
     </div>
@@ -752,7 +887,7 @@
         <div class="contact-info">
             <p><i class="fas fa-map-marker-alt"></i> <strong>Lokasi:</strong> Perumahan Mutiara Puri Harmoni, Sepatan, Tangerang</p>
             <p><i class="fas fa-clock"></i> <strong>Waktu:</strong> Minggu, 1 Februari 2026 | 07.30 WIB - Selesai</p>
-            <p><i class="fas fa-calendar-day"></i> <strong>Kegiatan:</strong> Kerja Bakti Pembangunan Tahap Awal</p>
+            <p><i class="fas fa-calendar-day"></i> <strong>Kegiatan:</strong> Kerja Bakti Pembangunan Musholla An-Nur MPHS</p>
         </div>
         
         <div class="social-links">
@@ -828,6 +963,17 @@
             document.querySelectorAll('.section, .info-card').forEach(el => {
                 observer.observe(el);
             });
+            
+            // Animasi untuk tool items saat hover
+            document.querySelectorAll('.tool-item').forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
         });
         
         // WhatsApp button functionality
@@ -858,6 +1004,15 @@
         
         // Animate countdown every second
         setInterval(animateCountdown, 1000);
+        
+        // Responsive check untuk debugging
+        function checkResponsive() {
+            const width = window.innerWidth;
+            console.log(`Lebar layar: ${width}px, Grid perlengkapan: ${getComputedStyle(document.querySelector('.tools-grid')).gridTemplateColumns}`);
+        }
+        
+        window.addEventListener('resize', checkResponsive);
+        window.addEventListener('load', checkResponsive);
     </script>
 </body>
 </html>
