@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Kerja Bakti Pembangunan Musholla An-Nur</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/mphsepatan/mphsepatan.github.io/main/logomusholla.jpeg">
+    <style>
+        :root {
+            --primary: #2E7D32;
+            --primary-light: #4CAF50;
+            --primary-dark: #1B5E20;
+            --secondary: #D32F2F;
+            --accent: #FF9800;
+            --light: #F9F9F9;
+            --dark: #333333;
+            --gray: #757575;
+            --light-gray: #f5f5f5;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --border-radius: 10px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light-gray);
+            background-image: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), 
+                              url('https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=1470&auto=format&fit=crop');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+        
+        .arabic {
+            font-family: 'Amiri', serif;
+            direction: rtl;
+            font-weight: 700;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 40px 20px 30px;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+        }
+        
+        .logo-container {
+            margin-bottom: 25px;
+        }
+        
+        .logo {
+            height: 100px;
+            width: auto;
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+        }
+        
+        .site-title {
+            font-size: 2.2rem;
+            color: var(--primary-dark);
+            margin-bottom: 5px;
+        }
+        
+        .site-subtitle {
+            color: var(--gray);
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+        
+        .greeting {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(46, 125, 50, 0.9), rgba(27, 94, 32, 0.9)), 
+                        url('https://images.unsplash.com/photo-1591608971362-f08b2a75731a?q=80&w=1470&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            border-radius: var(--border-radius);
+            padding: 50px 40px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        
+        .hero-title {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+        
+        .highlight {
+            color: #FFEB3B;
+            font-weight: 600;
+        }
+        
+        /* Countdown */
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .countdown-item {
+            background-color: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 20px 15px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            min-width: 90px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .countdown-value {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: white;
+            line-height: 1;
+        }
+        
+        .countdown-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-top: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Info Cards */
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .info-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            text-align: center;
+            border-top: 5px solid var(--primary);
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .info-icon {
+            width: 70px;
+            height: 70px;
+            background-color: #E8F5E9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--primary);
+            font-size: 1.8rem;
+        }
+        
+        .info-title {
+            font-size: 1.4rem;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+        }
+        
+        .info-content {
+            color: var(--dark);
+            line-height: 1.7;
+        }
+        
+        /* Content Sections */
+        .section {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 35px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-title i {
+            color: var(--primary);
+        }
+        
+        /* Kegiatan List */
+        .kegiatan-list {
+            list-style-type: none;
+        }
+        
+        .kegiatan-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            font-size: 1.05rem;
+        }
+        
+        .kegiatan-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .kegiatan-list i {
+            color: var(--primary);
+            margin-right: 15px;
+            font-size: 1.2rem;
+            min-width: 25px;
+        }
+        
+        /* Hadith Box */
+        .hadith-box {
+            background-color: #E8F5E9;
+            border-left: 5px solid var(--primary);
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+        
+        .hadith-arabic {
+            font-size: 1.8rem;
+            text-align: right;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+            line-height: 1.5;
+        }
+        
+        /* Tools Grid */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .tool-item {
+            background-color: #F1F8E9;
+            padding: 20px 15px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .tool-item:hover {
+            background-color: #E8F5E9;
+            transform: translateY(-5px);
+        }
+        
+        .tool-item i {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 16px 35px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            margin-top: 10px;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(46, 125, 50, 0.2);
+        }
+        
+        .btn-secondary {
+            background-color: var(--accent);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #EF6C00;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 60px;
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            height: 80px;
+            width: auto;
+            margin-bottom: 20px;
+            border-radius: 50%;
+        }
+        
+        .footer-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #FFEB3B;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto 30px;
+            padding: 0 20px;
+            line-height: 1.7;
+        }
+        
+        .contact-info {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin: 30px auto;
+            max-width: 600px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .contact-info i {
+            color: #FFEB3B;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent);
+        }
+        
+        .copyright {
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .header {
+                padding: 30px 15px;
+            }
+            
+            .site-title {
+                font-size: 1.8rem;
+            }
+            
+            .hero {
+                padding: 40px 20px;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .section {
+                padding: 25px;
+            }
+            
+            .info-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .countdown-item {
+                min-width: 70px;
+                padding: 15px 10px;
+            }
+            
+            .countdown-value {
+                font-size: 1.8rem;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .action-buttons .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .tools-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* Animation */
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Progress Bar */
+        .progress-container {
+            margin: 30px 0;
+        }
+        
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .progress-bar {
+            height: 15px;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(to right, var(--primary), var(--primary-light));
+            border-radius: 10px;
+            width: 25%; /* Tahap awal pembangunan */
+            transition: width 1s ease;
+        }
+        
+        .progress-text {
+            text-align: center;
+            margin-top: 10px;
+            font-style: italic;
+            color: var(--gray);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header fade-in">
+            <div class="logo-container">
+                <img src="https://raw.githubusercontent.com/mphsepatan/mphsepatan.github.io/refs/heads/main/logomusholla.jpeg" 
+                     alt="Logo Musholla An-Nur" class="logo">
+                <h1 class="site-title">Musholla An-Nur</h1>
+                <p class="site-subtitle">Perumahan Mutiara Puri Harmoni, Sepatan, Tangerang</p>
+            </div>
+            
+            <div class="greeting">
+                <span class="arabic">السَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ</span>
+            </div>
+            <p>Undangan Kerja Bakti Pembangunan Musholla An-Nur</p>
+        </header>
+        
+        <!-- Hero Section -->
+        <section class="hero fade-in">
+            <h1 class="hero-title">BERSAMA MEMBANGUN RUMAH ALLAH</h1>
+            <p class="hero-subtitle">
+                Mari kita bahu-membahu dalam <span class="highlight">kerja bakti pembangunan Musholla An-Nur</span> 
+                sebagai wujud syukur dan ikhtiar kita untuk memiliki tempat ibadah yang layak di lingkungan 
+                Perumahan Mutiara Puri Harmoni. <br><br>
+                <strong>Kegiatan ini merupakan tahap awal pembangunan musholla kita.</strong>
+            </p>
+            
+            <div class="countdown">
+                <div class="countdown-item">
+                    <div class="countdown-value" id="days">00</div>
+                    <div class="countdown-label">Hari</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="hours">00</div>
+                    <div class="countdown-label">Jam</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="minutes">00</div>
+                    <div class="countdown-label">Menit</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="seconds">00</div>
+                    <div class="countdown-label">Detik</div>
+                </div>
+            </div>
+            
+            <p><i class="fas fa-calendar-alt"></i> <strong>Minggu, 1 Februari 2026</strong> | <i class="fas fa-clock"></i> <strong>07.30 WIB - Selesai</strong></p>
+        </section>
+        
+        <!-- Info Cards -->
+        <div class="info-cards">
+            <div class="info-card fade-in">
+                <div class="info-icon">
+                    <i class="fas fa-hands-helping"></i>
+                </div>
+                <h3 class="info-title">Tujuan Kegiatan</h3>
+                <div class="info-content">
+                    <p>Melakukan persiapan lahan dan pekerjaan awal untuk pembangunan Musholla An-Nur yang akan menjadi pusat ibadah dan kegiatan keislaman di Perumahan Mutiara Puri Harmoni.</p>
+                </div>
+            </div>
+            
+            <div class="info-card fade-in">
+                <div class="info-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <h3 class="info-title">Lokasi</h3>
+                <div class="info-content">
+                    <p><strong>Musholla An-Nur</strong><br>
+                    Perumahan Mutiara Puri Harmoni<br>
+                    Sepatan, Tangerang<br>
+                    <em>(Lokasi akan diinformasikan lebih detail di grup WhatsApp warga)</em></p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Status Pembangunan -->
+        <div class="section fade-in">
+            <h2 class="section-title"><i class="fas fa-hard-hat"></i> Status Pembangunan</h2>
+            
+            <div class="progress-container">
+                <div class="progress-label">
+                    <span>Tahap Persiapan</span>
+                    <span>25%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <div class="progress-text">
+                    Saat ini kita berada di tahap awal: Persiapan lahan dan pembangunan fondasi
+                </div>
+            </div>
+            
+            <p style="margin-top: 20px;">Kerja bakti ini sangat penting untuk memulai proses pembangunan musholla. Setiap tenaga dan kontribusi sangat berarti untuk mewujudkan rumah ibadah kita bersama.</p>
+        </div>
+        
+        <!-- Kegiatan Kerja Bakti -->
+        <div class="section fade-in">
+            <h2 class="section-title"><i class="fas fa-tasks"></i> Kegiatan Kerja Bakti</h2>
+            
+            <ul class="kegiatan-list">
+                <li><i class="fas fa-shovel"></i> Pembersihan lahan dan pembukaan area</li>
+                <li><i class="fas fa-mountain"></i> Pematangan tanah dan perataan lahan</li>
+                <li><i class="fas fa-drafting-compass"></i> Pemasangan patok dan pengukuran</li>
+                <li><i class="fas fa-trowel"></i> Persiapan fondasi bangunan</li>
+                <li><i class="fas fa-truck-loading"></i> Pengaturan material bangunan</li>
+                <li><i class="fas fa-water"></i> Penyiapan akses air bersih</li>
+                <li><i class="fas fa-trash-alt"></i> Pembuangan sampah dan sisa material</li>
+                <li><i class="fas fa-utensils"></i> Makan siang bersama (disediakan panitia)</li>
+            </ul>
+            
+            <div class="hadith-box">
+                <p class="hadith-arabic">"مَنْ بَنَى مَسْجِدًا لِلَّهِ بَنَى اللَّهُ لَهُ بَيْتًا فِي الْجَنَّةِ"</p>
+                <p>"Barangsiapa membangun masjid karena Allah, maka Allah akan membangun untuknya rumah di surga." (HR. Bukhari dan Muslim)</p>
+            </div>
+        </div>
+        
+        <!-- Perlengkapan -->
+        <div class="section fade-in">
+            <h2 class="section-title"><i class="fas fa-tools"></i> Perlengkapan yang Dibutuhkan</h2>
+            <p>Bawa perlengkapan berikut jika memungkinkan:</p>
+            
+            <div class="tools-grid">
+                <div class="tool-item">
+                    <i class="fas fa-shovel"></i>
+                    <div>Sekop</div>
+                </div>
+                <div class="tool-item">
+                    <i class="fas fa-hammer"></i>
+                    <div>Palu</li>
+                </div>
+                <div class="tool-item">
+                    <i class="fas fa-ruler-combined"></i>
+                    <div>Meteran</div>
+                </div>
+                <div class="tool-item">
+                    <i class="fas fa-cut"></i>
+                    <div>Gergaji</div>
+                </div>
+                <div class="tool-item">
+                    <i class="fas fa-weight-hanging"></i>
+                    <div>Dongkrak</div>
+                </div>
+                <div class="tool-item">
+                    <i class="fas fa-box"></i>
+                    <div>Kardus</div>
+                </div>
+                <div class="tool-item">
+                    <i class="fas fa-gloves"></i>
+                    <div>Sarung Tangan</div>
+                </div>
+                <div class="tool-item">
+                    <i class="fas fa-boot"></i>
+                    <div>Sepatu Boot</div>
+                </div>
+            </div>
+            
+            <p style="margin-top: 25px; font-style: italic; color: var(--gray);">
+                <i class="fas fa-info-circle"></i> Jangan khawatir jika tidak memiliki semua perlengkapan. Yang terpenting adalah kehadiran dan niat ikhlas untuk membangun rumah Allah.
+            </p>
+        </div>
+        
+        <!-- Catatan Penting -->
+        <div class="section fade-in" style="background-color: #FFF8E1; border-left: 5px solid var(--accent);">
+            <h2 class="section-title"><i class="fas fa-exclamation-triangle"></i> Catatan Penting</h2>
+            
+            <ul class="kegiatan-list">
+                <li><i class="fas fa-check-circle" style="color: var(--accent);"></i> Gunakan pakaian kerja yang nyaman dan tertutup</li>
+                <li><i class="fas fa-check-circle" style="color: var(--accent);"></i> Bawa air minum untuk diri sendiri</li>
+                <li><i class="fas fa-check-circle" style="color: var(--accent);"></i> Makan siang akan disediakan panitia</li>
+                <li><i class="fas fa-check-circle" style="color: var(--accent);"></i> Kegiatan dimulai tepat pukul 07.30 WIB</li>
+                <li><i class="fas fa-check-circle" style="color: var(--accent);"></i> Mari datang tepat waktu untuk koordinasi awal</li>
+                <li><i class="fas fa-check-circle" style="color: var(--accent);"></i> Untuk keamanan, anak-anak di bawah 12 tahun sebaiknya tidak ikut kerja fisik</li>
+            </ul>
+        </div>
+        
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+            <a href="https://wa.me/?text=Assalamu'alaikum%20saya%20ingin%20ikut%20kerja%20bakti%20pembangunan%20Musholla%20An-Nur%20tanggal%201%20Februari%202026" 
+               target="_blank" class="btn">
+               <i class="fab fa-whatsapp"></i> Informasi via WhatsApp
+            </a>
+            <a href="https://goo.gl/maps/search/?api=1&query=Perumahan+Mutiara+Puri+Harmoni+Sepatan+Tangerang" 
+               target="_blank" class="btn btn-secondary">
+               <i class="fas fa-map-marker-alt"></i> Lihat Lokasi di Maps
+            </a>
+        </div>
+        
+        <!-- Pengumuman -->
+        <div class="section fade-in" style="background-color: #E3F2FD; border-left: 5px solid #2196F3;">
+            <h2 class="section-title"><i class="fas fa-bullhorn"></i> Pengumuman</h2>
+            <p>Kegiatan kerja bakti ini merupakan awal dari perjalanan panjang pembangunan Musholla An-Nur. Mari kita mulai dengan niat ikhlas dan semangat kebersamaan.</p>
+            <p style="margin-top: 15px;"><strong>Setelah kerja bakti ini, akan ada pertemuan lanjutan untuk membahas:</strong></p>
+            <ul class="kegiatan-list">
+                <li><i class="fas fa-calendar-check"></i> Jadwal pembangunan tahap selanjutnya</li>
+                <li><i class="fas fa-donate"></i> Program infak dan wakaf pembangunan</li>
+                <li><i class="fas fa-users"></i> Pembentukan kepanitiaan tetap</li>
+                <li><i class="fas fa-file-contract"></i> Rencana anggaran dan kebutuhan material</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <img src="https://raw.githubusercontent.com/mphsepatan/mphsepatan.github.io/refs/heads/main/logomusholla.jpeg" 
+             alt="Logo Musholla An-Nur" class="footer-logo">
+        
+        <h2 class="footer-title">Panitia Pembangunan Musholla An-Nur</h2>
+        
+        <div class="footer-content">
+            <p>Kehadiran dan partisipasi Bapak/Ibu/Saudara(i) sangat kami nantikan untuk memulai perjalanan pembangunan rumah ibadah kita bersama.</p>
+            <p style="margin-top: 15px;">"Sebaik-baik manusia adalah yang paling bermanfaat bagi orang lain." (HR. Thabrani)</p>
+        </div>
+        
+        <div class="contact-info">
+            <p><i class="fas fa-map-marker-alt"></i> <strong>Lokasi:</strong> Perumahan Mutiara Puri Harmoni, Sepatan, Tangerang</p>
+            <p><i class="fas fa-clock"></i> <strong>Waktu:</strong> Minggu, 1 Februari 2026 | 07.30 WIB - Selesai</p>
+            <p><i class="fas fa-calendar-day"></i> <strong>Kegiatan:</strong> Kerja Bakti Pembangunan Tahap Awal</p>
+        </div>
+        
+        <div class="social-links">
+            <a href="https://mphsepatan.github.io/" target="_blank" title="Website MPH Sepatan">
+                <i class="fas fa-globe"></i>
+            </a>
+            <a href="https://wa.me/6281234567890" target="_blank" title="WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="mailto:panitia.annur@example.com" title="Email">
+                <i class="far fa-envelope"></i>
+            </a>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2026 Panitia Pembangunan Musholla An-Nur. Semua Hak Dilindungi.</p>
+            <p>#BersamaMembangunMusholla #MushollaAnNur #MPHSepatan #GotongRoyong</p>
+        </div>
+    </footer>
+
+    <script>
+        // Countdown Timer
+        function updateCountdown() {
+            const eventDate = new Date('February 1, 2026 07:30:00').getTime();
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+            
+            if (distance < 0) {
+                document.getElementById('days').innerHTML = '00';
+                document.getElementById('hours').innerHTML = '00';
+                document.getElementById('minutes').innerHTML = '00';
+                document.getElementById('seconds').innerHTML = '00';
+                return;
+            }
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').innerHTML = days.toString().padStart(2, '0');
+            document.getElementById('hours').innerHTML = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').innerHTML = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').innerHTML = seconds.toString().padStart(2, '0');
+        }
+        
+        // Update countdown setiap detik
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+        
+        // Animasi progress bar
+        document.addEventListener('DOMContentLoaded', function() {
+            const progressFill = document.querySelector('.progress-fill');
+            setTimeout(() => {
+                progressFill.style.width = '25%';
+            }, 500);
+            
+            // Animasi fade in untuk elemen
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    }
+                });
+            }, observerOptions);
+            
+            // Terapkan animasi pada semua section
+            document.querySelectorAll('.section, .info-card').forEach(el => {
+                observer.observe(el);
+            });
+        });
+        
+        // WhatsApp button functionality
+        const waButtons = document.querySelectorAll('a[href*="whatsapp"]');
+        waButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                // Untuk desktop, buka WhatsApp Web
+                if (!/Mobi|Android/i.test(navigator.userAgent)) {
+                    const currentUrl = this.href;
+                    this.href = currentUrl.replace('api.whatsapp.com', 'web.whatsapp.com');
+                }
+            });
+        });
+        
+        // Update count setiap 30 detik
+        setInterval(updateCountdown, 30000);
+        
+        // Simple animation for countdown numbers
+        function animateCountdown() {
+            const countdownValues = document.querySelectorAll('.countdown-value');
+            countdownValues.forEach(value => {
+                value.style.transform = 'scale(1.1)';
+                setTimeout(() => {
+                    value.style.transform = 'scale(1)';
+                }, 300);
+            });
+        }
+        
+        // Animate countdown every second
+        setInterval(animateCountdown, 1000);
+    </script>
+</body>
+</html>
