@@ -623,7 +623,28 @@
       background: linear-gradient(to right, var(--secondary-light), var(--secondary));
       border-radius: 4px;
     }
+/* Tambahkan di bagian CSS */
+.color-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: center;
+  min-width: 80px;
+}
 
+.color-masuk {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.color-keluar {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
     /* Footer */
     footer {
       background: linear-gradient(135deg, var(--dark) 0%, #0d1938 100%);
@@ -1145,7 +1166,27 @@
       <h2>Dukung Pembangunan Musholla</h2>
       <p>Pilih nominal donasi dan hubungi admin via WhatsApp</p>
     </div>
-    
+    <!-- Rekening: tampilkan dulu karena alur utama transfer -->
+    <div class="rekening-section">
+      <h3 class="rekening-title">
+        <i class="fas fa-university"></i> Transfer via Bank
+      </h3>
+      <p style="color:var(--gray); margin-top: -6px; margin-bottom: 10px;">Silakan salin nomor rekening di bawah lalu lakukan transfer. Setelah transfer, konfirmasi melalui WhatsApp.</p>
+      <div class="rekening-container">
+        <div class="rekening-card">
+          <div class="rekening-bank">
+            <i class="fas fa-landmark"></i>
+            <span>Bank BTN</span>
+          </div>
+          <div class="rekening-number" id="bcaNumber">00043-01-88-000897-7</div>
+          <div class="rekening-name">a.n. Musholla An Nur</div>
+          <button class="copy-button" onclick="copyToClipboard(event, 'bcaNumber')" aria-label="Salin nomor rekening Bank BTN">
+            <i class="far fa-copy"></i> Salin No. Rekening
+          </button>
+        </div>
+      </div>
+    </div>
+
     <div class="donasi-options">
       <div class="donasi-option" data-amount="50000">
         <div class="donasi-amount">Rp 50.000</div>
@@ -1178,52 +1219,24 @@
     <div class="payment-instruction">
       <h4><i class="fas fa-info-circle"></i> Cara Donasi:</h4>
       <ol>
-        <li>Pilih nominal donasi atau masukkan jumlah sendiri</li>
-        <li>Klik tombol "Donasi via WhatsApp"</li>
-        <li>Anda akan diarahkan ke chat WhatsApp dengan admin</li>
-        <li>Kirim konfirmasi donasi beserta bukti transfer (jika transfer)</li>
-        <li>Admin akan mencatat donasi Anda di sistem</li>
-        <li>Nama Anda akan muncul di daftar donatur setelah diproses</li>
+        <li>Pilih nominal donasi yang tersedia atau masukkan jumlah sendiri.</li>
+        <li>Lakukan transfer ke nomor rekening yang tercantum di atas.</li>
+        <li>Klik tombol "Konfirmasi Transfer via WhatsApp" dan lampirkan bukti transfer serta cantumkan nama & nominal.</li>
+        <li>Admin akan memverifikasi konfirmasi dan mencatat donasi Anda.</li>
+        <li>Nama Anda akan muncul di daftar donatur setelah diproses (maks. 1x24 jam).</li>
       </ol>
     </div>
-    <!-- Rekening Section -->
-<div class="rekening-section">
-  <h3 class="rekening-title">
-    <i class="fas fa-university"></i> Transfer via Bank
-  </h3>
-  <div class="rekening-container">
-    <!-- Rekening 1 -->
-    <div class="rekening-card">
-      <div class="rekening-bank">
-        <i class="fas fa-landmark"></i>
-        <span>Bank BTN</span>
-      </div>
-      <div class="rekening-number" id="bcaNumber">00043-01-88-000897-7</div>
-      <div class="rekening-name">a.n. Musholla An Nur</div>
-      <button class="copy-button" onclick="copyToClipboard('bcaNumber')">
-        <i class="far fa-copy"></i> Salin No. Rekening
-      </button>
-    </div>
-    
-
-  
-  <div style="margin-top: 1.5rem; padding: 1rem; background: var(--light-gray); border-radius: 8px;">
-    <p style="color: var(--primary); font-weight: 500; margin-bottom: 0.5rem;">
-      <i class="fas fa-exclamation-circle"></i> <strong>Penting:</strong>
-    </p>
-    <ul style="margin-left: 1.5rem; color: var(--dark); font-size: 0.9rem;">
-      <li>Setelah transfer, harap konfirmasi via WhatsApp dengan menyertakan bukti transfer</li>
-      <li>Donasi akan tercatat dalam 1x24 jam setelah konfirmasi</li>
-      <li>Nomor rekening resmi hanya yang tercantum di atas</li>
-      <li>Jangan memberikan donasi ke nomor rekening lain selain yang tertera</li>
-    </ul>
-  </div>
-</div>
+    <!-- (Duplikasi 'Penting' dihapus; hanya satu blok ringkas tetap ada di bawah) -->
     
     <div style="margin-top: 1.5rem; padding: 1rem; background: var(--blue-light); border-radius: var(--border-radius);">
       <p style="color: var(--primary); font-weight: 500;">
-        <i class="fas fa-comment-alt"></i> <strong>Informasi Penting:</strong> Semua donasi akan dicatat secara transparan dan dapat dilihat di halaman Donatur. Admin akan mengupdate data maksimal 24 jam setelah donasi diterima.
+        <i class="fas fa-comment-alt"></i> <strong>Penting:</strong>
       </p>
+      <ul style="margin-left: 1rem; color: var(--dark); font-size: 0.95rem;">
+        <li>Nomor rekening resmi hanya yang tercantum di atas — jangan transfer ke nomor lain.</li>
+        <li>Simpan bukti transfer untuk verifikasi.</li>
+        <li>Donasi akan dicatat maksimal 1x24 jam setelah konfirmasi.</li>
+      </ul>
     </div>
   </section>
 
@@ -1387,7 +1400,7 @@
               </div>
               
               <div class="node">
-                <div class="title">Muhamad sukron</div>
+                <div class="title">Muhamad Sukron</div>
                 <div class="role">Bendahara</div>
               </div>
             </div>
@@ -1418,7 +1431,7 @@
                 <div class="role">Bidang Pelaksana Lapangan</div>
               </div>
               <div class="node">
-                <div class="title">  Marvin saputra</div>
+                <div class="title">  Marvin Saputra</div>
                 <div class="role">Bidang Dokumentasi</div>
               </div>
               <div class="node">
@@ -1598,48 +1611,68 @@
     }
 
     function loadSheet(sheetName, divId, loadingId) {
-      const queryString = encodeURIComponent('SELECT *');
-      const query = new google.visualization.Query(
-        `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/gviz/tq?sheet=${sheetName}&tq=${queryString}`
-      );
+  const queryString = encodeURIComponent('SELECT *');
+  const query = new google.visualization.Query(
+    `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/gviz/tq?sheet=${sheetName}&tq=${queryString}`
+  );
 
-      query.send(response => {
-        // Hide loading spinner
-        if (document.getElementById(loadingId)) {
-          document.getElementById(loadingId).style.display = 'none';
-        }
-        
-        if (response.isError()) {
-          document.getElementById(divId).innerHTML = 
-            `<div style="text-align:center; padding: 40px; color: #e53e3e;">
-              <i class="fas fa-exclamation-triangle fa-2x" style="margin-bottom: 15px;"></i>
-              <h3>Error Memuat Data</h3>
-              <p>${response.getMessage()}</p>
-              <button onclick="loadSheet('${sheetName}', '${divId}', '${loadingId}')" style="margin-top: 15px; padding: 10px 20px; background: linear-gradient(to right, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: 500;">
-                <i class="fas fa-redo"></i> Coba Lagi
-              </button>
-            </div>`;
-          return;
-        }
-        
-        const data = response.getDataTable();
-        const table = new google.visualization.Table(document.getElementById(divId));
-        table.draw(data, {
-          showRowNumber: false,
-          width: '100%',
-          height: '100%',
-          allowHtml: true,
-          cssClassNames: {
-            headerRow: 'google-visualization-table-tr-head',
-            tableRow: 'google-visualization-table-tr',
-            oddTableRow: 'google-visualization-table-tr-odd',
-            evenTableRow: 'google-visualization-table-tr-even',
-            headerCell: 'google-visualization-table-th',
-            tableCell: 'google-visualization-table-td'
+  query.send(response => {
+    // Hide loading spinner
+    if (document.getElementById(loadingId)) {
+      document.getElementById(loadingId).style.display = 'none';
+    }
+    
+    if (response.isError()) {
+      document.getElementById(divId).innerHTML = 
+        `<div style="text-align:center; padding: 40px; color: #e53e3e;">
+          <i class="fas fa-exclamation-triangle fa-2x" style="margin-bottom: 15px;"></i>
+          <h3>Error Memuat Data</h3>
+          <p>${response.getMessage()}</p>
+          <button onclick="loadSheet('${sheetName}', '${divId}', '${loadingId}')" style="margin-top: 15px; padding: 10px 20px; background: linear-gradient(to right, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: 500;">
+            <i class="fas fa-redo"></i> Coba Lagi
+          </button>
+        </div>`;
+      return;
+    }
+    
+    const data = response.getDataTable();
+    const table = new google.visualization.Table(document.getElementById(divId));
+    table.draw(data, {
+      showRowNumber: false,
+      width: '100%',
+      height: '100%',
+      allowHtml: true,
+      cssClassNames: {
+        headerRow: 'google-visualization-table-tr-head',
+        tableRow: 'google-visualization-table-tr',
+        oddTableRow: 'google-visualization-table-tr-odd',
+        evenTableRow: 'google-visualization-table-tr-even',
+        headerCell: 'google-visualization-table-th',
+        tableCell: 'google-visualization-table-td'
+      }
+    });
+    
+    // Tambahkan styling untuk kolom Jenis setelah tabel digambar
+    if (sheetName === 'Donatur') {
+      setTimeout(() => {
+        const cells = document.querySelectorAll('.google-visualization-table-td');
+        cells.forEach(cell => {
+          if (cell.textContent.toLowerCase() === 'masuk') {
+            cell.style.backgroundColor = '#d4edda';
+            cell.style.color = '#155724';
+            cell.style.fontWeight = '600';
+            cell.innerHTML = `<i class="fas fa-arrow-down" style="margin-right: 5px;"></i>${cell.textContent}`;
+          } else if (cell.textContent.toLowerCase() === 'keluar') {
+            cell.style.backgroundColor = '#f8d7da';
+            cell.style.color = '#721c24';
+            cell.style.fontWeight = '600';
+            cell.innerHTML = `<i class="fas fa-arrow-up" style="margin-right: 5px;"></i>${cell.textContent}`;
           }
         });
-      });
+      }, 100);
     }
+  });
+}
 
     function updateStats() {
       const query = new google.visualization.Query(
@@ -1658,26 +1691,53 @@
         let totalDana = 0;
         let totalDonatur = 0;
 
+        // Find column indexes dynamically by label to avoid hard-coded indices
+        const cols = data.getNumberOfColumns();
+        let IDX_JENIS = -1;
+        let IDX_JUMLAH = -1;
+        for (let c = 0; c < cols; c++) {
+          const label = (data.getColumnLabel(c) || '').toString().toLowerCase();
+          if (label.includes('jenis')) IDX_JENIS = c;
+          if (label.includes('jumlah') || label.includes('nominal') || label.includes('jumlah (rp)')) IDX_JUMLAH = c;
+        }
+
+        // Fallback to common positions if labels not found
+        if (IDX_JUMLAH === -1) IDX_JUMLAH = Math.min(4, cols - 1);
+        if (IDX_JENIS === -1) IDX_JENIS = Math.min(3, cols - 2);
+
         for (let i = 0; i < rows; i++) {
           const no = data.getValue(i, 0);
-          if (typeof no !== 'number') continue; // skip TOTAL & footer
+          if (typeof no !== 'number') continue; // skip TOTAL & footer rows
 
-          totalDonatur++;
+          // Read jenis if available
+          let jenisRaw = IDX_JENIS >= 0 ? data.getValue(i, IDX_JENIS) : '';
+          let jenis = (jenisRaw || '').toString().trim().toLowerCase();
 
-          let nominal = data.getValue(i, 4); // JUMLAH
-          if (typeof nominal === 'string') {
-            nominal = nominal.replace(/Rp/gi, '').replace(/,/g, '').trim();
-          }
-
+          // Read nominal
+          let nominal = data.getValue(i, IDX_JUMLAH);
+          if (typeof nominal === 'string') nominal = nominal.replace(/Rp/gi, '').replace(/,/g, '').trim();
           const angka = parseInt(nominal, 10);
-          if (!isNaN(angka)) totalDana += angka;
+
+          // If we found a Jenis column, count only rows marked 'masuk' or 'bergabung'.
+          // If Jenis column not present (fallback), count any numeric nominal as incoming.
+          if (!isNaN(angka)) {
+            if (IDX_JENIS === -1) {
+              totalDana += angka;
+              totalDonatur++;
+            } else {
+              if (jenis.includes('masuk') || jenis.includes('bergabung')) {
+                totalDana += angka;
+                totalDonatur++;
+              }
+            }
+          }
         }
 
         document.getElementById('totalDonatur').textContent = totalDonatur;
         document.getElementById('totalFunds').textContent = formatRupiah(totalDana);
-        
-        // Update progress bar based on total funds (assuming target is 500 juta)
-        const target = 500000000;
+
+        // Update progress bar based on total funds (target is 250 juta internally; not displayed)
+        const target = 250000000; // 250 juta (used only for progress calculation)
         const progress = Math.min(100, Math.round((totalDana / target) * 100));
         document.getElementById('progressPercent').textContent = progress + '%';
         document.getElementById('progressFill').style.width = progress + '%';
@@ -1778,47 +1838,59 @@
         selectedAmount = parseInt(this.value) || 0;
       });
       
-      // WhatsApp donasi button
-      document.getElementById('whatsappDonasi').addEventListener('click', function() {
+      // WhatsApp donasi button (konfirmasi transfer flow)
+      const whatsappBtn = document.getElementById('whatsappDonasi');
+      whatsappBtn.setAttribute('aria-label', 'Konfirmasi Transfer via WhatsApp');
+      whatsappBtn.textContent = '';
+      whatsappBtn.innerHTML = '<i class="fab fa-whatsapp"></i> Konfirmasi Transfer via WhatsApp';
+      whatsappBtn.addEventListener('click', function() {
         if (selectedAmount <= 0) {
           alert('Silakan pilih atau masukkan nominal donasi terlebih dahulu');
           return;
         }
-        
-        sendWhatsAppMessage(selectedAmount);
+
+        // ambil nomor rekening yang ditampilkan
+        const acctEl = document.getElementById('bcaNumber');
+        const acct = acctEl ? acctEl.innerText.trim() : '';
+        sendWhatsAppMessage(selectedAmount, acct);
       });
       
       // Set default selected amount
       donasiOptions[0].click();
     });
     
-    function sendWhatsAppMessage(amount) {
-      // Format pesan WhatsApp
+    function sendWhatsAppMessage(amount, accountNumber = '') {
+      // Format pesan WhatsApp untuk alur transfer
       const formattedAmount = formatRupiah(amount);
-      const message = `Halo admin, saya ingin berdonasi untuk pembangunan Musholla An-Nur MPHS sebesar ${formattedAmount}. Bagaimana cara transfernya?`;
-      
+      let message = '';
+      if (accountNumber) {
+        message = `Halo admin, saya ingin transfer ${formattedAmount} ke rekening ${accountNumber} (a.n. Musholla An Nur). Mohon panduan konfirmasi dan update daftar donatur. Terima kasih.`;
+      } else {
+        message = `Halo admin, saya ingin berdonasi untuk pembangunan Musholla An-Nur MPHS sebesar ${formattedAmount}. Bagaimana cara transfernya?`;
+      }
+
       // Encode message for URL
       const encodedMessage = encodeURIComponent(message);
-      
+
       // Create WhatsApp URL
       const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
-      
+
       // Open WhatsApp in new tab
       window.open(whatsappURL, '_blank');
-      
+
       // Show confirmation
-      alert(`Anda akan diarahkan ke WhatsApp untuk konfirmasi donasi sebesar ${formattedAmount}. Silakan sampaikan ke admin bahwa Anda ingin berdonasi.`);
+      alert(`Anda akan diarahkan ke WhatsApp untuk konfirmasi transfer sebesar ${formattedAmount}.`);
     }
   </script>
   <script>
-  function copyToClipboard(elementId) {
+  function copyToClipboard(e, elementId) {
     const text = document.getElementById(elementId).innerText;
-    const button = event.currentTarget;
+    const button = e.currentTarget;
 
     navigator.clipboard.writeText(text).then(() => {
       const originalText = button.innerHTML;
       button.innerHTML = '<i class="fas fa-check"></i> Tersalin';
-      
+
       setTimeout(() => {
         button.innerHTML = originalText;
       }, 2000);
