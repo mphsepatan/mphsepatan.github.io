@@ -1096,6 +1096,34 @@
 .copy-notification.show {
   opacity: 1;
 }
+
+/* Lightbox Zoom */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  cursor: zoom-out;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+.lightbox.show {
+  display: flex;
+}
+
+
   </style>
 </head>
 
@@ -1527,56 +1555,77 @@
     const whatsappNumber = "6281219041850";
 
     // Gambar dokumentasi (hardcoded)
-    const galleryImages = [
-      {
-        url: "https://raw.githubusercontent.com/mphsepatan/mphsepatan.github.io/refs/heads/main/gambar1.jpeg",
-        title: "Musholla - Tam  Depan",
-        date: "Foto Proyek",
-        desc: "Gambar musholla (tam  depan)"
-      },
-      {
-        url: "https://raw.githubusercontent.com/mphsepatan/mphsepatan.github.io/refs/heads/main/gambar2.jpeg",
-        title: "Musholla - Interior / Lokasi",
-        date: "Foto Proyek",
-        desc: "Gambar musholla (lokasi / interior)"
-      },
-      {
-        url: "https://raw.githubusercontent.com/mphsepatan/mphsepatan.github.io/refs/heads/main/peletakan%20batu%20pertama.jpeg",
-        title: "Peletakan Batu Pertama",
-        date: "1 Februari 2026",
-        desc: "Gambar Peletakan Batu Pertama"
-      },
-      // {
-      //   url: "https://images.unsplash.com/photo-1583339793403-3d9b001b6008?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-      //   title: "Pembersihan Lahan",
-      //   date: "22 Januari 2024",
-      //   desc: "Proses pembersihan dan persiapan lahan"
-      // },
-      // {
-      //   url: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-      //   title: "Pondasi Awal",
-      //   date: "5 Februari 2024",
-      //   desc: "Pembuatan pondasi dasar bangunan"
-      // },
-      // {
-      //   url: "https://images.unsplash.com/photo-1514890547357-a9ee288728e0?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-      //   title: "Struktur Baja",
-      //   date: "20 Februari 2024",
-      //   desc: "Pemasangan struktur utama bangunan"
-      // },
-      // {
-      //   url: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-      //   title: "Dinding & Atap",
-      //   date: "10 Maret 2024",
-      //   desc: "Penyelesaian dinding dan pemasangan atap"
-      // },
-      // {
-      //   url: "https://images.unsplash.com/photo-1524178234883-043d5c3f3cf4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-      //   title: "Interior Awal",
-      //   date: "25 Maret 2024",
-      //   desc: "Pekerjaan interior dan pemasangan lantai"
-      // }
-    ];
+   const galleryImages = [
+  {
+    url: "https://raw.githubusercontent.com/mphsepatan/mphsepatan.github.io/refs/heads/main/gambar1.jpeg",
+    title: "Musholla - Tampak Depan",
+    date: "Foto Proyek",
+    desc: "Tampak depan musholla"
+  },
+  {
+    url: "https://raw.githubusercontent.com/mphsepatan/mphsepatan.github.io/refs/heads/main/gambar2.jpeg",
+    title: "Musholla - Interior",
+    date: "Foto Proyek",
+    desc: "Interior / lokasi musholla"
+  },
+  {
+    url: "https://raw.githubusercontent.com/mphsepatan/mphsepatan.github.io/refs/heads/main/peletakan%20batu%20pertama.jpeg",
+    title: "Peletakan Batu Pertama",
+    date: "1 Februari 2026",
+    desc: "Prosesi peletakan batu pertama"
+  },
+
+  // === FOTO BARU ===
+  {
+    url: "https://raw.githubusercontent.com/mphsepatan/mphsepatan.github.io/refs/heads/main/musholla1.jpeg",
+    title: "Dokumentasi Musholla",
+    date: "Foto Proyek",
+    desc: "Kondisi bangunan musholla"
+  },
+  {
+    url: "https://raw.githubusercontent.com/mphsepatan/mphsepatan.github.io/refs/heads/main/musholla2.jpeg",
+    title: "Dokumentasi Musholla",
+    date: "Foto Proyek",
+    desc: "Kondisi bangunan musholla"
+  },
+  {
+    url: "https://raw.githubusercontent.com/mphsepatan/mphsepatan.github.io/refs/heads/main/musholla3.jpeg",
+    title: "Dokumentasi Musholla",
+    date: "Foto Proyek",
+    desc: "Kondisi bangunan musholla"
+  },
+  {
+    url: "https://raw.githubusercontent.com/mphsepatan/mphsepatan.github.io/refs/heads/main/musholla4.jpeg",
+    title: "Dokumentasi Musholla",
+    date: "Foto Proyek",
+    desc: "Kondisi bangunan musholla"
+  },
+  {
+    url: "https://raw.githubusercontent.com/mphsepatan/mphsepatan.github.io/refs/heads/main/musholla5.jpeg",
+    title: "Dokumentasi Musholla",
+    date: "Foto Proyek",
+    desc: "Kondisi bangunan musholla"
+  },
+  {
+    url: "https://raw.githubusercontent.com/mphsepatan/mphsepatan.github.io/refs/heads/main/musholla6.jpeg",
+    title: "Dokumentasi Musholla",
+    date: "Foto Proyek",
+    desc: "Kondisi bangunan musholla"
+  },
+  {
+    url: "https://raw.githubusercontent.com/mphsepatan/mphsepatan.github.io/refs/heads/main/musholla7.jpeg",
+    title: "Dokumentasi Musholla",
+    date: "Foto Proyek",
+    desc: "Kondisi bangunan musholla"
+  },
+  {
+    url: "https://raw.githubusercontent.com/mphsepatan/mphsepatan.github.io/refs/heads/main/denah.jpeg",
+    title: "Denah Musholla",
+    date: "Gambar Perencanaan",
+    desc: "Denah rencana pembangunan musholla"
+  }
+];
+
 
     // Data perkembangan mingguan
     // const weeklyProgress = [
@@ -1763,20 +1812,21 @@
 
     // Load gallery images
     function loadGallery() {
-      const galleryContainer = document.getElementById('galleryContainer');
-      if (!galleryContainer) return;
-      
-      galleryContainer.innerHTML = galleryImages.map(img => `
-        <div class="gallery-item">
-          <img src="${img.url}" alt="${img.title}" loading="lazy">
-          <div class="gallery-info">
-            <h4>${img.title}</h4>
-            <p><i class="far fa-calendar"></i> ${img.date}</p>
-            <p>${img.desc}</p>
-          </div>
-        </div>
-      `).join('');
-    }
+  const galleryContainer = document.getElementById('galleryContainer');
+  if (!galleryContainer) return;
+
+  galleryContainer.innerHTML = galleryImages.map((img, index) => `
+    <div class="gallery-item" onclick="openLightbox('${img.url}')">
+      <img src="${img.url}" alt="${img.title}" loading="lazy">
+      <div class="gallery-info">
+        <h4>${img.title}</h4>
+        <p><i class="far fa-calendar"></i> ${img.date}</p>
+        <p>${img.desc}</p>
+      </div>
+    </div>
+  `).join('');
+}
+
 
     // Load weekly progress cards
     function loadWeeklyCards() {
@@ -1897,6 +1947,10 @@
     });
   }
 </script>
+<!-- Lightbox Zoom -->
+<div class="lightbox" id="lightbox">
+  <img src="" alt="Zoom Image">
+</div>
 
 </body>
 </html>
