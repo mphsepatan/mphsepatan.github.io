@@ -1188,13 +1188,34 @@
     </div>
   </section>
 
-  <!-- Donasi Section -->
-  <section class="donasi-section" id="donasiSection">
+ <!-- Donasi Section -->
+<section class="donasi-section" id="donasiSection">
     <div class="donasi-header">
       <h2>Dukung Pembangunan Musholla</h2>
       <p>Pilih nominal donasi dan hubungi admin via WhatsApp</p>
     </div>
-    <!-- Rekening: tampilkan dulu karena alur utama transfer -->
+    
+    <!-- QRIS Section - Added -->
+    <div class="rekening-section" style="margin-bottom: 20px;">
+      <h3 class="rekening-title">
+        <i class="fas fa-qrcode"></i> Scan QRIS untuk Donasi
+      </h3>
+      <p style="color:var(--gray); margin-top: -6px; margin-bottom: 15px;">Scan QR code di bawah ini menggunakan aplikasi mobile banking atau e-wallet Anda</p>
+      <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 15px;">
+        <img src="https://raw.githubusercontent.com/mphsepatan/mphsepatan.github.io/refs/heads/main/qrismusholla.jpeg" 
+             alt="QRIS Musholla An-Nur" 
+             style="max-width: 250px; width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow-lg); margin-bottom: 15px; cursor: pointer;" 
+             onclick="openLightbox('https://raw.githubusercontent.com/mphsepatan/mphsepatan.github.io/refs/heads/main/qrismusholla.jpeg')">
+        <p style="font-size: 0.9rem; color: var(--primary); font-weight: 500;">
+          <i class="fas fa-mobile-alt"></i> Scan dengan aplikasi pembayaran
+        </p>
+        <p style="font-size: 0.8rem; color: var(--gray); text-align: center; margin-top: 5px;">
+          *Setelah transfer, konfirmasi melalui WhatsApp dengan mengklik tombol di bawah
+        </p>
+      </div>
+    </div>
+    
+    <!-- Rekening Section -->
     <div class="rekening-section">
       <h3 class="rekening-title">
         <i class="fas fa-university"></i> Transfer via Bank
@@ -1240,7 +1261,7 @@
     
     <div style="text-align: center; margin-top: 2rem;">
       <button class="whatsapp-button" id="whatsappDonasi">
-        <i class="fab fa-whatsapp"></i> Donasi via WhatsApp
+        <i class="fab fa-whatsapp"></i> Konfirmasi Transfer via WhatsApp
       </button>
     </div>
     
@@ -1248,13 +1269,12 @@
       <h4><i class="fas fa-info-circle"></i> Cara Donasi:</h4>
       <ol>
         <li>Pilih nominal donasi yang tersedia atau masukkan jumlah sendiri.</li>
-        <li>Lakukan transfer ke nomor rekening yang tercantum di atas.</li>
+        <li>Lakukan transfer melalui QRIS (scan QR code) atau ke nomor rekening yang tercantum.</li>
         <li>Klik tombol "Konfirmasi Transfer via WhatsApp" dan lampirkan bukti transfer serta cantumkan nama & nominal.</li>
         <li>Admin akan memverifikasi konfirmasi dan mencatat donasi Anda.</li>
         <li>Nama Anda akan muncul di daftar donatur setelah diproses (maks. 1x24 jam).</li>
       </ol>
     </div>
-    <!-- (Duplikasi 'Penting' dihapus; hanya satu blok ringkas tetap ada di bawah) -->
     
     <div style="margin-top: 1.5rem; padding: 1rem; background: var(--blue-light); border-radius: var(--border-radius);">
       <p style="color: var(--primary); font-weight: 500;">
@@ -1267,93 +1287,6 @@
       </ul>
     </div>
   </section>
-
-  <!-- Dashboard Content -->
-  <div class="container">
-    <!-- Tabs for Mobile -->
-    <div class="tabs">
-      <button class="tab-button active" data-tab="timeline">
-        <i class="far fa-calendar-alt"></i>
-        <span>Timeline</span>
-      </button>
-      <button class="tab-button" data-tab="rab">
-        <i class="fas fa-calculator"></i>
-        <span>RAB</span>
-      </button>
-      <button class="tab-button" data-tab="donatur">
-        <i class="fas fa-users"></i>
-        <span>Donatur</span>
-      </button>
-      <button class="tab-button" data-tab="dokumentasi">
-        <i class="fas fa-images"></i>
-        <span>Dokumentasi</span>
-      </button>
-      <button class="tab-button" data-tab="organisasi">
-        <i class="fas fa-sitemap"></i>
-        <span>Organisasi</span>
-      </button>
-      <button class="tab-button" data-tab="mingguan">
-        <i class="fas fa-chart-line"></i>
-        <span>Mingguan</span>
-      </button>
-    </div>
-
-    <!-- Timeline Section -->
-    <section class="dashboard-section tab-content active" id="timeline-section">
-      <div class="section-header">
-        <div>
-          <h2><i class="far fa-calendar-alt"></i> Timeline Proyek</h2>
-          <p>Jadwal dan perkembangan pembangunan Musholla An-Nur MPHS</p>
-        </div>
-        <div>
-          <span class="status-badge">Aktif</span>
-        </div>
-      </div>
-      <div class="section-content">
-        <div class="spinner" id="timeline_loading">
-          <i class="fas fa-spinner"></i>
-        </div>
-        <div id="timeline_div"></div>
-      </div>
-    </section>
-
-    <!-- RAB Section -->
-    <section class="dashboard-section tab-content" id="rab-section">
-      <div class="section-header">
-        <div>
-          <h2><i class="fas fa-calculator"></i> Rencana Anggaran Biaya (RAB)</h2>
-          <p>Detail anggaran dan realisasi pembangunan Musholla</p>
-        </div>
-        <div>
-          <span class="status-badge">Transparan</span>
-        </div>
-      </div>
-      <div class="section-content">
-        <div class="spinner" id="rab_loading">
-          <i class="fas fa-spinner"></i>
-        </div>
-        <div id="rab_div"></div>
-      </div>
-    </section>
-
-    <!-- Donatur Section -->
-    <section class="dashboard-section tab-content" id="donatur-section">
-      <div class="section-header">
-        <div>
-          <h2><i class="fas fa-users"></i> Daftar Donatur</h2>
-          <p>Para dermawan yang mendukung pembangunan Musholla An-Nur MPHS</p>
-        </div>
-        <div>
-          <span class="status-badge">Terima Kasih</span>
-        </div>
-      </div>
-      <div class="section-content">
-        <div class="spinner" id="donatur_loading">
-          <i class="fas fa-spinner"></i>
-        </div>
-        <div id="donatur_div"></div>
-      </div>
-    </section>
 
     <!-- Dokumentasi Section -->
     <section class="dashboard-section tab-content" id="dokumentasi-section">
@@ -1951,6 +1884,23 @@
 <div class="lightbox" id="lightbox">
   <img src="" alt="Zoom Image">
 </div>
+<script>
+// ... kode lainnya ...
 
+// Lightbox functionality
+function openLightbox(imageUrl) {
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = lightbox.querySelector('img');
+  lightboxImg.src = imageUrl;
+  lightbox.classList.add('show');
+}
+
+// Close lightbox when clicked
+document.getElementById('lightbox').addEventListener('click', function() {
+  this.classList.remove('show');
+});
+
+// ... kode lainnya ...
+</script>
 </body>
 </html>
