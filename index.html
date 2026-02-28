@@ -1188,8 +1188,8 @@
     </div>
   </section>
 
- <!-- Donasi Section -->
-<section class="donasi-section" id="donasiSection">
+  <!-- Donasi Section -->
+  <section class="donasi-section" id="donasiSection">
     <div class="donasi-header">
       <h2>Dukung Pembangunan Musholla</h2>
       <p>Pilih nominal donasi dan hubungi admin via WhatsApp</p>
@@ -1275,6 +1275,7 @@
         <li>Nama Anda akan muncul di daftar donatur setelah diproses (maks. 1x24 jam).</li>
       </ol>
     </div>
+    <!-- (Duplikasi 'Penting' dihapus; hanya satu blok ringkas tetap ada di bawah) -->
     
     <div style="margin-top: 1.5rem; padding: 1rem; background: var(--blue-light); border-radius: var(--border-radius);">
       <p style="color: var(--primary); font-weight: 500;">
@@ -1287,6 +1288,93 @@
       </ul>
     </div>
   </section>
+
+  <!-- Dashboard Content -->
+  <div class="container">
+    <!-- Tabs for Mobile -->
+    <div class="tabs">
+      <button class="tab-button active" data-tab="timeline">
+        <i class="far fa-calendar-alt"></i>
+        <span>Timeline</span>
+      </button>
+      <button class="tab-button" data-tab="rab">
+        <i class="fas fa-calculator"></i>
+        <span>RAB</span>
+      </button>
+      <button class="tab-button" data-tab="donatur">
+        <i class="fas fa-users"></i>
+        <span>Donatur</span>
+      </button>
+      <button class="tab-button" data-tab="dokumentasi">
+        <i class="fas fa-images"></i>
+        <span>Dokumentasi</span>
+      </button>
+      <button class="tab-button" data-tab="organisasi">
+        <i class="fas fa-sitemap"></i>
+        <span>Organisasi</span>
+      </button>
+      <button class="tab-button" data-tab="mingguan">
+        <i class="fas fa-chart-line"></i>
+        <span>Mingguan</span>
+      </button>
+    </div>
+
+    <!-- Timeline Section -->
+    <section class="dashboard-section tab-content active" id="timeline-section">
+      <div class="section-header">
+        <div>
+          <h2><i class="far fa-calendar-alt"></i> Timeline Proyek</h2>
+          <p>Jadwal dan perkembangan pembangunan Musholla An-Nur MPHS</p>
+        </div>
+        <div>
+          <span class="status-badge">Aktif</span>
+        </div>
+      </div>
+      <div class="section-content">
+        <div class="spinner" id="timeline_loading">
+          <i class="fas fa-spinner"></i>
+        </div>
+        <div id="timeline_div"></div>
+      </div>
+    </section>
+
+    <!-- RAB Section -->
+    <section class="dashboard-section tab-content" id="rab-section">
+      <div class="section-header">
+        <div>
+          <h2><i class="fas fa-calculator"></i> Rencana Anggaran Biaya (RAB)</h2>
+          <p>Detail anggaran dan realisasi pembangunan Musholla</p>
+        </div>
+        <div>
+          <span class="status-badge">Transparan</span>
+        </div>
+      </div>
+      <div class="section-content">
+        <div class="spinner" id="rab_loading">
+          <i class="fas fa-spinner"></i>
+        </div>
+        <div id="rab_div"></div>
+      </div>
+    </section>
+
+    <!-- Donatur Section -->
+    <section class="dashboard-section tab-content" id="donatur-section">
+      <div class="section-header">
+        <div>
+          <h2><i class="fas fa-users"></i> Daftar Donatur</h2>
+          <p>Para dermawan yang mendukung pembangunan Musholla An-Nur MPHS</p>
+        </div>
+        <div>
+          <span class="status-badge">Terima Kasih</span>
+        </div>
+      </div>
+      <div class="section-content">
+        <div class="spinner" id="donatur_loading">
+          <i class="fas fa-spinner"></i>
+        </div>
+        <div id="donatur_div"></div>
+      </div>
+    </section>
 
     <!-- Dokumentasi Section -->
     <section class="dashboard-section tab-content" id="dokumentasi-section">
@@ -1328,6 +1416,7 @@
           <div class="advisors">
             <h4>Penasihat</h4>
             <ul>
+              
               <li> Khatib</li>
               <li> Ahmad Zaini</li>
               <li> Wahyudi</li>
@@ -1371,10 +1460,7 @@
 
             <!-- Level 3: Bidang -->
             <div class="tree-row branch" style="flex-wrap:wrap; gap:12px;">
-              <div class="node">
-                <div class="title">  Rio</div>
-                <div class="role">Bidang Perencanaan & Teknis</div>
-              </div>
+              
               <div class="node">
               <div class="title">Abdul Majid</div>
               <div class="role">Koordinator Bidang Dana & Usaha</div>
@@ -1395,7 +1481,10 @@
                 </div>
               </div>
             </div>
-
+            <div class="node">
+                <div class="title">  Rio</div>
+                <div class="role">Bidang Perencanaan & Teknis</div>
+              </div>
               <div class="node">
                 <div class="title">  M. Chairul Anam</div>
                 <div class="role">Bidang Pelaksana Lapangan</div>
@@ -1893,23 +1982,6 @@
 <div class="lightbox" id="lightbox">
   <img src="" alt="Zoom Image">
 </div>
-<script>
-// ... kode lainnya ...
 
-// Lightbox functionality
-function openLightbox(imageUrl) {
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = lightbox.querySelector('img');
-  lightboxImg.src = imageUrl;
-  lightbox.classList.add('show');
-}
-
-// Close lightbox when clicked
-document.getElementById('lightbox').addEventListener('click', function() {
-  this.classList.remove('show');
-});
-
-// ... kode lainnya ...
-</script>
 </body>
 </html>
