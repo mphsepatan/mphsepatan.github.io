@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pembangunan Musholla An-Nur MPHS</title>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #059669;
+      --primary-dark: #047857;
+      --secondary: #10b981;
+      --secondary-light: #34d399;
+      --accent: #f59e0b;
+      --accent-light: #fbbf24;
+      --light: #f8fafc;
+      --dark: #064e3b;
+      --gray: #475569;
+      --light-gray: #f1f5f9;
+      --green-light: #ecfdf5;
+      --blue-light: #f0fdf4;
+      --shadow: 0 4px 15px rgba(5, 150, 105, 0.1);
+      --shadow-lg: 0 12px 30px rgba(5, 150, 105, 0.15);
+      --border-radius: 16px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: var(--gray); background-color: var(--light); min-height: 100vh; overflow-x: hidden; }
+    h1, h2, h3, h4, h5, h6 { color: var(--dark); font-weight: 600; }
+    a { text-decoration: none; color: var(--primary); transition: var(--transition); }
+    img { max-width: 100%; height: auto; }
+    
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    .section-padding { padding: 5rem 0; }
+    .section-title { text-align: center; margin-bottom: 3rem; }
+    .section-title h2 { font-size: 2.2rem; color: var(--primary-dark); margin-bottom: 0.5rem; position: relative; display: inline-block; }
+    .section-title h2::after { content: ''; position: absolute; left: 50%; bottom: -10px; transform: translateX(-50%); width: 60px; height: 4px; background: var(--accent); border-radius: 2px; }
+    .section-title p { color: var(--gray); font-size: 1.1rem; margin-top: 1rem; max-width: 600px; margin-inline: auto; }
+
+    /* Navbar */
+    .navbar { position: fixed; top: 0; left: 0; width: 100%; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); box-shadow: 0 2px 10px rgba(0,0,0,0.05); z-index: 1000; padding: 1rem 0; transition: var(--transition); }
+    .nav-container { display: flex; justify-content: space-between; align-items: center; }
+    .nav-brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.4rem; color: var(--primary-dark); }
+    .nav-brand i { color: var(--primary); font-size: 1.8rem; }
+    .nav-menu { display: flex; gap: 2rem; align-items: center; list-style: none; }
+    .nav-link { color: var(--gray); font-weight: 500; }
+    .nav-link:hover { color: var(--primary); }
+    .nav-cta { background: var(--primary); color: white !important; padding: 0.6rem 1.5rem; border-radius: 50px; font-weight: 600; box-shadow: var(--shadow); }
+    .nav-cta:hover { background: var(--primary-dark); transform: translateY(-2px); }
+    .mobile-toggle { display: none; font-size: 1.5rem; color: var(--primary-dark); cursor: pointer; }
+
+    /* Hero */
+    .hero { margin-top: 70px; position: relative; padding: 8rem 0 10rem; background: linear-gradient(rgba(4, 120, 87, 0.85), rgba(6, 78, 59, 0.95)), url('https://images.unsplash.com/photo-1544027993-37dbfe43562a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') center/cover; color: white; text-align: center; }
+    .hero h1 { font-family: 'Amiri', serif; font-size: 3.5rem; margin-bottom: 1rem; color: white; text-shadow: 0 4px 6px rgba(0,0,0,0.3); }
+    .hero p { font-size: 1.2rem; max-width: 700px; margin: 0 auto 2.5rem; opacity: 0.9; }
+    .btn-large { display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(to right, var(--accent), #d97706); color: white; padding: 1.2rem 3rem; border-radius: 50px; font-weight: 600; font-size: 1.2rem; box-shadow: 0 8px 20px rgba(245, 158, 11, 0.4); border: none; cursor: pointer; transition: var(--transition); }
+    .btn-large:hover { transform: translateY(-3px); box-shadow: 0 12px 25px rgba(245, 158, 11, 0.5); background: linear-gradient(to right, #d97706, var(--accent)); color: white;}
+
+    /* Floating Stats */
+    .stats-container { max-width: 700px; margin: -5rem auto 0; position: relative; z-index: 10; display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; padding: 0 20px; }
+    .stat-card { background: white; border-radius: var(--border-radius); padding: 2rem; text-align: center; box-shadow: var(--shadow-lg); border: 1px solid rgba(5, 150, 105, 0.1); transition: var(--transition); }
+    .stat-card:hover { transform: translateY(-5px); }
+    .stat-icon { width: 60px; height: 60px; background: var(--green-light); color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto 1rem; }
+    .stat-number { font-size: 2.2rem; font-weight: 700; color: var(--dark); margin-bottom: 0.2rem; }
+    .stat-label { color: var(--gray); font-size: 0.95rem; font-weight: 500; }
+
+    /* Tentang & Progress */
+    .about-section { padding-top: 6rem; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .about-text h3 { font-size: 1.8rem; color: var(--primary-dark); margin-bottom: 1rem; }
+    .about-text p { margin-bottom: 1.5rem; }
+    .location-card { background: var(--blue-light); padding: 1.5rem; border-radius: var(--border-radius); border-left: 4px solid var(--primary); display: flex; gap: 15px; align-items: flex-start; }
+    .location-card i { font-size: 1.5rem; color: var(--primary); margin-top: 3px; }
+    
+    .progress-box { background: white; padding: 2.5rem; border-radius: var(--border-radius); box-shadow: var(--shadow-lg); border: 1px solid rgba(5,150,105,0.1); }
+    .progress-box h4 { font-size: 1.4rem; margin-bottom: 1.5rem; color: var(--dark); text-align: center;}
+    .progress-meta { display: flex; justify-content: space-between; margin-bottom: 10px; font-weight: 600; }
+    .progress-meta span:last-child { color: var(--primary); }
+    .progress-bar-bg { width: 100%; height: 16px; background: var(--light-gray); border-radius: 8px; overflow: hidden; margin-bottom: 2rem; }
+    .progress-bar-fill { height: 100%; background: linear-gradient(to right, var(--secondary-light), var(--primary)); border-radius: 8px; width: 0%; transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1); }
+    .target-info { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; text-align: center; }
+    .target-item { background: var(--light-gray); padding: 1rem; border-radius: 10px; }
+    .target-item .label { font-size: 0.85rem; color: var(--gray); display: block; margin-bottom: 5px; }
+    .target-item .value { font-weight: 700; color: var(--dark); font-size: 1.1rem; }
+
+    /* Donasi Section */
+    .donasi-section { background: var(--green-light); position: relative; }
+    .donasi-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 3rem; }
+    .donasi-card { background: white; border-radius: var(--border-radius); padding: 2.5rem; box-shadow: var(--shadow-lg); height: 100%; }
+    .donasi-card h3 { font-size: 1.5rem; color: var(--primary-dark); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 10px; }
+    .donasi-card h3 i { color: var(--accent); }
+    
+    /* QRIS */
+    .qris-wrapper { text-align: center; }
+    .qris-wrapper img { max-width: 280px; width: 100%; border-radius: 12px; box-shadow: var(--shadow); margin-bottom: 1rem; cursor: zoom-in; }
+    
+    /* Bank */
+    .bank-details { background: linear-gradient(135deg, var(--light-gray) 0%, white 100%); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(0,0,0,0.05); margin-bottom: 2rem; }
+    .bank-logo { display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--primary-dark); font-size: 1.2rem; margin-bottom: 1rem; }
+    .account-number { font-family: 'Courier New', monospace; font-size: 1.8rem; font-weight: 700; color: var(--dark); margin-bottom: 0.5rem; letter-spacing: 2px; }
+    .account-name { color: var(--gray); font-size: 1rem; }
+    .btn-copy { background: var(--blue-light); color: var(--primary); border: 1px solid var(--primary); padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: var(--transition); margin-top: 1rem; }
+    .btn-copy:hover { background: var(--primary); color: white; }
+
+    /* Donasi Form */
+    .donasi-options { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 1.5rem; }
+    .option-btn { border: 2px solid var(--light-gray); background: white; padding: 1rem; border-radius: 10px; font-weight: 600; color: var(--gray); cursor: pointer; transition: var(--transition); text-align: center; }
+    .option-btn:hover { border-color: var(--primary); color: var(--primary); }
+    .option-btn.active { background: var(--blue-light); border-color: var(--primary); color: var(--primary); }
+    .custom-input { width: 100%; padding: 1.2rem; border: 2px solid var(--light-gray); border-radius: 10px; font-size: 1.1rem; font-family: inherit; margin-bottom: 1.5rem; transition: var(--transition); }
+    .custom-input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 4px rgba(5,150,105,0.1); }
+    .btn-wa { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; background: linear-gradient(to right, #25D366, #128C7E); color: white; padding: 1.2rem; border-radius: 10px; font-weight: 600; font-size: 1.1rem; border: none; cursor: pointer; transition: var(--transition); box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); }
+    .btn-wa:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4); }
+
+    /* Laporan Transparansi */
+    .laporan-section { background: white; }
+    .laporan-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 2rem; }
+    .summary-card { background: white; border-radius: var(--border-radius); padding: 1.5rem; box-shadow: var(--shadow); border: 1px solid rgba(5,150,105,0.1); display: flex; align-items: center; gap: 15px; transition: var(--transition); }
+    .summary-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+    .summary-card .sc-icon { width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
+    .summary-card .sc-icon.green { background: #dcfce7; color: #16a34a; }
+    .summary-card .sc-icon.red { background: #fee2e2; color: #dc2626; }
+    .summary-card .sc-icon.blue { background: #dbeafe; color: #2563eb; }
+    .summary-card .sc-info .sc-label { font-size: 0.85rem; color: var(--gray); }
+    .summary-card .sc-info .sc-value { font-size: 1.3rem; font-weight: 700; color: var(--dark); }
+
+    .laporan-toolbar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 1.5rem; }
+    .tabs-wrapper { background: var(--light-gray); padding: 0.4rem; border-radius: 50px; display: inline-flex; gap: 4px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05); }
+    .tab-btn { background: transparent; border: none; padding: 0.7rem 1.3rem; border-radius: 50px; font-weight: 600; color: var(--gray); cursor: pointer; transition: var(--transition); font-size: 0.95rem; display: flex; align-items: center; gap: 6px; }
+    .tab-btn:hover { color: var(--primary); }
+    .tab-btn.active { background: white; color: var(--primary); box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    .tab-btn .count { background: var(--light-gray); padding: 2px 8px; border-radius: 20px; font-size: 0.8rem; }
+    .tab-btn.active .count { background: var(--green-light); color: var(--primary); }
+    .search-box { position: relative; }
+    .search-box input { padding: 0.7rem 1rem 0.7rem 2.5rem; border: 2px solid var(--light-gray); border-radius: 50px; font-size: 0.95rem; font-family: inherit; width: 250px; transition: var(--transition); }
+    .search-box input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 4px rgba(5,150,105,0.1); }
+    .search-box i { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--gray); }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    .table-container { background: white; border-radius: var(--border-radius); box-shadow: var(--shadow-lg); border: 1px solid rgba(0,0,0,0.05); padding: 1.5rem; overflow-x: auto; animation: fadeIn 0.4s ease; }
+    .no-results { text-align: center; padding: 3rem; color: var(--gray); }
+    .no-results i { font-size: 2.5rem; color: var(--light-gray); margin-bottom: 1rem; display: block; }
+    
+    /* Custom Table */
+    .report-table { width: 100%; border-collapse: collapse; }
+    .report-table thead th { background: var(--primary); color: white; font-weight: 600; padding: 14px 18px; text-align: left; font-size: 0.9rem; white-space: nowrap; }
+    .report-table thead th:first-child { border-radius: 10px 0 0 0; }
+    .report-table thead th:last-child { border-radius: 0 10px 0 0; }
+    .report-table tbody td { padding: 12px 18px; border-bottom: 1px solid var(--light-gray); color: var(--gray); font-size: 0.95rem; }
+    .report-table tbody tr:nth-child(even) { background: var(--light-gray); }
+    .report-table tbody tr:hover { background: var(--blue-light); }
+    .report-table .nominal { font-weight: 600; font-family: 'Courier New', monospace; }
+    .report-table .nominal.masuk { color: #16a34a; }
+    .report-table .nominal.keluar { color: #dc2626; }
+
+    @media (max-width: 768px) {
+      .laporan-summary { grid-template-columns: 1fr; }
+      .laporan-toolbar { flex-direction: column; align-items: stretch; }
+      .search-box input { width: 100%; }
+    }
+
+    /* Galeri */
+    .galeri-section { background: var(--green-light); }
+    .masonry-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+    .gallery-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); transition: var(--transition); cursor: zoom-in; }
+    .gallery-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+    .gallery-img-wrapper { height: 250px; overflow: hidden; }
+    .gallery-img-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+    .gallery-card:hover .gallery-img-wrapper img { transform: scale(1.05); }
+    .gallery-info { padding: 1.2rem; }
+    .gallery-info h4 { color: var(--primary-dark); margin-bottom: 5px; }
+    .gallery-info p { font-size: 0.9rem; color: var(--gray); }
+    .gallery-date { display: inline-block; background: var(--light-gray); padding: 4px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: 500; margin-bottom: 8px; }
+
+    /* Pengurus */
+    .pengurus-section { background: white; }
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 30px; }
+    .team-card { background: white; border-radius: var(--border-radius); padding: 2rem; text-align: center; box-shadow: var(--shadow); border: 1px solid rgba(5,150,105,0.1); transition: var(--transition); }
+    .team-card:hover { transform: translateY(-5px); border-color: var(--primary); }
+    .team-avatar { width: 80px; height: 80px; background: var(--blue-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--primary); margin: 0 auto 1.5rem; }
+    .team-name { font-size: 1.2rem; color: var(--dark); margin-bottom: 5px; font-weight: 700; }
+    .team-role { color: var(--secondary); font-weight: 500; font-size: 0.95rem; margin-bottom: 1rem; }
+    .team-dept { font-size: 0.85rem; color: var(--gray); background: var(--light-gray); padding: 4px 10px; border-radius: 20px; display: inline-block; }
+
+    /* Footer */
+    footer { background: #022c22; color: white; padding: 5rem 0 2rem; position: relative; }
+    footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px; background: linear-gradient(to right, var(--primary), var(--accent), var(--secondary)); }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 3rem; }
+    .footer-brand h3 { color: white; font-size: 1.8rem; margin-bottom: 1rem; font-family: 'Amiri', serif; }
+    .footer-brand p { color: #cbd5e1; margin-bottom: 1.5rem; max-width: 400px; }
+    .social-links { display: flex; gap: 15px; }
+    .social-link { width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; transition: var(--transition); }
+    .social-link:hover { background: var(--accent); transform: translateY(-3px); }
+    
+    .footer-col h4 { color: white; font-size: 1.2rem; margin-bottom: 1.5rem; position: relative; padding-bottom: 10px; }
+    .footer-col h4::after { content: ''; position: absolute; left: 0; bottom: 0; width: 40px; height: 3px; background: var(--primary); border-radius: 2px; }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a { color: #cbd5e1; display: inline-flex; align-items: center; gap: 8px; }
+    .footer-links a:hover { color: white; padding-left: 5px; }
+    .contact-list { list-style: none; }
+    .contact-list li { color: #cbd5e1; display: flex; gap: 12px; margin-bottom: 15px; align-items: flex-start; }
+    .contact-list i { color: var(--accent); margin-top: 4px; }
+    
+    .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); color: #94a3b8; font-size: 0.9rem; }
+
+    /* Lightbox */
+    .lightbox { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 9999; display: none; align-items: center; justify-content: center; cursor: zoom-out; }
+    .lightbox.active { display: flex; }
+    .lightbox img { max-width: 90%; max-height: 90%; border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+
+    /* Floating WA */
+    .fab-wa { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: #25D366; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); z-index: 100; transition: var(--transition); }
+    .fab-wa:hover { transform: scale(1.1); background: #128C7E; color: white; }
+
+    /* Utilities */
+    .spinner { display: flex; justify-content: center; padding: 3rem; color: var(--primary); font-size: 2rem; animation: spin 1s linear infinite; }
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+    .text-center { text-align: center; }
+    
+    .badge { display: inline-block; padding: 5px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; }
+    .badge-masuk { background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
+    .badge-keluar { background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
+
+    @media (max-width: 992px) {
+      .stats-container { grid-template-columns: 1fr; margin-top: -3rem; }
+      .about-grid, .donasi-grid, .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .hero h1 { font-size: 2.5rem; }
+      .nav-menu { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: white; flex-direction: column; padding: 2rem; box-shadow: var(--shadow); }
+      .nav-menu.active { display: flex; }
+      .mobile-toggle { display: block; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#" class="nav-brand">
+        <i class="fas fa-mosque"></i>
+        Musholla An-Nur
+      </a>
+      <div class="mobile-toggle" id="mobileToggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#" class="nav-link">Beranda</a></li>
+        <li><a href="#tentang" class="nav-link">Tentang</a></li>
+        <li><a href="#laporan" class="nav-link">Transparansi</a></li>
+        <li><a href="#galeri" class="nav-link">Galeri</a></li>
+        <li><a href="#pengurus" class="nav-link">Pengurus</a></li>
+        <li><a href="#donasi" class="nav-link nav-cta">Donasi</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="container">
+      <h1>Bersama Membangun Rumah Allah</h1>
+      <p>Mari wujudkan tempat ibadah yang nyaman dan representatif untuk kegiatan keagamaan di lingkungan Perumahan Mutiara Puri Harmoni Sepatan. Semua data donasi dikelola secara transparan.</p>
+      <a href="#donasi" class="btn-large">
+        <i class="fas fa-hand-holding-heart"></i> Berdonasi Sekarang
+      </a>
+    </div>
+  </header>
+
+  <!-- Floating Stats -->
+  <div class="container">
+    <div class="stats-container">
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-users"></i></div>
+        <div class="stat-number" id="totalDonatur">0</div>
+        <div class="stat-label">Donatur Bergabung</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-wallet"></i></div>
+        <div class="stat-number" id="totalFunds">Rp 0</div>
+        <div class="stat-label">Dana Terkumpul</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tentang & Progress -->
+  <section class="section-padding about-section" id="tentang">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text">
+          <h2 class="section-title" style="text-align: left; margin-bottom: 2rem;">
+            Tentang Pembangunan<br>Musholla An-Nur
+          </h2>
+          <p>Berawal dari kebutuhan warga akan fasilitas ibadah yang memadai, proyek pembangunan Musholla An-Nur diinisiasi oleh warga Perumahan Mutiara Puri Harmoni Sepatan. Musholla ini tidak hanya akan menjadi tempat shalat berjamaah, tetapi juga pusat pendidikan agama bagi anak-anak dan kegiatan sosial kemasyarakatan.</p>
+          <div class="location-card">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <h4 style="color: var(--primary-dark); margin-bottom: 5px;">Lokasi Pembangunan</h4>
+              <p style="margin: 0; font-size: 0.95rem; color: var(--gray);">Jl. Ahmad Yani, Sukasari, Kec. Rajeg, Kabupaten Tangerang, Banten 15540</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="progress-box">
+          <h4>Progres Dana</h4>
+          <div class="progress-meta">
+            <span>Terkumpul</span>
+            <span id="progressPercent">0%</span>
+          </div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" id="progressFill"></div>
+          </div>
+          <div class="target-info" style="grid-template-columns: 1fr;">
+            <div class="target-item">
+              <span class="label">Update Terakhir</span>
+              <span class="value" id="lastUpdate" style="font-size: 0.9rem;">Memuat...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Donasi Section -->
+  <section class="section-padding donasi-section" id="donasi">
+    <div class="container">
+      <div class="section-title">
+        <h2>Salurkan Infaq & Sedekah Anda</h2>
+        <p>Pilih metode donasi yang paling memudahkan Anda. Semua dana yang masuk akan dilaporkan secara transparan.</p>
+      </div>
+      
+      <div class="donasi-grid">
+        <!-- QRIS Card -->
+        <div class="donasi-card">
+          <h3><i class="fas fa-qrcode"></i> Scan QRIS</h3>
+          <p style="color: var(--gray); margin-bottom: 1.5rem; font-size: 0.95rem;">Gunakan aplikasi M-Banking atau e-Wallet (OVO, Dana, GoPay, LinkAja, dll) untuk memindai QR Code di bawah ini.</p>
+          <div class="qris-wrapper">
+            <img src="https://raw.githubusercontent.com/mphsepatan/mphsepatan.github.io/refs/heads/main/qrismusholla.jpeg" alt="QRIS Musholla" onclick="document.getElementById('lightbox-qris').classList.add('active')">
+            <p style="font-size: 0.85rem; color: var(--primary);"><i class="fas fa-search-plus"></i> Klik untuk memperbesar</p>
+          </div>
+        </div>
+        
+        <!-- Bank & Form Card -->
+        <div class="donasi-card">
+          <h3><i class="fas fa-university"></i> Transfer Bank</h3>
+          
+          <div class="bank-details">
+            <div class="bank-logo">
+              <i class="fas fa-landmark"></i> Bank BTN
+            </div>
+            <div class="account-number" id="bcaNumber">00043-01-88-000897-7</div>
+            <div class="account-name">a.n. Musholla An Nur</div>
+            <button class="btn-copy" onclick="copyToClipboard(this, 'bcaNumber')">
+              <i class="far fa-copy"></i> Salin Rekening
+            </button>
+          </div>
+          
+          <h4 style="margin-bottom: 1rem;">1. Pilih Nominal Donasi</h4>
+          <div class="donasi-options" id="donasiOptions">
+            <div class="option-btn active" data-amount="50000">Rp 50.000</div>
+            <div class="option-btn" data-amount="100000">Rp 100.000</div>
+            <div class="option-btn" data-amount="250000">Rp 250.000</div>
+            <div class="option-btn" data-amount="500000">Rp 500.000</div>
+          </div>
+          <input type="number" id="customAmount" class="custom-input" placeholder="Atau ketik nominal lainnya...">
+          
+          <h4 style="margin-bottom: 1rem;">2. Konfirmasi Transfer</h4>
+          <button class="btn-wa" id="btnKonfirmasiWA">
+            <i class="fab fa-whatsapp"></i> Konfirmasi via WhatsApp
+          </button>
+          <p style="font-size: 0.85rem; color: var(--gray); margin-top: 10px; text-align: center;">*Admin akan memverifikasi dan mencatat nama Anda di daftar donatur maksimal 1x24 jam.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Laporan Transparansi -->
+  <section class="section-padding laporan-section" id="laporan">
+    <div class="container">
+      <div class="section-title">
+        <h2>Laporan Transparansi</h2>
+        <p>Akses langsung ke catatan keuangan dan progres dari Google Sheets kepanitiaan.</p>
+      </div>
+
+      <!-- Summary Cards -->
+      <div class="laporan-summary">
+        <div class="summary-card">
+          <div class="sc-icon green"><i class="fas fa-arrow-down"></i></div>
+          <div class="sc-info">
+            <div class="sc-label">Total Pemasukan</div>
+            <div class="sc-value" id="sumMasuk">Memuat...</div>
+          </div>
+        </div>
+        <div class="summary-card">
+          <div class="sc-icon red"><i class="fas fa-arrow-up"></i></div>
+          <div class="sc-info">
+            <div class="sc-label">Total Pengeluaran</div>
+            <div class="sc-value" id="sumKeluar">Memuat...</div>
+          </div>
+        </div>
+        <div class="summary-card">
+          <div class="sc-icon blue"><i class="fas fa-wallet"></i></div>
+          <div class="sc-info">
+            <div class="sc-label">Saldo Saat Ini</div>
+            <div class="sc-value" id="sumSaldo">Memuat...</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Toolbar -->
+      <div class="laporan-toolbar">
+        <div class="tabs-wrapper">
+          <button class="tab-btn active" data-filter="semua" onclick="filterTable('semua', this)"><i class="fas fa-list"></i> Semua <span class="count" id="countAll">0</span></button>
+          <button class="tab-btn" data-filter="masuk" onclick="filterTable('masuk', this)"><i class="fas fa-arrow-down"></i> Masuk <span class="count" id="countMasuk">0</span></button>
+          <button class="tab-btn" data-filter="keluar" onclick="filterTable('keluar', this)"><i class="fas fa-arrow-up"></i> Keluar <span class="count" id="countKeluar">0</span></button>
+        </div>
+        <div class="search-box">
+          <i class="fas fa-search"></i>
+          <input type="text" id="searchDonatur" placeholder="Cari nama donatur..." oninput="searchTable()">
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div class="table-container">
+        <div class="spinner" id="loading-donatur"><i class="fas fa-spinner"></i></div>
+        <div id="div-donatur"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Galeri -->
+  <section class="section-padding galeri-section" id="galeri">
+    <div class="container">
+      <div class="section-title">
+        <h2>Galeri Pembangunan</h2>
+        <p>Dokumentasi foto progres pembangunan dari waktu ke waktu.</p>
+      </div>
+      
+      <div class="masonry-grid" id="galleryContainer">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Pengurus -->
+  <section class="section-padding pengurus-section" id="pengurus">
+    <div class="container">
+      <div class="section-title">
+        <h2>Susunan Kepanitiaan</h2>
+        <p>Tim yang diamanahkan untuk mengawal pembangunan Musholla An-Nur.</p>
+      </div>
+      
+      <h3 style="text-align: center; color: var(--primary-dark); margin-bottom: 2rem;">Penasihat</h3>
+      <div class="team-grid" style="margin-bottom: 4rem; justify-content: center; display: flex; flex-wrap: wrap;">
+        <div class="team-card" style="width: 250px;">
+          <div class="team-avatar"><i class="fas fa-user-tie"></i></div>
+          <div class="team-name">Khatib</div><div class="team-role">Penasihat</div>
+        </div>
+        <div class="team-card" style="width: 250px;">
+          <div class="team-avatar"><i class="fas fa-user-tie"></i></div>
+          <div class="team-name">Ahmad Zaini</div><div class="team-role">Penasihat</div>
+        </div>
+        <div class="team-card" style="width: 250px;">
+          <div class="team-avatar"><i class="fas fa-user-tie"></i></div>
+          <div class="team-name">Wahyudi</div><div class="team-role">Penasihat</div>
+        </div>
+        <div class="team-card" style="width: 250px;">
+          <div class="team-avatar"><i class="fas fa-user-tie"></i></div>
+          <div class="team-name">Suwandi</div><div class="team-role">Penasihat</div>
+        </div>
+        <div class="team-card" style="width: 250px;">
+          <div class="team-avatar"><i class="fas fa-user-tie"></i></div>
+          <div class="team-name">Ade Sukarman</div><div class="team-role">Penasihat</div>
+        </div>
+        <div class="team-card" style="width: 250px;">
+          <div class="team-avatar"><i class="fas fa-user-tie"></i></div>
+          <div class="team-name">Kurniawan</div><div class="team-role">Penasihat</div>
+        </div>
+        <div class="team-card" style="width: 250px;">
+          <div class="team-avatar"><i class="fas fa-user-tie"></i></div>
+          <div class="team-name">Asep</div><div class="team-role">Penasihat</div>
+        </div>
+      </div>
+      
+      <h3 style="text-align: center; color: var(--primary-dark); margin-bottom: 2rem;">Pengurus Inti</h3>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-avatar"><i class="fas fa-user"></i></div>
+          <div class="team-name">M. Ridwanulloh</div>
+          <div class="team-role">Ketua Pelaksana</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar"><i class="fas fa-user"></i></div>
+          <div class="team-name">Eko Haryanto</div>
+          <div class="team-role">Wakil Ketua</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar"><i class="fas fa-user"></i></div>
+          <div class="team-name">Ali Budi Purnomo</div>
+          <div class="team-role">Sekretaris</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar"><i class="fas fa-user"></i></div>
+          <div class="team-name">Muhamad Sukron</div>
+          <div class="team-role">Bendahara</div>
+        </div>
+      </div>
+      
+      <h3 style="text-align: center; color: var(--primary-dark); margin-bottom: 2rem; margin-top: 4rem;">Bidang & Seksi</h3>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-name">Abdul Majid</div>
+          <div class="team-role">Koordinator</div>
+          <div class="team-dept">Dana & Usaha</div>
+        </div>
+        <div class="team-card">
+          <div class="team-name">Dodi Prasetianto</div>
+          <div class="team-role">Anggota</div>
+          <div class="team-dept">Dana & Usaha</div>
+        </div>
+        <div class="team-card">
+          <div class="team-name">Andika</div>
+          <div class="team-role">Anggota</div>
+          <div class="team-dept">Dana & Usaha</div>
+        </div>
+        <div class="team-card">
+          <div class="team-name">Yaya</div>
+          <div class="team-role">Anggota</div>
+          <div class="team-dept">Dana & Usaha</div>
+        </div>
+        <div class="team-card">
+          <div class="team-name">Rio</div>
+          <div class="team-role">Koordinator</div>
+          <div class="team-dept">Perencanaan & Teknis</div>
+        </div>
+        <div class="team-card">
+          <div class="team-name">M. Chairul Anam</div>
+          <div class="team-role">Koordinator</div>
+          <div class="team-dept">Pelaksana Lapangan</div>
+        </div>
+        <div class="team-card">
+          <div class="team-name">Marvin Saputra</div>
+          <div class="team-role">Koordinator</div>
+          <div class="team-dept">Dokumentasi</div>
+        </div>
+        <div class="team-card">
+          <div class="team-name">Syarifudin</div>
+          <div class="team-role">Koordinator</div>
+          <div class="team-dept">Humas</div>
+        </div>
+        <div class="team-card">
+          <div class="team-name">Agus Andriawan</div>
+          <div class="team-role">Koordinator</div>
+          <div class="team-dept">Logistik & Konsumsi</div>
+        </div>
+        <div class="team-card">
+          <div class="team-name">Mulyadi</div>
+          <div class="team-role">Koordinator</div>
+          <div class="team-dept">Keamanan & Ketertiban</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>Musholla An-Nur</h3>
+          <p>Membangun rumah Allah adalah tanggung jawab kita bersama. Mari wujudkan fasilitas ibadah yang makmur dan nyaman untuk generasi penerus di Perumahan Mutiara Puri Harmoni Sepatan.</p>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-col">
+          <h4>Navigasi</h4>
+          <ul class="footer-links">
+            <li><a href="#tentang"><i class="fas fa-chevron-right" style="font-size:0.8rem;color:var(--accent);"></i> Tentang Proyek</a></li>
+            <li><a href="#donasi"><i class="fas fa-chevron-right" style="font-size:0.8rem;color:var(--accent);"></i> Cara Berdonasi</a></li>
+            <li><a href="#laporan"><i class="fas fa-chevron-right" style="font-size:0.8rem;color:var(--accent);"></i> Laporan Transparansi</a></li>
+            <li><a href="#galeri"><i class="fas fa-chevron-right" style="font-size:0.8rem;color:var(--accent);"></i> Galeri Pembangunan</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-col">
+          <h4>Hubungi Kami</h4>
+          <ul class="contact-list">
+            <li><i class="fas fa-map-marker-alt"></i> <span>Jl. Ahmad Yani, Sukasari, Kec. Rajeg, Tangerang</span></li>
+            <li><i class="fas fa-phone-alt"></i> <span>+62 812-1904-1850</span></li>
+            <li><i class="fas fa-envelope"></i> <span>mushollaannur@outlook.com</span></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2026 Panitia Pembangunan Musholla An-Nur MPHS. Semua hak dilindungi.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox for images -->
+  <div class="lightbox" id="lightbox" onclick="this.classList.remove('active')">
+    <img src="" alt="Zoom" id="lightbox-img">
+  </div>
+  <div class="lightbox" id="lightbox-qris" onclick="this.classList.remove('active')">
+    <img src="https://raw.githubusercontent.com/mphsepatan/mphsepatan.github.io/refs/heads/main/qrismusholla.jpeg" alt="QRIS">
+  </div>
+
+  <!-- Floating WA -->
+  <a href="https://wa.me/6281219041850?text=Halo%20Admin%20Musholla%20An-Nur,%20saya%20ingin%20bertanya..." class="fab-wa">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- JavaScript -->
+  <script>
+    // --- UI Logic ---
+    
+    // Navbar Scroll
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        nav.style.background = 'rgba(255, 255, 255, 0.98)';
+        nav.style.boxShadow = '0 4px 15px rgba(0,0,0,0.1)';
+      } else {
+        nav.style.background = 'rgba(255, 255, 255, 0.95)';
+        nav.style.boxShadow = '0 2px 10px rgba(0,0,0,0.05)';
+      }
+    });
+
+    // Mobile Menu Toggle
+    document.getElementById('mobileToggle').addEventListener('click', function() {
+      document.getElementById('navMenu').classList.toggle('active');
+    });
+
+    // Close menu on link click
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('navMenu').classList.remove('active');
+      });
+    });
+
+    // Copy to Clipboard
+    function copyToClipboard(btn, elementId) {
+      const text = document.getElementById(elementId).innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const originalHtml = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-check"></i> Tersalin';
+        btn.style.background = 'var(--primary)';
+        btn.style.color = 'white';
+        setTimeout(() => {
+          btn.innerHTML = originalHtml;
+          btn.style.background = 'var(--blue-light)';
+          btn.style.color = 'var(--primary)';
+        }, 2000);
+      });
+    }
+
+    // Donasi Amount Selection
+    let selectedAmount = 50000;
+    const options = document.querySelectorAll('.option-btn');
+    const customInput = document.getElementById('customAmount');
+    
+    options.forEach(opt => {
+      opt.addEventListener('click', function() {
+        options.forEach(o => o.classList.remove('active'));
+        this.classList.add('active');
+        selectedAmount = parseInt(this.getAttribute('data-amount'));
+        customInput.value = '';
+      });
+    });
+
+    customInput.addEventListener('input', function() {
+      options.forEach(o => o.classList.remove('active'));
+      selectedAmount = parseInt(this.value) || 0;
+    });
+
+    // WA Button Format
+    document.getElementById('btnKonfirmasiWA').addEventListener('click', function() {
+      if (selectedAmount <= 0) {
+        alert('Pilih atau masukkan nominal donasi terlebih dahulu.');
+        return;
+      }
+      const acct = document.getElementById('bcaNumber').innerText.trim();
+      const formatRupiah = 'Rp ' + selectedAmount.toLocaleString('id-ID');
+      const msg = `Halo admin, saya ingin transfer ${formatRupiah} ke rekening ${acct} (a.n. Musholla An Nur). Mohon panduan konfirmasi dan update daftar donatur. Terima kasih.`;
+      const url = `https://wa.me/6281219041850?text=${encodeURIComponent(msg)}`;
+      window.open(url, '_blank');
+    });
+
+    // Tabs Logic removed since only Donatur is displayed
+
+    // Gallery Lightbox
+    const galleryImages = [
+      { url: "https://raw.githubusercontent.com/mphsepatan/mphsepatan.github.io/refs/heads/main/gambar1.jpeg", title: "Tampak Depan", date: "Proyek" },
+      { url: "https://raw.githubusercontent.com/mphsepatan/mphsepatan.github.io/refs/heads/main/gambar2.jpeg", title: "Interior", date: "Proyek" },
+      { url: "https://raw.githubusercontent.com/mphsepatan/mphsepatan.github.io/refs/heads/main/peletakan%20batu%20pertama.jpeg", title: "Peletakan Batu Pertama", date: "1 Feb 2026" },
+      { url: "https://raw.githubusercontent.com/mphsepatan/mphsepatan.github.io/refs/heads/main/musholla1.jpeg", title: "Dokumentasi", date: "Progres" },
+      { url: "https://raw.githubusercontent.com/mphsepatan/mphsepatan.github.io/refs/heads/main/denah.jpeg", title: "Denah Rencana", date: "Perencanaan" }
+    ];
+
+    const galleryContainer = document.getElementById('galleryContainer');
+    galleryImages.forEach(img => {
+      galleryContainer.innerHTML += `
+        <div class="gallery-card" onclick="openGalleryZoom('${img.url}')">
+          <div class="gallery-img-wrapper">
+            <img src="${img.url}" alt="${img.title}" loading="lazy">
+          </div>
+          <div class="gallery-info">
+            <span class="gallery-date">${img.date}</span>
+            <h4>${img.title}</h4>
+          </div>
+        </div>
+      `;
+    });
+
+    function openGalleryZoom(url) {
+      document.getElementById('lightbox-img').src = url;
+      document.getElementById('lightbox').classList.add('active');
+    }
+
+    // --- Google Sheets Logic ---
+    google.charts.load('current', {'packages':['table']});
+    google.charts.setOnLoadCallback(loadAllData);
+
+    const SPREADSHEET_ID = '1rt46OlhUWLQuNgNMBx9jmMpXWYr7iiw1A4PS80j_qiY';
+    let allRows = []; // Store all parsed rows for filtering
+    let currentFilter = 'semua';
+
+    const formatRp = (angka) => {
+      if (angka >= 1000000000) return 'Rp ' + (angka/1000000000).toFixed(1).replace('.',',') + ' M';
+      if (angka >= 1000000) return 'Rp ' + (angka/1000000).toFixed(1).replace('.',',') + ' Jt';
+      return 'Rp ' + angka.toLocaleString('id-ID');
+    };
+
+    function loadAllData() {
+      document.getElementById('lastUpdate').textContent = new Date().toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' });
+      loadDonaturReport();
+    }
+
+    function parseNominal(val) {
+      if (typeof val === 'number') return val;
+      if (typeof val === 'string') return parseInt(val.replace(/[^0-9]/g, '')) || 0;
+      return 0;
+    }
+
+    function loadDonaturReport() {
+      const query = new google.visualization.Query(
+        `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/gviz/tq?sheet=Donatur&tq=${encodeURIComponent('SELECT *')}`
+      );
+      query.send(res => {
+        document.getElementById('loading-donatur').style.display = 'none';
+        if (res.isError()) {
+          document.getElementById('div-donatur').innerHTML = '<div class="no-results"><i class="fas fa-exclamation-triangle"></i><p>Gagal memuat data.</p></div>';
+          return;
+        }
+        const data = res.getDataTable();
+        const rows = data.getNumberOfRows();
+        const cols = data.getNumberOfColumns();
+
+        // Find column indices
+        let idx = { no: 0, tgl: 1, jenis: 2, sumber: 3, blok: 4, jumlah: 5, ket: 6 };
+        for (let c = 0; c < cols; c++) {
+          const l = (data.getColumnLabel(c) || '').toLowerCase();
+          if (l.includes('no') && !l.includes('rumah')) idx.no = c;
+          if (l.includes('hari') || l.includes('tanggal')) idx.tgl = c;
+          if (l.includes('jenis')) idx.jenis = c;
+          if (l.includes('sumber')) idx.sumber = c;
+          if (l.includes('blok') || l.includes('rumah')) idx.blok = c;
+          if (l.includes('jumlah') || l.includes('nominal')) idx.jumlah = c;
+          if (l.includes('keterangan') || l.includes('ket')) idx.ket = c;
+        }
+
+        allRows = [];
+        let totalMasuk = 0, totalKeluar = 0, cntMasuk = 0, cntKeluar = 0;
+
+        for (let i = 0; i < rows; i++) {
+          const no = data.getValue(i, idx.no);
+          if (no === null || no === '') continue;
+          let tglRaw = data.getValue(i, idx.tgl);
+          let tgl = '';
+          if (tglRaw instanceof Date) {
+            tgl = tglRaw.toLocaleDateString('id-ID', { day: '2-digit', month: 'short', year: 'numeric' });
+          } else { tgl = String(tglRaw || ''); }
+          const jenis = (data.getValue(i, idx.jenis) || '').toString().trim();
+          const sumber = (data.getValue(i, idx.sumber) || '').toString().trim();
+          const blok = (data.getValue(i, idx.blok) || '').toString().trim();
+          const nominal = parseNominal(data.getValue(i, idx.jumlah));
+          const ket = (idx.ket < cols ? (data.getValue(i, idx.ket) || '').toString().trim() : '');
+          const isMasuk = jenis.toLowerCase().includes('masuk');
+
+          if (isMasuk) { totalMasuk += nominal; cntMasuk++; }
+          else { totalKeluar += nominal; cntKeluar++; }
+
+          allRows.push({ no, tgl, jenis, sumber, blok, nominal, ket, isMasuk });
+        }
+
+        // Update summary cards
+        document.getElementById('sumMasuk').textContent = formatRp(totalMasuk);
+        document.getElementById('sumKeluar').textContent = formatRp(totalKeluar);
+        document.getElementById('sumSaldo').textContent = formatRp(totalMasuk - totalKeluar);
+        document.getElementById('countAll').textContent = allRows.length;
+        document.getElementById('countMasuk').textContent = cntMasuk;
+        document.getElementById('countKeluar').textContent = cntKeluar;
+
+        // Update hero stats
+        document.getElementById('totalDonatur').textContent = cntMasuk;
+        document.getElementById('totalFunds').textContent = formatRp(totalMasuk);
+        // Update progress bar (based on total pemasukan vs total collected)
+        const totalDana = totalMasuk;
+        const progress = totalDana > 0 ? 100 : 0;
+        document.getElementById('progressPercent').textContent = formatRp(totalDana);
+        document.getElementById('progressFill').style.width = progress + '%';
+
+        renderTable(allRows);
+      });
+    }
+
+    function renderTable(data) {
+      const div = document.getElementById('div-donatur');
+      if (data.length === 0) {
+        div.innerHTML = '<div class="no-results"><i class="fas fa-inbox"></i><p>Tidak ada data ditemukan.</p></div>';
+        return;
+      }
+      let html = '<table class="report-table"><thead><tr>';
+      html += '<th>No</th><th>Tanggal</th><th>Jenis</th><th>Sumber Dana</th><th>Blok</th><th>Jumlah</th><th>Keterangan</th>';
+      html += '</tr></thead><tbody>';
+      data.forEach((r, i) => {
+        const cls = r.isMasuk ? 'masuk' : 'keluar';
+        const badge = r.isMasuk
+          ? '<span class="badge badge-masuk"><i class="fas fa-arrow-down"></i> Masuk</span>'
+          : '<span class="badge badge-keluar"><i class="fas fa-arrow-up"></i> Keluar</span>';
+        html += `<tr><td>${i + 1}</td><td>${r.tgl}</td><td>${badge}</td><td>${r.sumber}</td><td>${r.blok}</td><td class="nominal ${cls}">${formatRp(r.nominal)}</td><td>${r.ket || '-'}</td></tr>`;
+      });
+      html += '</tbody></table>';
+      div.innerHTML = html;
+    }
+
+    function filterTable(filter, btn) {
+      currentFilter = filter;
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      applyFilters();
+    }
+
+    function searchTable() { applyFilters(); }
+
+    function applyFilters() {
+      const keyword = (document.getElementById('searchDonatur').value || '').toLowerCase();
+      let filtered = allRows;
+      if (currentFilter === 'masuk') filtered = filtered.filter(r => r.isMasuk);
+      else if (currentFilter === 'keluar') filtered = filtered.filter(r => !r.isMasuk);
+      if (keyword) filtered = filtered.filter(r => r.sumber.toLowerCase().includes(keyword) || r.blok.toLowerCase().includes(keyword) || r.ket.toLowerCase().includes(keyword));
+      renderTable(filtered);
+    }
+  </script>
+</body>
+</html>
