@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Musholla An-Nur MPHS — Berkah Bersama</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #E9C46A;
+    --gold-dark: #D4A373;
+    --gold-light: #FEF3C7;
+    --green: #2D6A4F;
+    --green-light: #E9F5EF;
+    --green-mid: #40916C;
+    --cream: #FFFDF7;
+    --cream-dark: #FDF8EE;
+    --dark: #1F3D36;
+    --text: #2C453D;
+    --text-muted: #6B8A7A;
+    --white: #FFFFFF;
+    --border: rgba(233,196,106,0.25);
+    --shadow: 0 8px 30px rgba(0,0,0,0.06);
+    --shadow-md: 0 20px 40px -12px rgba(0,0,0,0.12);
+    --red-soft: #FEF2F2;
+    --red: #DC2626;
+    --green-soft: #ECFDF5;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* NAVBAR */
+  nav {
+    position: fixed; top:0; left:0; right:0; z-index:100;
+    background: rgba(255,253,247,0.96);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+  }
+  .nav-inner {
+    max-width:1280px; margin:0 auto; display:flex;
+    align-items:center; justify-content:space-between; height:74px;
+  }
+  .nav-logo { display:flex; align-items:center; gap:12px; text-decoration:none; }
+  .nav-logo img { width:46px; height:46px; border-radius:50%; border:2px solid var(--gold); object-fit:cover; }
+  .nav-logo-text { display:flex; flex-direction:column; line-height:1.1; }
+  .nav-logo-text span:first-child { color:var(--green); font-family:'Playfair Display',serif; font-size:16px; font-weight:800; }
+  .nav-logo-text span:last-child { color:var(--text-muted); font-size:11px; letter-spacing:0.03em; }
+  .nav-links { display:flex; gap:2rem; list-style:none; }
+  .nav-links a { color:var(--text); text-decoration:none; font-size:14px; font-weight:500; transition:color 0.2s; }
+  .nav-links a:hover { color:var(--gold-dark); }
+  .nav-cta {
+    background:var(--green); color:white; padding:10px 24px; border-radius:40px;
+    font-size:14px; font-weight:600; text-decoration:none; transition:all 0.2s;
+  }
+  .nav-cta:hover { background:var(--green-mid); transform:translateY(-2px); box-shadow:0 4px 12px rgba(45,106,79,0.3); }
+
+  /* HERO */
+  .hero {
+    min-height:100vh; display:flex; align-items:center;
+    background: linear-gradient(135deg, #FDF8F0 0%, #F0F7F0 50%, #E8F3E8 100%);
+    position:relative; overflow:hidden; padding-top:80px;
+  }
+  .hero-deco {
+    position:absolute; right:-5%; top:10%; width:500px; height:500px;
+    border:1px solid rgba(233,196,106,0.15); border-radius:50%;
+  }
+  .hero-deco::before {
+    content:''; position:absolute; inset:40px;
+    border:1px solid rgba(233,196,106,0.1); border-radius:50%;
+  }
+  .hero-inner {
+    max-width:1280px; margin:0 auto; padding:0 2rem; position:relative; z-index:1;
+    display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center;
+  }
+  .hero-badge {
+    display:inline-flex; align-items:center; gap:8px;
+    background:rgba(233,196,106,0.15); border:1px solid var(--border);
+    padding:6px 18px; border-radius:100px; margin-bottom:1.5rem;
+  }
+  .hero-badge span { color:var(--green); font-size:12px; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; }
+  .hero-badge::before { content:''; width:8px; height:8px; background:var(--gold); border-radius:50%; animation:pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.3)} }
+  .hero h1 {
+    font-family:'Playfair Display',serif; font-size:clamp(2.5rem,5vw,4rem);
+    font-weight:900; color:var(--green); line-height:1.15; margin-bottom:1rem;
+  }
+  .hero h1 em { color:var(--gold-dark); font-style:normal; display:block; }
+  .hero p { color:var(--text-muted); font-size:1.05rem; line-height:1.75; margin-bottom:2rem; max-width:480px; }
+  .hero-actions { display:flex; gap:1rem; flex-wrap:wrap; }
+  .btn-primary {
+    background:var(--green); color:white; padding:14px 32px; border-radius:40px;
+    font-size:15px; font-weight:600; text-decoration:none; display:inline-flex;
+    align-items:center; gap:8px; transition:all 0.2s;
+  }
+  .btn-primary:hover { background:var(--green-mid); transform:translateY(-2px); box-shadow:0 8px 20px rgba(45,106,79,0.25); }
+  .btn-outline {
+    background:transparent; color:var(--green); border:1.5px solid var(--border);
+    padding:14px 32px; border-radius:40px; font-size:15px; font-weight:500;
+    text-decoration:none; transition:all 0.2s;
+  }
+  .btn-outline:hover { border-color:var(--gold); color:var(--gold-dark); background:rgba(233,196,106,0.05); }
+  .hero-stats { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+  .hero-stat {
+    background:var(--white); border:1px solid var(--border); border-radius:20px;
+    padding:1.25rem; box-shadow:var(--shadow);
+  }
+  .hero-stat .value { font-family:'Playfair Display',serif; font-size:1.8rem; font-weight:700; color:var(--green); display:block; }
+  .hero-stat .label { color:var(--text-muted); font-size:12px; margin-top:6px; }
+  .progress-bar { background:var(--gold-light); border-radius:100px; height:8px; margin-top:12px; overflow:hidden; }
+  .progress-fill { background:linear-gradient(90deg,var(--gold-dark),var(--gold)); height:100%; border-radius:100px; width:35%; }
+
+  /* SECTIONS */
+  section { padding:5rem 0; }
+  .container { max-width:1280px; margin:0 auto; padding:0 2rem; }
+  .section-label {
+    font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--gold-dark); margin-bottom:0.75rem; display:flex; align-items:center; gap:8px;
+  }
+  .section-label::before { content:''; width:30px; height:2px; background:var(--gold); }
+  h2.section-title {
+    font-family:'Playfair Display',serif; font-size:clamp(2rem,4vw,2.8rem);
+    font-weight:700; color:var(--green); margin-bottom:0.75rem; line-height:1.2;
+  }
+  .section-sub { color:var(--text-muted); font-size:1rem; line-height:1.8; max-width:600px; }
+  .divider { width:70px; height:3px; background:linear-gradient(90deg,var(--gold),transparent); border-radius:2px; margin:1.5rem 0; }
+
+  /* DONASI */
+  #donasi { background:var(--white); }
+  .donasi-grid { display:grid; grid-template-columns:1.2fr 1fr; gap:3rem; margin-top:3rem; align-items:start; }
+  .qris-card {
+    background:linear-gradient(135deg,var(--green) 0%,#1B4D3E 100%);
+    border-radius:28px; padding:2rem; text-align:center; position:relative; overflow:hidden;
+  }
+  .qris-card h3 { color:var(--gold); font-family:'Playfair Display',serif; font-size:1.2rem; margin-bottom:1.2rem; }
+  .qris-img-wrap { background:white; border-radius:20px; padding:1.2rem; display:inline-block; margin-bottom:1.2rem; box-shadow:0 8px 20px rgba(0,0,0,0.15); }
+  .qris-img-wrap img { width:180px; height:180px; object-fit:contain; display:block; }
+  .qris-note { color:rgba(255,255,255,0.65); font-size:12px; line-height:1.6; }
+  .bank-card {
+    background:var(--cream); border:1px solid var(--border); border-radius:20px;
+    padding:1.5rem; margin-bottom:1rem; box-shadow:var(--shadow);
+  }
+  .bank-name { font-size:12px; color:var(--text-muted); font-weight:700; letter-spacing:0.05em; text-transform:uppercase; margin-bottom:8px; }
+  .bank-number { font-size:1.5rem; font-weight:700; color:var(--green); font-family:'Playfair Display',serif; letter-spacing:0.03em; }
+  .bank-holder { font-size:12px; color:var(--text-muted); margin-top:6px; }
+  .copy-btn {
+    background:var(--green-light); color:var(--green); border:none; padding:10px 20px;
+    border-radius:40px; font-size:13px; font-weight:600; cursor:pointer; margin-top:1rem;
+    display:inline-flex; align-items:center; gap:6px; transition:all 0.2s;
+  }
+  .copy-btn:hover { background:var(--gold-light); transform:translateY(-1px); }
+  .nominal-grid { display:grid; grid-template-columns:1fr 1fr; gap:0.75rem; margin:1.5rem 0; }
+  .nominal-btn {
+    background:var(--cream-dark); border:1.5px solid var(--border); border-radius:14px;
+    padding:0.75rem; text-align:center; cursor:pointer; transition:all 0.2s;
+  }
+  .nominal-btn:hover, .nominal-btn.active { background:var(--green); border-color:var(--green); color:white; }
+  .nominal-btn .amount { font-weight:700; color:var(--green); display:block; font-size:1rem; }
+  .nominal-btn:hover .amount, .nominal-btn.active .amount { color:white; }
+  .wa-btn {
+    background:linear-gradient(135deg,#25D366,#128C7E); color:white; border:none;
+    width:100%; padding:14px; border-radius:50px; font-size:15px; font-weight:600;
+    cursor:pointer; display:flex; align-items:center; justify-content:center; gap:10px;
+    text-decoration:none; transition:all 0.2s;
+  }
+  .wa-btn:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(37,211,102,0.35); }
+  .cara-donasi { background:var(--green-light); border-radius:20px; padding:1.5rem; margin-top:1.5rem; }
+  .cara-donasi h4 { color:var(--green); font-size:14px; font-weight:700; margin-bottom:1rem; }
+  .cara-donasi ol { padding-left:1.2rem; color:var(--text-muted); font-size:13px; line-height:2; }
+
+  /* DONATUR - TABEL DENGAN JENIS MASUK/KELUAR */
+  #donatur { background:var(--cream-dark); }
+  .donatur-header { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:2rem; flex-wrap:wrap; gap:1rem; }
+  .donatur-search {
+    background:white; border:1px solid var(--border); border-radius:40px;
+    padding:12px 20px; font-size:14px; outline:none; width:280px; font-family:'Inter',sans-serif;
+  }
+  .donatur-search:focus { border-color:var(--gold); }
+  .donatur-table-wrap {
+    background:white; border-radius:24px; overflow-x:auto;
+    border:1px solid var(--border); box-shadow:var(--shadow);
+  }
+  table { width:100%; border-collapse:collapse; min-width:800px; }
+  thead tr { background:var(--green); }
+  thead th {
+    color:var(--gold); font-size:12px; font-weight:600; letter-spacing:0.05em;
+    text-transform:uppercase; padding:1rem 1.2rem; text-align:left;
+  }
+  tbody tr { border-bottom:1px solid rgba(233,196,106,0.1); transition:background 0.15s; }
+  tbody tr:hover { background:var(--green-light); }
+  tbody tr.row-keluar { background:var(--red-soft); }
+  tbody tr.row-keluar:hover { background:#FEE2E2; }
+  tbody td { padding:1rem 1.2rem; font-size:13.5px; }
+  .badge-masuk {
+    background:var(--green-light); color:var(--green); padding:4px 12px;
+    border-radius:100px; font-size:11px; font-weight:700; display:inline-block;
+  }
+  .badge-keluar {
+    background:#FEE2E2; color:var(--red); padding:4px 12px;
+    border-radius:100px; font-size:11px; font-weight:700; display:inline-block;
+  }
+  .nominal-masuk { font-weight:700; color:var(--green); }
+  .nominal-keluar { font-weight:700; color:var(--red); }
+  .rank {
+    width:34px; height:34px; background:var(--green-light); color:var(--green);
+    font-weight:700; font-size:12px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+  }
+  .pagination { display:flex; gap:0.5rem; justify-content:center; margin-top:1.5rem; flex-wrap:wrap; }
+  .page-btn {
+    background:white; border:1px solid var(--border); width:38px; height:38px;
+    border-radius:12px; display:flex; align-items:center; justify-content:center;
+    cursor:pointer; font-size:14px; transition:all 0.2s; color:var(--text);
+  }
+  .page-btn.active { background:var(--green); color:white; border-color:var(--green); }
+  .page-btn:hover:not(.active) { border-color:var(--gold); color:var(--gold-dark); }
+
+  /* DOKUMENTASI */
+  #dokumentasi { background:var(--white); }
+  .doc-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1.5rem; margin-top:2.5rem; }
+  .doc-card {
+    border-radius:20px; overflow:hidden; background:var(--cream);
+    border:1px solid var(--border); transition:all 0.3s; cursor:pointer;
+  }
+  .doc-card:hover { transform:translateY(-6px); box-shadow:var(--shadow-md); }
+  .doc-img { height:200px; background:linear-gradient(135deg,var(--green-light),var(--cream)); position:relative; overflow:hidden; }
+  .doc-img img { width:100%; height:100%; object-fit:cover; }
+  .doc-body { padding:1rem 1.2rem 1.2rem; }
+  .doc-date { font-size:11px; color:var(--gold-dark); font-weight:700; letter-spacing:0.05em; text-transform:uppercase; margin-bottom:4px; }
+  .doc-title { font-weight:600; font-size:14px; color:var(--green); margin-bottom:4px; }
+  .doc-tag {
+    display:inline-block; background:var(--green-light); color:var(--green);
+    font-size:11px; font-weight:600; padding:4px 12px; border-radius:100px; margin-top:0.5rem;
+  }
+  .doc-note {
+    background:var(--green-light); border-left:3px solid var(--gold);
+    padding:1rem 1.5rem; border-radius:0 16px 16px 0; margin-top:2rem;
+    color:var(--text-muted); font-size:13px;
+  }
+
+  /* TIM */
+  #tim {
+    background:linear-gradient(135deg, #FDF8EE 0%, #F0F7F0 100%);
+    position:relative;
+  }
+  .penasihat-section {
+    background:rgba(233,196,106,0.1); border:1px solid var(--border);
+    border-radius:20px; padding:1.5rem; margin-bottom:2.5rem;
+  }
+  .penasihat-label { color:var(--gold-dark); font-size:11px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:1rem; display:flex; align-items:center; gap:8px; }
+  .penasihat-label::before { content:''; width:20px; height:2px; background:var(--gold); }
+  .penasihat-names { display:flex; flex-wrap:wrap; gap:0.5rem; }
+  .penasihat-name {
+    background:rgba(45,106,79,0.08); border:1px solid var(--border);
+    color:var(--text); font-size:12px; padding:6px 16px; border-radius:100px;
+  }
+  .inti-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem; margin-bottom:2.5rem; }
+  .tim-card {
+    background:white; border:1px solid var(--border); border-radius:20px;
+    padding:1.5rem; text-align:center; transition:all 0.3s; box-shadow:var(--shadow);
+  }
+  .tim-card:hover { transform:translateY(-4px); border-color:var(--gold); }
+  .tim-avatar {
+    width:70px; height:70px; border-radius:50%; background:linear-gradient(135deg,var(--green-light),var(--cream));
+    display:flex; align-items:center; justify-content:center; margin:0 auto 1rem;
+    font-size:1.4rem; font-weight:700; color:var(--green); border:2px solid var(--gold);
+  }
+  .tim-card.ketua .tim-avatar { background:var(--gold); color:white; width:80px; height:80px; font-size:1.6rem; border:2px solid var(--gold-dark); }
+  .tim-name { font-weight:700; font-size:15px; color:var(--green); margin-bottom:4px; }
+  .tim-role { color:var(--gold-dark); font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; }
+  .divisi-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; }
+  .divisi-card {
+    background:white; border:1px solid var(--border); border-radius:16px;
+    padding:1.2rem; box-shadow:var(--shadow);
+  }
+  .divisi-title {
+    color:var(--green); font-size:12px; font-weight:700; letter-spacing:0.05em;
+    text-transform:uppercase; margin-bottom:0.75rem; display:flex; align-items:center; gap:6px;
+  }
+  .divisi-title::before { content:''; width:14px; height:2px; background:var(--gold); }
+  .divisi-member { color:var(--text-muted); font-size:13px; padding:5px 0; }
+
+  /* FOOTER */
+  footer {
+    background:var(--green); padding:3rem 0 1.5rem;
+  }
+  .footer-inner { max-width:1280px; margin:0 auto; padding:0 2rem; display:grid; grid-template-columns:2fr 1fr 1fr; gap:3rem; }
+  .footer-brand h3 { font-family:'Playfair Display',serif; color:var(--gold); font-size:1.2rem; margin-bottom:0.5rem; }
+  .footer-brand p { color:rgba(255,255,255,0.6); font-size:13px; line-height:1.8; margin-bottom:1rem; }
+  .footer-contact a { display:flex; align-items:center; gap:8px; color:rgba(255,255,255,0.5); font-size:13px; text-decoration:none; margin-bottom:8px; transition:color 0.2s; }
+  .footer-contact a:hover { color:var(--gold); }
+  .footer-links h4 { color:var(--gold); font-size:12px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:1rem; }
+  .footer-links a { display:block; color:rgba(255,255,255,0.5); font-size:13px; text-decoration:none; margin-bottom:8px; transition:color 0.2s; }
+  .footer-links a:hover { color:var(--gold-light); }
+  .footer-bottom { max-width:1280px; margin:2rem auto 0; padding:1rem 2rem 0; border-top:1px solid rgba(255,255,255,0.15); display:flex; justify-content:space-between; align-items:center; }
+  .footer-bottom p { color:rgba(255,255,255,0.4); font-size:11px; }
+
+  /* FLOAT WA */
+  .float-wa {
+    position:fixed; bottom:1.5rem; right:1.5rem; z-index:200;
+    background:linear-gradient(135deg,#25D366,#128C7E); color:white; width:56px; height:56px;
+    border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.4rem;
+    box-shadow:0 4px 20px rgba(37,211,102,0.4); transition:all 0.25s; text-decoration:none;
+  }
+  .float-wa:hover { transform:scale(1.08); }
+
+  /* ANIMASI & RESPONSIF */
+  .animate-in { opacity:0; transform:translateY(24px); transition:opacity 0.5s ease, transform 0.5s ease; }
+  .animate-in.visible { opacity:1; transform:none; }
+  @media (max-width:900px) {
+    .hero-inner { grid-template-columns:1fr; text-align:center; gap:2rem; }
+    .donasi-grid { grid-template-columns:1fr; }
+    .inti-grid { grid-template-columns:repeat(2,1fr); }
+    .divisi-grid { grid-template-columns:1fr 1fr; }
+    .footer-inner { grid-template-columns:1fr; gap:2rem; }
+    .nav-links { display:none; }
+  }
+  @media (max-width:600px) {
+    .inti-grid { grid-template-columns:1fr 1fr; }
+    .divisi-grid { grid-template-columns:1fr; }
+    .nominal-grid { grid-template-columns:1fr 1fr; }
+  }
+  .loading-spin {
+    width:32px; height:32px; border-radius:50%;
+    border:3px solid var(--border); border-top-color:var(--green);
+    animation:spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform:rotate(360deg); } }
+</style>
+</head>
+<body>
+
+<!-- NAVIGASI -->
+<nav>
+  <div class="nav-inner">
+    <a href="#beranda" class="nav-logo">
+      <img src="https://raw.githubusercontent.com/mphsepatan/mphsepatan.github.io/refs/heads/main/logomusholla.jpeg" alt="Logo">
+      <div class="nav-logo-text">
+        <span>Musholla An-Nur</span>
+        <span>Perumahan Mutiara Puri Harmoni Sepatan</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#beranda">Beranda</a></li>
+      <li><a href="#donasi">Donasi</a></li>
+      <li><a href="#donatur">Donatur</a></li>
+      <li><a href="#dokumentasi">Dokumentasi</a></li>
+      <li><a href="#tim">Tim</a></li>
+    </ul>
+    <a href="#donasi" class="nav-cta">Donasi Sekarang</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="beranda" class="hero">
+  <div class="hero-deco"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge"><span>Perumahan Mutiara Puri Harmoni Sepatan</span></div>
+      <h1>Bersama Wujudkan <em>Musholla An-Nur</em></h1>
+      <p>Mari dukung pembangunan tempat ibadah yang nyaman dan representatif untuk seluruh warga. Transparan, akuntabel, dan penuh berkah.</p>
+      <div class="hero-actions">
+        <a href="#donasi" class="btn-primary">💛 Donasi Sekarang</a>
+        <a href="#dokumentasi" class="btn-outline">Lihat Perkembangan</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+        <div class="hero-stat">
+        <span class="value" id="stat-saldo">—</span>
+        <div class="label">🏦 Sisa Saldo</div>
+        </div>
+
+        <div class="hero-stat">
+        <span class="value" id="stat-masuk">—</span>
+        <div class="label">💰 Dana Terkumpul</div>
+        </div>
+
+        <div class="hero-stat">
+        <span class="value" id="stat-keluar">—</span>
+        <div class="label">🔧 Dana Digunakan</div>
+        </div>
+
+        <div class="hero-stat">
+        <span class="value" id="stat-donatur">—</span>
+        <div class="label">🤝 Total Transaksi Masuk</div>
+        </div>
+      <!-- <div class="hero-stat" style="grid-column:1/-1;">
+        <div class="label" style="margin-bottom:8px;">Progress Pembangunan</div>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div class="progress-bar" style="flex:1;"><div class="progress-fill" id="progress-fill"></div></div>
+          <span style="color:var(--green);font-weight:700;" id="progress-pct">—</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-top:8px;">
+          <span class="label" id="progress-label-kiri">Memuat data...</span>
+          <span class="label">Target: Rp 250 Juta</span>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</section>
+
+<!-- DONASI -->
+<section id="donasi">
+  <div class="container">
+    <div class="animate-in">
+      <div class="section-label">Dukung Kami</div>
+      <h2 class="section-title">Tunaikan Jariyah<br>Anda Sekarang</h2>
+      <div class="divider"></div>
+      <p class="section-sub">Setiap kontribusi Anda adalah ladang pahala yang terus mengalir. Pilih cara donasi yang paling mudah.</p>
+    </div>
+    <div class="donasi-grid animate-in">
+      <div>
+        <div class="qris-card" style="margin-bottom:1.5rem;">
+          <h3>Scan QRIS — Semua E-Wallet & M-Banking</h3>
+          <div class="qris-img-wrap">
+            <img src="https://raw.githubusercontent.com/mphsepatan/mphsepatan.github.io/refs/heads/main/qrismusholla.jpeg" alt="QRIS">
+          </div>
+          <p class="qris-note">Scan menggunakan GoPay, OVO, Dana, ShopeePay, BCA, Mandiri, BNI, BRI, dan aplikasi pembayaran lainnya</p>
+        </div>
+        <div class="bank-card">
+          <div class="bank-name">🏦 Bank BTN</div>
+          <div class="bank-number">00043-01-88-000897-7</div>
+          <div class="bank-holder">a.n. Musholla An Nur</div>
+          <button class="copy-btn" onclick="copyRek()">📋 Salin Nomor Rekening</button>
+        </div>
+        <div class="cara-donasi">
+          <h4>📋 Cara Berdonasi</h4>
+          <ol>
+            <li>Pilih nominal donasi atau masukkan jumlah sendiri</li>
+            <li>Transfer via QRIS atau nomor rekening BTN di atas</li>
+            <li>Konfirmasi via WhatsApp dengan lampiran bukti transfer</li>
+            <li>Nama Anda akan tercatat dalam 1×24 jam</li>
+          </ol>
+        </div>
+      </div>
+      <div>
+        <h3 style="font-family:'Playfair Display';font-size:1.3rem;color:var(--green);margin-bottom:0.5rem;">Pilih Nominal Donasi</h3>
+        <p style="font-size:13px;color:var(--text-muted);margin-bottom:1rem;">Pilih nominal atau klik tombol WhatsApp untuk menyesuaikan</p>
+        <div class="nominal-grid">
+          <div class="nominal-btn" onclick="setNominal(this,'50000')"><span class="amount">Rp 50.000</span><span class="type">Donasi Umum</span></div>
+          <div class="nominal-btn" onclick="setNominal(this,'100000')"><span class="amount">Rp 100.000</span><span class="type">Donasi Khusus</span></div>
+          <div class="nominal-btn" onclick="setNominal(this,'250000')"><span class="amount">Rp 250.000</span><span class="type">Donasi Sponsor</span></div>
+          <div class="nominal-btn" onclick="setNominal(this,'500000')"><span class="amount">Rp 500.000</span><span class="type">Donasi Utama</span></div>
+        </div>
+        <a id="wa-link" href="https://wa.me/6281219041850?text=Halo%2C%20saya%20ingin%20berdonasi%20untuk%20pembangunan%20Musholla%20An-Nur%20MPHS" class="wa-btn" target="_blank">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Konfirmasi via WhatsApp
+        </a>
+        <div style="margin-top:1.5rem;padding:1rem;background:var(--cream-dark);border-radius:16px;border:1px solid var(--border);">
+          <p style="font-size:12px;color:var(--text-muted);">⚠️ <strong>Penting:</strong> Nomor rekening resmi hanya yang tercantum di atas. Simpan bukti transfer untuk verifikasi.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DONATUR (dengan JENIS & format tanggal Indonesia) -->
+<section id="donatur">
+  <div class="container">
+    <div class="animate-in">
+      <div class="section-label">Apresiasi & Transparansi</div>
+      <h2 class="section-title">Laporan Keuangan</h2>
+      <div class="divider"></div>
+      <p class="section-sub">Seluruh transaksi masuk (donasi) dan keluar (pembangunan) dicatat secara terbuka.</p>
+    </div>
+    <div class="donatur-header animate-in">
+      <div></div>
+      <input class="donatur-search" type="text" placeholder="🔍 Cari nama / keterangan..." id="searchInput" oninput="filterDonatur()">
+    </div>
+    <div class="donatur-table-wrap animate-in">
+      <table>
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Tanggal</th>
+            <th>Jenis</th>
+            <th>Sumber Dana</th>
+            <th>Blok / No. Rumah</th>
+            <th>Jumlah</th>
+            <th>Keterangan</th>
+          </tr>
+        </thead>
+        <tbody id="donatur-tbody">
+          <tr><td colspan="7" style="text-align:center;padding:2rem;"><div class="loading-spin" style="margin:0 auto;"></div><div style="margin-top:10px;">Memuat data transaksi...</div></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:1rem;flex-wrap:wrap;gap:1rem;">
+      <div id="donatur-info" style="font-size:13px;color:var(--text-muted);"></div>
+      <div class="pagination" id="pagination"></div>
+    </div>
+  </div>
+</section>
+
+<!-- DOKUMENTASI -->
+<section id="dokumentasi">
+  <div class="container">
+    <div class="animate-in">
+      <div class="section-label">Transparansi</div>
+      <h2 class="section-title">Dokumentasi Pembangunan</h2>
+      <div class="divider"></div>
+      <p class="section-sub">Rekam jejak perkembangan pembangunan Musholla An-Nur dari awal hingga penyelesaian.</p>
+    </div>
+    <div class="doc-grid animate-in" id="gallery-grid"><div style="grid-column:1/-1;text-align:center;"><div class="loading-spin" style="margin:0 auto 1rem;"></div>Memuat galeri...</div></div>
+    <div class="doc-note animate-in">📸 Dokumentasi diperbarui setiap minggu sesuai perkembangan pembangunan. Untuk melihat lebih banyak foto, hubungi tim humas kami via WhatsApp.</div>
+  </div>
+</section>
+
+<!-- TIM -->
+<section id="tim">
+  <div class="container">
+    <div class="animate-in">
+      <div class="section-label">Pengelola</div>
+      <h2 class="section-title">Struktur Organisasi</h2>
+      <div class="divider"></div>
+      <p class="section-sub">Tim pengelola pembangunan Musholla An-Nur MPHS yang bekerja dengan amanah dan penuh dedikasi.</p>
+    </div>
+    <div class="penasihat-section animate-in">
+      <div class="penasihat-label">Dewan Penasihat</div>
+      <div class="penasihat-names">
+        <span class="penasihat-name">Khatib</span><span class="penasihat-name">Ahmad Zaini</span><span class="penasihat-name">Wahyudi</span>
+        <span class="penasihat-name">Suwandi</span><span class="penasihat-name">Ade Sukarman</span><span class="penasihat-name">Kurniawan</span><span class="penasihat-name">Asep</span>
+      </div>
+    </div>
+    <div class="inti-grid animate-in">
+      <div class="tim-card ketua"><div class="tim-avatar">MR</div><div class="tim-name">M. Ridwanulloh</div><div class="tim-role">⭐ Ketua Pelaksana</div></div>
+      <div class="tim-card"><div class="tim-avatar">EH</div><div class="tim-name">Eko Haryanto</div><div class="tim-role">Wakil Ketua</div></div>
+      <div class="tim-card"><div class="tim-avatar">AB</div><div class="tim-name">Ali Budi Purnomo</div><div class="tim-role">Sekretaris</div></div>
+      <div class="tim-card"><div class="tim-avatar">MS</div><div class="tim-name">Muhamad Sukron</div><div class="tim-role">Bendahara</div></div>
+    </div>
+    <div class="divisi-grid animate-in">
+      <div class="divisi-card"><div class="divisi-title">Dana & Usaha</div><div class="divisi-member"><strong>Abdul Majid</strong> — Koordinator</div><div class="divisi-member">Dodi Prasetianto, Andika, Yaya</div></div>
+      <div class="divisi-card"><div class="divisi-title">Teknis & Lapangan</div><div class="divisi-member"><strong>Rio</strong> — Perencanaan</div><div class="divisi-member"><strong>M. Chairul Anam</strong> — Pelaksana Lapangan</div></div>
+      <div class="divisi-card"><div class="divisi-title">Dokumentasi</div><div class="divisi-member"><strong>Marvin Saputra</strong> — Koordinator</div></div>
+      <div class="divisi-card"><div class="divisi-title">Humas</div><div class="divisi-member"><strong>Syarifudin</strong> — Koordinator</div></div>
+      <div class="divisi-card"><div class="divisi-title">Logistik & Konsumsi</div><div class="divisi-member"><strong>Agus Andriawan</strong> — Koordinator</div><div class="divisi-member"></div></div>
+      <div class="divisi-card"><div class="divisi-title">Keamanan & Ketertiban</div><div class="divisi-member"><strong>Mulyadi</strong> — Koordinator</div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><h3>Musholla An-Nur MPHS</h3><p>Pembangunan musholla untuk warga Perumahan Mutiara Puri Harmoni Sepatan dengan prinsip transparansi dan amanah.</p><div class="footer-contact"><a href="https://wa.me/6281219041850" target="_blank">📱 +62 8121-904-1850</a><a href="mailto:mushollaannurmphs@outlook.com">✉️ mushollaannurmphs@outlook.com</a><a href="#">📍 Jl. Ahmad Yani, Sukasari, Kec. Rajeg, Kab. Tangerang, Banten 15540</a></div></div>
+    <div class="footer-links"><h4>Navigasi</h4><a href="#beranda">Beranda</a><a href="#donasi">Cara Berdonasi</a><a href="#donatur">Daftar Donatur</a><a href="#dokumentasi">Dokumentasi</a><a href="#tim">Struktur Organisasi</a></div>
+    <div class="footer-links"><h4>Rekening</h4><p style="color:rgba(255,255,255,0.5);font-size:13px;">Bank BTN<br><strong style="color:white;">00043-01-88-000897-7</strong><br>a.n. Musholla An Nur</p></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 Pembangunan Musholla An-Nur MPHS. Dibuat dengan ❤️ untuk kemajuan bersama.</p><</div>
+</footer>
+
+<a href="https://wa.me/6281219041850?text=Halo%2C%20saya%20ingin%20bertanya%20tentang%20pembangunan%20Musholla%20An-Nur%20MPHS" target="_blank" class="float-wa" title="Chat WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+// =============================================
+// KONFIGURASI GOOGLE SHEETS
+// =============================================
+const SPREADSHEET_ID = '1rt46OlhUWLQuNgNMBx9jmMpXWYr7iiw1A4PS80j_qiY';
+const GH_RAW = 'https://raw.githubusercontent.com/mphsepatan/mphsepatan.github.io/refs/heads/main/';
+
+let allTransactions = []; // SEMUA transaksi (Masuk + Keluar)
+let filtered = [];
+let currentPage = 1;
+const perPage = 10;
+
+// Format tanggal Indonesia (11 Januari 2026)
+function formatTanggalIndonesia(value) {
+
+  if (!value) return '—';
+
+  let date;
+
+  // Kalau format Google Sheets Date(...)
+  if (typeof value === 'string' && value.includes('Date(')) {
+
+    const nums = value.match(/\d+/g);
+
+    if (nums && nums.length >= 3) {
+      date = new Date(
+        nums[0],
+        nums[1],
+        nums[2]
+      );
+    }
+
+  }
+
+  // Kalau format biasa
+  if (!date) {
+    date = new Date(value);
+  }
+
+  // Kalau invalid coba parse DD/MM/YYYY
+  if (isNaN(date)) {
+
+    const parts = String(value).split('/');
+
+    if (parts.length === 3) {
+
+      const day = parseInt(parts[0]);
+      const month = parseInt(parts[1]) - 1;
+      const year = parseInt(parts[2]);
+
+      date = new Date(year, month, day);
+    }
+  }
+
+  // Fallback
+  if (isNaN(date)) return value;
+
+  return date.toLocaleDateString('id-ID', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  });
+}
+
+function parseJumlah(val) { 
+  if (val === undefined || val === null) return 0;
+  return parseInt(String(val).replace(/[^0-9]/g, '')) || 0; 
+}
+
+function fmtRupiah(val) { return 'Rp ' + val.toLocaleString('id-ID'); }
+
+function fetchData() {
+  fetch(`https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/gviz/tq?sheet=Donatur&tqx=out:json`)
+    .then(r => r.text())
+    .then(raw => {
+      const json = JSON.parse(raw.replace(/^[^(]+\(|\);?\s*$/g, ''));
+      const cols = json.table.cols.map(c => (c.label || '').toLowerCase().trim());
+      const rows = json.table.rows || [];
+      
+      // Cari index kolom
+      const iJenis = cols.findIndex(c => c.includes('jenis'));
+      const iSumber = cols.findIndex(c => c.includes('sumber') || c.includes('nama') || c.includes('donatur'));
+      const iBlok = cols.findIndex(c => c.includes('blok') || c.includes('rumah'));
+      const iJumlah = cols.findIndex(c => c.includes('jumlah') || c.includes('nominal') || c.includes('amount'));
+      const iTgl = cols.findIndex(c => c.includes('tanggal') || c.includes('hari'));
+      const iKet = cols.findIndex(c => c.includes('keterangan') || c.includes('ket'));
+      const iNo = cols.findIndex(c => c.includes('no'));
+      
+      const getVal = (cells, idx) => idx >= 0 && cells[idx] ? String(cells[idx].v || '').trim() : '';
+      
+      allTransactions = rows.map((row, ri) => {
+        const c = row.c || [];
+        const jenisRaw = getVal(c, iJenis).toLowerCase();
+        // Deteksi jenis: "masuk" atau "keluar"
+        let jenis = '';
+        if (jenisRaw.includes('masuk') || jenisRaw === '' || jenisRaw === 'in') jenis = 'Masuk';
+        else if (jenisRaw.includes('keluar') || jenisRaw === 'out') jenis = 'Keluar';
+        else jenis = jenisRaw || 'Masuk';
+        
+        const jumlah = parseJumlah(getVal(c, iJumlah) || (c[iJumlah]?.v));
+        
+        return {
+          no: getVal(c, iNo) || String(ri + 1),
+          tglRaw: getVal(c, iTgl),
+          tgl: formatTanggalIndonesia(getVal(c, iTgl)),
+          jenis: jenis,
+          sumber: getVal(c, iSumber) || '—',
+          blok: getVal(c, iBlok) || '—',
+          jumlah: jumlah,
+          ket: getVal(c, iKet) || '—'
+        };
+      }).filter(r => r.jumlah > 0 || (r.jenis === 'Keluar' && r.jumlah === 0 ? false : true));
+      
+      // Urutkan berdasarkan tanggal (descending) atau index
+      allTransactions.reverse(); // biar yang terbaru di atas
+      filtered = [...allTransactions];
+      renderTable();
+      updateStats();
+    })
+    .catch(err => {
+      console.error('Gagal memuat data:', err);
+      document.getElementById('donatur-tbody').innerHTML = 
+        `<tr><td colspan="7" style="text-align:center;padding:2rem;color:var(--text-muted);">
+          ⚠️ Gagal memuat data. Pastikan spreadsheet dibagikan publik (Anyone with link - Viewer).
+         </td></tr>`;
+    });
+}
+
+function renderTable() {
+  const tbody = document.getElementById('donatur-tbody');
+  const start = (currentPage - 1) * perPage;
+  const slice = filtered.slice(start, start + perPage);
+  
+  if (slice.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;padding:2rem;">Tidak ada data ditemukan</td></tr>`;
+    document.getElementById('donatur-info').textContent = '';
+    document.getElementById('pagination').innerHTML = '';
+    return;
+  }
+  
+  tbody.innerHTML = slice.map((t, idx) => {
+    const rank = start + idx + 1;
+    const isKeluar = t.jenis === 'Keluar';
+    const rowClass = isKeluar ? 'row-keluar' : '';
+    const badgeClass = isKeluar ? 'badge-keluar' : 'badge-masuk';
+    const nominalClass = isKeluar ? 'nominal-keluar' : 'nominal-masuk';
+    const nominalDisplay = isKeluar ? `- ${fmtRupiah(t.jumlah)}` : fmtRupiah(t.jumlah);
+    
+    // Anonimisasi untuk Hamba Allah
+    const isAnon = t.sumber.toLowerCase().includes('ha ') || t.sumber.toLowerCase().startsWith('ha(');
+    const displaySumber = isAnon ? `<em style="color:var(--text-muted);">Hamba Allah</em><br><small style="font-size:11px;">${t.sumber}</small>` : t.sumber;
+    
+    return `<tr class="${rowClass}">
+      <td>${rank}</td>
+      <td style="white-space:nowrap;">${t.tgl}</td>
+      <td><span class="${badgeClass}">${t.jenis}</span></td>
+      <td>${displaySumber}</td>
+      <td>${t.blok}</td>
+      <td class="${nominalClass}">${nominalDisplay}</td>
+      <td style="font-size:12px;">${t.ket}</td>
+    </tr>`;
+  }).join('');
+  
+  const total = filtered.length;
+  const totalPages = Math.ceil(total / perPage);
+  document.getElementById('donatur-info').textContent = 
+    `Menampilkan ${start + 1}–${Math.min(start + perPage, total)} dari ${total} transaksi`;
+  
+  let pagHtml = '';
+  for (let p = 1; p <= totalPages; p++) {
+    pagHtml += `<button class="page-btn ${p === currentPage ? 'active' : ''}" 
+      onclick="currentPage=${p}; renderTable(); window.scrollTo({top:document.getElementById('donatur').offsetTop-80,behavior:'smooth'});">${p}</button>`;
+  }
+  document.getElementById('pagination').innerHTML = pagHtml;
+}
+
+function filterDonatur() {
+  const q = document.getElementById('searchInput').value.toLowerCase();
+  filtered = allTransactions.filter(t => 
+    t.sumber.toLowerCase().includes(q) ||
+    t.blok.toLowerCase().includes(q) ||
+    t.ket.toLowerCase().includes(q) ||
+    t.tgl.toLowerCase().includes(q) ||
+    t.jenis.toLowerCase().includes(q)
+  );
+  currentPage = 1;
+  renderTable();
+}
+function updateStats() {
+
+  // Cari data berdasarkan field "Sumber Dana"
+  const pemasukan = allTransactions.find(
+    t => t.sumber.toLowerCase() === 'pemasukan'
+  );
+
+  const pengeluaran = allTransactions.find(
+    t => t.sumber.toLowerCase() === 'pengeluaran'
+  );
+
+  const saldo = allTransactions.find(
+    t => t.sumber.toLowerCase() === 'sisa saldo'
+  );
+
+  // Ambil nominal
+  const totalMasuk = pemasukan ? pemasukan.jumlah : 0;
+  const totalKeluar = pengeluaran ? pengeluaran.jumlah : 0;
+  const totalSaldo = saldo ? saldo.jumlah : 0;
+
+  // Progress
+  const pct = Math.min(
+    Math.round((totalMasuk / 250000000) * 100),
+    100
+  );
+
+  // Update Hero
+  document.getElementById('stat-masuk').textContent =
+    fmtRupiah(totalMasuk);
+
+  document.getElementById('stat-keluar').textContent =
+    fmtRupiah(totalKeluar);
+
+  document.getElementById('stat-saldo').textContent =
+    fmtRupiah(totalSaldo);
+
+  // Jumlah transaksi masuk biasa
+  const transaksiMasuk = allTransactions.filter(
+    t => t.jenis === 'Masuk'
+  );
+
+  document.getElementById('stat-donatur').textContent =
+    transaksiMasuk.length + ' transaksi';
+
+  // Progress bar
+  document.getElementById('progress-fill').style.width =
+    pct + '%';
+
+  document.getElementById('progress-pct').textContent =
+    pct + '%';
+
+  document.getElementById('progress-label-kiri').textContent =
+    'Terkumpul: ' + fmtRupiah(totalMasuk);
+}
+function copyRek() { 
+  navigator.clipboard.writeText('00043-01-88-000897-7').then(() => {
+    let btn = document.querySelector('.copy-btn'); 
+    let orig = btn.innerHTML; 
+    btn.innerHTML = '✅ Tersalin!'; 
+    setTimeout(() => btn.innerHTML = orig, 2000);
+  }); 
+}
+
+function setNominal(el, val) {
+  document.querySelectorAll('.nominal-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('wa-link').href = 
+    `https://wa.me/6281219041850?text=Halo%2C%20saya%20ingin%20berdonasi%20sebesar%20Rp%20${parseInt(val).toLocaleString('id-ID')}%20untuk%20pembangunan%20Musholla%20An-Nur%20MPHS.`;
+}
+
+// GALERI
+const galleryImages = [
+  { url: GH_RAW+'gambar1.jpeg', title:'Tampak Depan Musholla', date:'Foto Proyek', tag:'📸 Eksterior' },
+  { url: GH_RAW+'gambar2.jpeg', title:'Interior & Lokasi', date:'Foto Proyek', tag:'🕌 Interior' },
+  { url: GH_RAW+'peletakan%20batu%20pertama.jpeg', title:'Peletakan Batu Pertama', date:'1 Februari 2026', tag:'🏗️ Tahap Awal' },
+  { url: GH_RAW+'musholla1.jpeg', title:'Dokumentasi Pembangunan', date:'Foto Proyek', tag:'📷 Progres' },
+  { url: GH_RAW+'musholla2.jpeg', title:'Dokumentasi Pembangunan', date:'Foto Proyek', tag:'📷 Progres' },
+  { url: GH_RAW+'musholla3.jpeg', title:'Dokumentasi Pembangunan', date:'Foto Proyek', tag:'📷 Progres' },
+  { url: GH_RAW+'musholla4.jpeg', title:'Dokumentasi Pembangunan', date:'Foto Proyek', tag:'📷 Progres' },
+  { url: GH_RAW+'musholla5.jpeg', title:'Dokumentasi Pembangunan', date:'Foto Proyek', tag:'📷 Progres' },
+  { url: GH_RAW+'denah.jpeg', title:'Denah Rencana Musholla', date:'Gambar Perencanaan', tag:'📐 Denah' },
+];
+
+function loadGallery() {
+  document.getElementById('gallery-grid').innerHTML = galleryImages.map((img,i) => `
+    <div class="doc-card" onclick="openLightbox(${i})">
+      <div class="doc-img"><img src="${img.url}" loading="lazy" onerror="this.style.display='none'"></div>
+      <div class="doc-body">
+        <div class="doc-date">${img.date}</div>
+        <div class="doc-title">${img.title}</div>
+        <div class="doc-tag">${img.tag}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+let lbIndex = 0;
+function openLightbox(i) {
+  lbIndex = i;
+  let lb = document.getElementById('lightbox');
+  if (!lb) {
+    let div = document.createElement('div'); 
+    div.id = 'lightbox'; 
+    div.style.cssText = 'display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,0.9);align-items:center;justify-content:center;flex-direction:column;';
+    div.innerHTML = `<button onclick="closeLightbox()" style="position:absolute;top:1.5rem;right:1.5rem;background:white;border:none;width:44px;height:44px;border-radius:50%;font-size:1.5rem;cursor:pointer;">✕</button>
+      <button onclick="lbNav(-1)" style="position:absolute;left:1rem;top:50%;background:white;border:none;width:48px;height:48px;border-radius:50%;font-size:2rem;cursor:pointer;">‹</button>
+      <button onclick="lbNav(1)" style="position:absolute;right:1rem;top:50%;background:white;border:none;width:48px;height:48px;border-radius:50%;font-size:2rem;cursor:pointer;">›</button>
+      <img id="lb-img" style="max-width:88vw;max-height:78vh;border-radius:12px;">
+      <div style="margin-top:1rem;color:white;text-align:center;"><div id="lb-title"></div><div id="lb-date" style="font-size:13px;opacity:0.7;"></div></div>`;
+    document.body.appendChild(div);
+  }
+  document.getElementById('lb-img').src = galleryImages[i].url;
+  document.getElementById('lb-title').innerText = galleryImages[i].title;
+  document.getElementById('lb-date').innerText = galleryImages[i].date;
+  document.getElementById('lightbox').style.display = 'flex';
+}
+function closeLightbox() { document.getElementById('lightbox').style.display = 'none'; }
+function lbNav(dir) { lbIndex = (lbIndex + dir + galleryImages.length) % galleryImages.length; openLightbox(lbIndex); }
+
+// ANIMASI
+const observer = new IntersectionObserver(e => e.forEach(i => i.isIntersecting && i.target.classList.add('visible')), { threshold: 0.1 });
+document.querySelectorAll('.animate-in').forEach(el => observer.observe(el));
+
+window.addEventListener('load', () => { loadGallery(); fetchData(); });
+</script>
+</body>
+</html>
