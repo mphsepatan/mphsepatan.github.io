@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -607,6 +606,214 @@
     font-size: 0.9rem;
   }
 }
+
+/* ===== MODAL JADWAL PENGAJIAN ===== */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(8px);
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-content {
+  background: var(--cream);
+  border-radius: 28px;
+  max-width: 800px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 2rem;
+  margin: 2rem auto;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+  position: relative;
+  animation: modalSlide 0.3s ease;
+}
+
+@keyframes modalSlide {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-close {
+  position: sticky;
+  top: 0;
+  float: right;
+  background: var(--cream);
+  border: 2px solid var(--border);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text);
+  transition: all 0.2s;
+  z-index: 10;
+}
+
+.modal-close:hover {
+  background: var(--red-soft);
+  border-color: var(--red);
+  color: var(--red);
+}
+
+.modal-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: var(--green);
+  margin-bottom: 0.5rem;
+}
+
+.modal-sub {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+.jadwal-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.jadwal-item {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 1.2rem 1.5rem;
+  border: 1px solid var(--border);
+  transition: all 0.2s;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem 2rem;
+}
+
+.jadwal-item:hover {
+  border-color: var(--gold);
+  box-shadow: var(--shadow);
+}
+
+.jadwal-item .label {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.jadwal-item .value {
+  font-size: 14px;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.jadwal-item .value.status-upcoming {
+  color: var(--green);
+  font-weight: 700;
+}
+
+.jadwal-item .value.status-past {
+  color: var(--text-muted);
+}
+
+.jadwal-item .value.status-today {
+  color: var(--red);
+  font-weight: 700;
+}
+
+.jadwal-item .status-badge {
+  display: inline-block;
+  padding: 2px 12px;
+  border-radius: 100px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.jadwal-item .status-badge.upcoming {
+  background: var(--green-light);
+  color: var(--green);
+}
+
+.jadwal-item .status-badge.past {
+  background: #f1f3f5;
+  color: #868e96;
+}
+
+.jadwal-item .status-badge.today {
+  background: var(--red-soft);
+  color: var(--red);
+}
+
+.jadwal-empty {
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-muted);
+}
+
+.jadwal-empty .emoji {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.view-all-btn {
+  margin-top: 1.5rem;
+  width: 100%;
+  padding: 12px;
+  background: var(--green);
+  color: white;
+  border: none;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.view-all-btn:hover {
+  background: var(--green-mid);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(45,106,79,0.25);
+}
+
+.view-all-btn .badge-count {
+  background: rgba(255,255,255,0.2);
+  padding: 2px 12px;
+  border-radius: 100px;
+  font-size: 12px;
+  margin-left: 8px;
+}
+
+@media (max-width: 600px) {
+  .modal-content {
+    padding: 1.2rem;
+    margin: 0.5rem;
+    border-radius: 20px;
+  }
+  .modal-title {
+    font-size: 1.3rem;
+  }
+  .jadwal-item {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+    padding: 1rem;
+  }
+  .jadwal-item .value {
+    font-size: 13px;
+  }
+}
 </style>
 </head>
 <body>
@@ -685,12 +892,37 @@
       </div>
     </div>
 
+    <!-- Tombol Lihat Semua Jadwal -->
+    <div style="text-align: center; margin-top: 1.5rem;">
+      <button onclick="openJadwalModal()" class="view-all-btn" id="viewAllBtn">
+        📋 Lihat Semua Jadwal Pengajian
+        <span class="badge-count" id="jadwal-count">0</span>
+      </button>
+    </div>
+
     <!-- Status Update -->
-    <div style="text-align: center; margin-top: 1.5rem; font-size: 12px; color: #a0b8a8;">
+    <div style="text-align: center; margin-top: 0.8rem; font-size: 12px; color: #a0b8a8;">
       <span id="p-status">📋 Data dari Google Sheets (Jadwal)</span>
     </div>
   </div>
 </section>
+
+<!-- ===== MODAL JADWAL PENGAJIAN ===== -->
+<div class="modal-overlay" id="jadwalModal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeJadwalModal()">✕</button>
+    <h2 class="modal-title">📋 Semua Jadwal Pengajian</h2>
+    <p class="modal-sub">Daftar lengkap jadwal pengajian Malam Jum'at Musholla An-Nur MPHS</p>
+    <div id="jadwalModalList" class="jadwal-list">
+      <!-- Akan diisi oleh JavaScript -->
+      <div class="jadwal-empty">
+        <span class="emoji">📭</span>
+        <p>Memuat data jadwal...</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- DONASI -->
 <section id="donasi">
   <div class="container">
@@ -858,6 +1090,10 @@ let allTransactions = []; // SEMUA transaksi (Masuk + Keluar)
 let filtered = [];
 let currentPage = 1;
 const perPage = 10;
+
+// Variabel untuk jadwal
+let allJadwal = []; // Semua data jadwal dari sheet
+let upcomingJadwal = []; // Jadwal yang akan datang
 
 // Format tanggal Indonesia (11 Januari 2026)
 function formatTanggalIndonesia(value) {
@@ -1107,12 +1343,7 @@ function setNominal(el, val) {
 
 // GALERI
 const galleryImages = [
-  // { url: GH_RAW+'gambar1.jpeg', title:'Tampak Depan Musholla', date:'Foto Proyek', tag:'📸 Eksterior' },
-  // { url: GH_RAW+'gambar2.jpeg', title:'Interior & Lokasi', date:'Foto Proyek', tag:'🕌 Interior' },
   { url: GH_RAW+'peletakan%20batu%20pertama.jpeg', title:'Peletakan Batu Pertama', date:'1 Februari 2026', tag:'🏗️ Tahap Awal' },
-  // { url: GH_RAW+'musholla1.jpeg', title:'Dokumentasi Pembangunan', date:'Foto Proyek', tag:'📷 Progres' },
-  // { url: GH_RAW+'musholla2.jpeg', title:'Dokumentasi Pembangunan', date:'Foto Proyek', tag:'📷 Progres' },
-  // { url: GH_RAW+'musholla3.jpeg', title:'Dokumentasi Pembangunan', date:'Foto Proyek', tag:'📷 Progres' },
   { url: GH_RAW+'musholla4.jpeg', title:'Dokumentasi Pembangunan', date:'Foto Proyek', tag:'📷 Progres' },
   { url: GH_RAW+'musholla5.jpeg', title:'Dokumentasi Pembangunan', date:'Foto Proyek', tag:'📷 Progres' },
   { url: GH_RAW+'denah.jpeg', title:'Denah Rencana Musholla', date:'Gambar Perencanaan', tag:'📐 Denah' },
@@ -1158,15 +1389,113 @@ function lbNav(dir) { lbIndex = (lbIndex + dir + galleryImages.length) % gallery
 const observer = new IntersectionObserver(e => e.forEach(i => i.isIntersecting && i.target.classList.add('visible')), { threshold: 0.1 });
 document.querySelectorAll('.animate-in').forEach(el => observer.observe(el));
 
-window.addEventListener('load', () => { loadGallery(); fetchData();fetchPengajian(); });
+// ===== FUNGSI MODAL JADWAL =====
+function openJadwalModal() {
+  const modal = document.getElementById('jadwalModal');
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+  renderJadwalModal();
+}
+
+function closeJadwalModal() {
+  const modal = document.getElementById('jadwalModal');
+  modal.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// Tutup modal saat klik overlay
+document.getElementById('jadwalModal').addEventListener('click', function(e) {
+  if (e.target === this) closeJadwalModal();
+});
+
+// Tutup modal dengan ESC
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeJadwalModal();
+});
+
+function renderJadwalModal() {
+  const container = document.getElementById('jadwalModalList');
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  
+  if (allJadwal.length === 0) {
+    container.innerHTML = `
+      <div class="jadwal-empty">
+        <span class="emoji">📭</span>
+        <p>Belum ada data jadwal dari Google Sheets</p>
+        <p style="font-size: 13px; margin-top: 8px;">Silakan tambahkan data di sheet "Jadwal"</p>
+      </div>
+    `;
+    return;
+  }
+  
+  // Urutkan berdasarkan tanggal (terlama ke terbaru)
+  const sorted = [...allJadwal].sort((a, b) => {
+    if (!a.tanggalObj || !b.tanggalObj) return 0;
+    return a.tanggalObj - b.tanggalObj;
+  });
+  
+  let html = '';
+  sorted.forEach(j => {
+    let statusClass = '';
+    let statusLabel = '';
+    let badgeClass = '';
+    
+    if (j.daysDiff === 0) {
+      statusClass = 'status-today';
+      statusLabel = '🔴 Hari Ini!';
+      badgeClass = 'today';
+    } else if (j.daysDiff > 0 && j.daysDiff <= 7) {
+      statusClass = 'status-upcoming';
+      statusLabel = `🟢 ${j.daysDiff} hari lagi`;
+      badgeClass = 'upcoming';
+    } else if (j.daysDiff > 0) {
+      statusClass = 'status-upcoming';
+      statusLabel = `📅 ${j.daysDiff} hari lagi`;
+      badgeClass = 'upcoming';
+    } else {
+      statusClass = 'status-past';
+      statusLabel = '✅ Sudah lewat';
+      badgeClass = 'past';
+    }
+    
+    // Rangkaian
+    const items = j.rangkaian ? j.rangkaian.split('→').map(s => s.trim()).filter(s => s) : ['Yasin', 'Tahlil', 'Barzanji', 'Doa'];
+    
+    html += `
+      <div class="jadwal-item">
+        <div>
+          <div class="label">📅 Hari & Tanggal</div>
+          <div class="value ${statusClass}">${j.hari}, ${j.tanggal}</div>
+        </div>
+        <div>
+          <div class="label">🕢 Waktu</div>
+          <div class="value">${j.waktu}</div>
+        </div>
+        <div>
+          <div class="label">📍 Tempat</div>
+          <div class="value">${j.tempat}</div>
+        </div>
+        <div>
+          <div class="label">🎯 Rangkaian</div>
+          <div class="value" style="font-size: 12px;">${items.map(item => `<span style="background: var(--green-light); padding: 2px 10px; border-radius: 12px; margin: 2px; display: inline-block;">${item}</span>`).join(' ')}</div>
+        </div>
+        <div style="grid-column: 1/-1; margin-top: 2px;">
+          <span class="status-badge ${badgeClass}">${statusLabel}</span>
+        </div>
+      </div>
+    `;
+  });
+  
+  container.innerHTML = html;
+  
+  // Update counter di tombol
+  const count = allJadwal.length;
+  document.getElementById('jadwal-count').textContent = count;
+}
 
 // =============================================
 // AMBIL DATA PENGAJIAN DARI GOOGLE SHEETS (SHEET: Jadwal)
-// =============================================
-// =============================================
-// =============================================
-// AMBIL DATA PENGAJIAN DARI GOOGLE SHEETS (SHEET: Jadwal)
-// TAMPILKAN 3 JADWAL TERDEKAT YANG AKAN DATANG
 // =============================================
 function fetchPengajian() {
   const url = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/gviz/tq?sheet=Jadwal&tqx=out:json`;
@@ -1227,13 +1556,11 @@ function fetchPengajian() {
           }
           // CASE 2: Format angka timestamp
           else if (typeof rawTanggal === 'number') {
-            // Google Sheets date serial number (hari sejak 30 Des 1899)
             const epoch = new Date(1899, 11, 30);
             tanggalObj = new Date(epoch.getTime() + rawTanggal * 86400000);
           }
           // CASE 3: Format string biasa
           else if (typeof rawTanggal === 'string') {
-            // Coba parse DD/MM/YYYY
             const parts = rawTanggal.split(/[\/\-]/);
             if (parts.length === 3) {
               const day = parseInt(parts[0]);
@@ -1243,7 +1570,6 @@ function fetchPengajian() {
                 tanggalObj = new Date(year, month, day);
               }
             }
-            // Coba parse langsung
             if (!tanggalObj || isNaN(tanggalObj)) {
               tanggalObj = new Date(rawTanggal);
             }
@@ -1254,7 +1580,6 @@ function fetchPengajian() {
         if (!tanggalObj || isNaN(tanggalObj)) {
           const strVal = getVal(idxTanggal);
           if (strVal) {
-            // Coba parse Date(...)
             if (strVal.includes('Date(')) {
               const nums = strVal.match(/\d+/g);
               if (nums && nums.length >= 3) {
@@ -1303,8 +1628,12 @@ function fetchPengajian() {
         });
       });
       
+      // Simpan semua data untuk modal
+      allJadwal = jadwalList;
+      
       // Filter: hanya yang akan datang (daysDiff >= 0)
       const upcoming = jadwalList.filter(j => j.daysDiff >= 0);
+      upcomingJadwal = upcoming;
       
       // Urutkan berdasarkan tanggal terdekat
       upcoming.sort((a, b) => a.daysDiff - b.daysDiff);
@@ -1319,6 +1648,9 @@ function fetchPengajian() {
       
       renderJadwalCards(top3);
       document.getElementById('p-status').textContent = '✅ Menampilkan ' + top3.length + ' jadwal terdekat dari Google Sheets';
+      
+      // Update counter di tombol
+      document.getElementById('jadwal-count').textContent = allJadwal.length;
       
     })
     .catch(err => {
@@ -1417,8 +1749,13 @@ function showDefaultJadwal() {
     return { ...j, daysDiff: diff };
   });
   
+  // Simpan sebagai allJadwal juga
+  allJadwal = jadwalWithDiff;
+  upcomingJadwal = jadwalWithDiff.filter(j => j.daysDiff >= 0);
+  
   renderJadwalCards(jadwalWithDiff);
   document.getElementById('p-status').textContent = '📋 Menampilkan data default';
+  document.getElementById('jadwal-count').textContent = allJadwal.length;
 }
 
 function ingatkanJadwal(hari, tanggal, waktu) {
@@ -1431,6 +1768,9 @@ Semoga Allah memudahkan kita untuk hadir. Aamiin.`;
   
   window.open(`https://wa.me/6281219041850?text=${encodeURIComponent(pesan)}`, '_blank');
 }
+
+window.addEventListener('load', () => { loadGallery(); fetchData(); fetchPengajian(); });
+
 </script>
 </body>
 </html>
