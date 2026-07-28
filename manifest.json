@@ -1,0 +1,23 @@
+{
+  "name": "Al-Qur'an Digital - Musholla An-Nur MPHS",
+  "short_name": "Qur'an MPHS",
+  "description": "Baca Al-Qur'an 30 juz lengkap dengan terjemahan dan tafsir Kemenag, bisa dibaca offline.",
+  "start_url": "./quran.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#FBF7EE",
+  "theme_color": "#1B4332",
+  "lang": "id",
+  "icons": [
+    {
+      "src": "https://raw.githubusercontent.com/mphsepatan/mphsepatan.github.io/refs/heads/main/logomusholla.jpeg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "https://raw.githubusercontent.com/mphsepatan/mphsepatan.github.io/refs/heads/main/logomusholla.jpeg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}

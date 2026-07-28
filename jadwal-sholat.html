@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Jadwal Sholat — Musholla An-Nur MPHS</title>
+<meta name="description" content="Jadwal waktu sholat harian & bulanan untuk seluruh Indonesia, bersumber dari Kementerian Agama RI. Persembahan Musholla An-Nur MPHS.">
+<meta name="theme-color" content="#1B4332">
+<link rel="icon" href="https://raw.githubusercontent.com/mphsepatan/mphsepatan.github.io/refs/heads/main/logomusholla.jpeg">
+<link rel="apple-touch-icon" href="https://raw.githubusercontent.com/mphsepatan/mphsepatan.github.io/refs/heads/main/logomusholla.jpeg">
+<link rel="manifest" href="manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Scheherazade+New:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --hijau-tua:#1B4332; --hijau:#2D6A4F; --hijau-muda:#40916C; --hijau-pudar:#D8E8DF;
+    --emas:#C9A227; --emas-muda:#E8D89A;
+    --krem:#FBF7EE; --krem-kartu:#FFFFFF; --krem-gelap:#F1E9D8;
+    --teks:#22301F; --teks-muda:#6B7A6E; --garis:#E4DFD1;
+    --radius:16px; --shadow:0 4px 20px rgba(27,67,50,0.08);
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Plus Jakarta Sans',sans-serif;background:var(--krem);color:var(--teks);line-height:1.6;}
+  a{color:inherit;text-decoration:none;}
+  button,select{font-family:inherit;cursor:pointer;}
+
+  .nav{position:sticky;top:0;z-index:50;background:var(--hijau-tua);color:#fff;box-shadow:0 2px 12px rgba(0,0,0,.15);}
+  .nav-inner{max-width:1100px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:15px;}
+  .brand-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;border:1.5px solid rgba(255,255,255,.35);background:#fff;}
+  .brand-icon img{width:100%;height:100%;object-fit:cover;display:block;}
+  .brand small{display:block;font-weight:400;opacity:.75;font-size:11px;}
+  .nav-back{font-size:13px;padding:8px 14px;border:1px solid rgba(255,255,255,.25);border-radius:999px;white-space:nowrap;transition:.2s;}
+  .nav-back:hover{background:rgba(255,255,255,.12);}
+  .subnav{background:var(--hijau);}
+  .subnav-inner{max-width:1100px;margin:0 auto;padding:0 20px;display:flex;gap:2px;overflow-x:auto;}
+  .subnav-link{padding:11px 16px;font-size:12.5px;font-weight:600;color:rgba(255,255,255,.72);white-space:nowrap;border-bottom:2px solid transparent;flex-shrink:0;}
+  .subnav-link:hover{color:#fff;}
+  .subnav-link.active{color:#fff;border-bottom-color:var(--emas);}
+
+  .hero{position:relative;background:linear-gradient(180deg,var(--hijau-tua) 0%,var(--hijau) 60%,var(--hijau) 100%);color:#fff;padding:44px 20px 80px;text-align:center;overflow:hidden;}
+  .hero h1{font-family:'Amiri',serif;font-size:clamp(26px,4vw,38px);margin:0 0 6px;}
+  .hero p{max-width:520px;margin:8px auto 0;color:rgba(255,255,255,.85);font-size:14px;}
+
+  .container{max-width:900px;margin:-46px auto 0;padding:0 20px 60px;position:relative;z-index:5;}
+
+  .loc-picker{
+    background:var(--krem-kartu);border-radius:var(--radius);box-shadow:var(--shadow);
+    padding:18px 20px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:20px;
+  }
+  .loc-picker select{
+    flex:1;min-width:150px;padding:11px 14px;border-radius:10px;border:1px solid var(--garis);
+    font-size:13.5px;background:#fff;color:var(--teks);
+  }
+  .loc-picker .loc-label{font-size:13px;color:var(--teks-muda);width:100%;margin-bottom:2px;}
+  .remember-note{font-size:11.5px;color:var(--teks-muda);width:100%;margin-top:2px;}
+
+  .today-card{
+    background:linear-gradient(135deg,var(--hijau-tua),var(--hijau));color:#fff;
+    border-radius:var(--radius);padding:26px 24px;margin-bottom:22px;box-shadow:var(--shadow);
+    text-align:center;position:relative;overflow:hidden;
+  }
+  .today-card .tgl{font-size:13px;opacity:.85;margin-bottom:4px;}
+  .today-card .lokasi{font-family:'Amiri',serif;font-size:20px;margin-bottom:18px;}
+  .next-prayer{font-size:13px;opacity:.9;}
+  .next-prayer b{color:var(--emas-muda);font-size:22px;display:block;margin:4px 0;font-family:'Amiri',serif;}
+  .next-prayer .countdown{font-size:14px;letter-spacing:1px;}
+
+  .waktu-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:20px;}
+  .waktu-item{background:rgba(255,255,255,.1);border-radius:12px;padding:12px 8px;border:1px solid rgba(255,255,255,.15);}
+  .waktu-item.now{background:var(--emas);color:var(--hijau-tua);border-color:var(--emas);}
+  .waktu-item .nm{font-size:11px;opacity:.85;text-transform:uppercase;letter-spacing:.5px;}
+  .waktu-item .jam{font-size:17px;font-weight:700;margin-top:3px;}
+
+  .bulan-toolbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;gap:10px;flex-wrap:wrap;}
+  .bulan-toolbar h3{font-family:'Amiri',serif;font-size:19px;margin:0;}
+  .bulan-nav{display:flex;gap:6px;}
+  .bulan-nav button{background:var(--krem-kartu);border:1px solid var(--garis);border-radius:8px;padding:7px 12px;font-size:13px;}
+
+  table.jadwal-table{width:100%;border-collapse:collapse;background:var(--krem-kartu);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);font-size:12.5px;}
+  table.jadwal-table th, table.jadwal-table td{padding:9px 6px;text-align:center;border-bottom:1px solid var(--garis);}
+  table.jadwal-table th{background:var(--hijau-pudar);color:var(--hijau-tua);font-weight:700;font-size:11px;}
+  table.jadwal-table tr.today{background:var(--krem-gelap);font-weight:700;}
+  .table-scroll{overflow-x:auto;}
+
+  .loading-text{text-align:center;color:var(--teks-muda);padding:40px 0;font-size:14px;}
+  .error-box{text-align:center;padding:26px;background:#fff3f0;border:1px solid #f3c8bc;border-radius:var(--radius);color:#9c3a20;font-size:13.5px;}
+  .error-box button{margin-top:10px;background:var(--hijau);color:#fff;border:none;padding:8px 18px;border-radius:8px;}
+
+  .info-note{font-size:12px;color:var(--teks-muda);text-align:center;margin-top:16px;}
+
+  footer{text-align:center;padding:26px 20px;color:var(--teks-muda);font-size:12.5px;border-top:1px solid var(--garis);}
+  footer a{color:var(--hijau);font-weight:600;}
+
+  @media (max-width:520px){
+    .waktu-grid{grid-template-columns:repeat(3,1fr);}
+  }
+</style>
+</head>
+<body>
+
+<div id="offlineBanner" style="display:none;background:#96631A;color:#fff;text-align:center;padding:9px 14px;font-size:12.5px;font-weight:600;position:sticky;top:0;z-index:60;">
+  📴 Anda sedang offline — menampilkan jadwal terakhir yang tersimpan di perangkat ini.
+</div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="brand">
+      <div class="brand-icon"><img src="https://raw.githubusercontent.com/mphsepatan/mphsepatan.github.io/refs/heads/main/logomusholla.jpeg" alt="Logo Musholla An-Nur MPHS"></div>
+      <div>Jadwal Sholat<small>Musholla An-Nur MPHS</small></div>
+    </div>
+    <a class="nav-back" href="https://mphsepatan.github.io/">← Kembali ke Beranda</a>
+  </div>
+  <div class="subnav">
+    <div class="subnav-inner">
+      <a href="quran.html" class="subnav-link">📖 Al-Qur'an</a>
+      <a href="jadwal-sholat.html" class="subnav-link active">🕋 Jadwal Sholat</a>
+      <a href="tahlil-doa.html" class="subnav-link">📿 Tahlil &amp; Doa</a>
+      <a href="maulid-barzanji.html" class="subnav-link">🌙 Maulid Al-Barzanji</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <h1>🕋 Jadwal Waktu Sholat</h1>
+  <p>Waktu sholat harian & bulanan untuk 517 kabupaten/kota se-Indonesia, bersumber dari data resmi Kementerian Agama RI.</p>
+</header>
+
+<main class="container">
+
+  <div class="loc-picker" id="locPicker">
+    <div class="loc-label">📍 Pilih lokasi Anda</div>
+    <select id="provinsiSelect"><option>Memuat provinsi…</option></select>
+    <select id="kabkotaSelect"><option>Pilih provinsi dulu</option></select>
+    <div class="remember-note">💾 Lokasi akan diingat otomatis di perangkat ini untuk kunjungan berikutnya.</div>
+  </div>
+
+  <div id="jadwalArea">
+    <div class="loading-text">⏳ Memuat jadwal sholat…</div>
+  </div>
+
+</main>
+
+<footer>
+  Sumber data: <a href="https://equran.id" target="_blank" rel="noopener">EQuran.id API</a>,
+  bersumber dari data resmi Bimas Islam Kementerian Agama RI.<br>
+  © 2026 Musholla An-Nur MPHS — dibuat dengan ❤️ untuk kemudahan ibadah warga.
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  const API = "https://equran.id/api/v2/shalat";
+  const LS_LOC = "mphs_shalat_lokasi";
+  const LS_CACHE_PREFIX = "mphs_shalat_cache:";
+  const NAMA_WAKTU = [
+    {key:"imsak", label:"Imsak"}, {key:"subuh", label:"Subuh"}, {key:"terbit", label:"Terbit"},
+    {key:"dhuha", label:"Dhuha"}, {key:"dzuhur", label:"Dzuhur"}, {key:"ashar", label:"Ashar"},
+    {key:"maghrib", label:"Maghrib"}, {key:"isya", label:"Isya"}
+  ];
+  const WAJIB = ["subuh","dzuhur","ashar","maghrib","isya"];
+
+  const $ = (sel,ctx)=> (ctx||document).querySelector(sel);
+  const provinsiSelect = $("#provinsiSelect");
+  const kabkotaSelect = $("#kabkotaSelect");
+  const jadwalArea = $("#jadwalArea");
+
+  let currentData = null;
+  let viewBulan = new Date().getMonth()+1;
+  let viewTahun = new Date().getFullYear();
+  let countdownTimer = null;
+
+  function unwrap(json){ return (json && typeof json==="object" && "data" in json) ? json.data : json; }
+
+  // ---------- Cache helper (untuk POST request yg tak bisa di-cache Service Worker) ----------
+  function cacheGet(key){
+    try{ const raw = localStorage.getItem(LS_CACHE_PREFIX+key); return raw ? JSON.parse(raw) : null; }catch(e){ return null; }
+  }
+  function cacheSet(key, val){
+    try{ localStorage.setItem(LS_CACHE_PREFIX+key, JSON.stringify(val)); }catch(e){}
+  }
+
+  async function postJSON(url, body, cacheKey){
+    const cached = cacheKey ? cacheGet(cacheKey) : null;
+    try{
+      const res = await fetch(url, {
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body: JSON.stringify(body||{})
+      });
+      if(!res.ok) throw new Error("HTTP "+res.status);
+      const json = await res.json();
+      const data = unwrap(json);
+      if(cacheKey) cacheSet(cacheKey, data);
+      return data;
+    }catch(err){
+      if(cached) return cached;
+      throw err;
+    }
+  }
+
+  async function getJSON(url, cacheKey){
+    const cached = cacheKey ? cacheGet(cacheKey) : null;
+    try{
+      const res = await fetch(url);
+      if(!res.ok) throw new Error("HTTP "+res.status);
+      const json = await res.json();
+      const data = unwrap(json);
+      if(cacheKey) cacheSet(cacheKey, data);
+      return data;
+    }catch(err){
+      if(cached) return cached;
+      throw err;
+    }
+  }
+
+  // ---------- Load provinsi ----------
+  async function loadProvinsi(){
+    try{
+      const list = await getJSON(`${API}/provinsi`, "provinsi");
+      provinsiSelect.innerHTML = list.map(p=>`<option value="${p}">${p}</option>`).join("");
+      const saved = getSavedLoc();
+      if(saved && list.includes(saved.provinsi)){
+        provinsiSelect.value = saved.provinsi;
+      } else if(list.includes("Banten")){
+        provinsiSelect.value = "Banten";
+      }
+      await loadKabkota(provinsiSelect.value, saved ? saved.kabkota : "Kab. Tangerang");
+    }catch(err){
+      provinsiSelect.innerHTML = `<option>Gagal memuat</option>`;
+      jadwalArea.innerHTML = `<div class="error-box">⚠️ Gagal memuat daftar provinsi. Periksa koneksi internet Anda.<br><button id="retryProvinsi">Coba Lagi</button></div>`;
+      $("#retryProvinsi")?.addEventListener("click", loadProvinsi);
+      console.error(err);
+    }
+  }
+
+  async function loadKabkota(provinsi, preferKabkota){
+    kabkotaSelect.innerHTML = `<option>Memuat kab/kota…</option>`;
+    try{
+      const list = await postJSON(`${API}/kabkota`, {provinsi}, "kabkota:"+provinsi);
+      kabkotaSelect.innerHTML = list.map(k=>`<option value="${k}">${k}</option>`).join("");
+      if(preferKabkota && list.includes(preferKabkota)){
+        kabkotaSelect.value = preferKabkota;
+      }
+      saveLoc(provinsiSelect.value, kabkotaSelect.value);
+      loadJadwal();
+    }catch(err){
+      kabkotaSelect.innerHTML = `<option>Gagal memuat</option>`;
+      console.error(err);
+    }
+  }
+
+  provinsiSelect.addEventListener("change", ()=> loadKabkota(provinsiSelect.value));
+  kabkotaSelect.addEventListener("change", ()=>{
+    saveLoc(provinsiSelect.value, kabkotaSelect.value);
+    viewBulan = new Date().getMonth()+1;
+    viewTahun = new Date().getFullYear();
+    loadJadwal();
+  });
+
+  function saveLoc(provinsi, kabkota){
+    localStorage.setItem(LS_LOC, JSON.stringify({provinsi, kabkota}));
+  }
+  function getSavedLoc(){
+    try{ return JSON.parse(localStorage.getItem(LS_LOC)); }catch(e){ return null; }
+  }
+
+  // ---------- Load jadwal bulan berjalan ----------
+  async function loadJadwal(){
+    const provinsi = provinsiSelect.value;
+    const kabkota = kabkotaSelect.value;
+    if(!provinsi || !kabkota || kabkota.includes("Gagal") || kabkota.includes("Memuat")) return;
+
+    jadwalArea.innerHTML = `<div class="loading-text">⏳ Memuat jadwal untuk ${kabkota}…</div>`;
+    const cacheKey = `jadwal:${provinsi}:${kabkota}:${viewBulan}:${viewTahun}`;
+    try{
+      const data = await postJSON(API, {provinsi, kabkota, bulan:viewBulan, tahun:viewTahun}, cacheKey);
+      currentData = data;
+      renderJadwal(data);
+    }catch(err){
+      jadwalArea.innerHTML = `<div class="error-box">⚠️ Gagal memuat jadwal sholat. Periksa koneksi internet Anda.<br><button id="retryJadwal">Coba Lagi</button></div>`;
+      $("#retryJadwal")?.addEventListener("click", loadJadwal);
+      console.error(err);
+    }
+  }
+
+  function renderJadwal(data){
+    const today = new Date();
+    const isCurrentMonth = (data.bulan === today.getMonth()+1 && data.tahun === today.getFullYear());
+    const todayStr = today.toISOString().slice(0,10);
+    const todayRow = (data.jadwal||[]).find(j => j.tanggal_lengkap === todayStr) || (data.jadwal||[])[0];
+
+    jadwalArea.innerHTML = `
+      <div class="today-card" id="todayCard">
+        <div class="tgl">${today.toLocaleDateString("id-ID",{weekday:"long", day:"numeric", month:"long", year:"numeric"})}</div>
+        <div class="lokasi">📍 ${data.kabkota}, ${data.provinsi}</div>
+        <div class="next-prayer" id="nextPrayer">Menghitung waktu sholat berikutnya…</div>
+        <div class="waktu-grid" id="waktuGrid"></div>
+      </div>
+
+      <div class="bulan-toolbar">
+        <h3>📅 Jadwal ${data.bulan_nama} ${data.tahun}</h3>
+        <div class="bulan-nav">
+          <button id="prevBulan">← Bulan Lalu</button>
+          <button id="nextBulan">Bulan Depan →</button>
+        </div>
+      </div>
+
+      <div class="table-scroll">
+        <table class="jadwal-table" id="jadwalTable">
+          <thead>
+            <tr>
+              <th>Tgl</th><th>Hari</th><th>Imsak</th><th>Subuh</th><th>Terbit</th>
+              <th>Dhuha</th><th>Dzuhur</th><th>Ashar</th><th>Maghrib</th><th>Isya</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${(data.jadwal||[]).map(j => `
+              <tr class="${isCurrentMonth && j.tanggal_lengkap===todayStr ? 'today':''}">
+                <td>${j.tanggal}</td><td>${j.hari}</td><td>${j.imsak}</td><td>${j.subuh}</td>
+                <td>${j.terbit}</td><td>${j.dhuha}</td><td>${j.dzuhur}</td><td>${j.ashar}</td>
+                <td>${j.maghrib}</td><td>${j.isya}</td>
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>
+      </div>
+      <div class="info-note">⏱️ Waktu ditampilkan mengikuti zona waktu setempat. Sebagai kehati-hatian, disarankan menunggu beberapa menit setelah adzan sebelum melaksanakan sholat.</div>
+    `;
+
+    if(todayRow && isCurrentMonth){
+      const grid = $("#waktuGrid");
+      grid.innerHTML = NAMA_WAKTU.map(w => `
+        <div class="waktu-item" data-key="${w.key}">
+          <div class="nm">${w.label}</div>
+          <div class="jam">${todayRow[w.key] || "-"}</div>
+        </div>
+      `).join("");
+      startCountdown(todayRow);
+    } else {
+      $("#nextPrayer").textContent = "Pilih bulan berjalan untuk melihat hitung mundur waktu sholat.";
+    }
+
+    $("#prevBulan").addEventListener("click", ()=>{
+      viewBulan--; if(viewBulan<1){ viewBulan=12; viewTahun--; }
+      loadJadwal();
+    });
+    $("#nextBulan").addEventListener("click", ()=>{
+      viewBulan++; if(viewBulan>12){ viewBulan=1; viewTahun++; }
+      loadJadwal();
+    });
+  }
+
+  function toMinutes(hhmm){
+    const [h,m] = hhmm.split(":").map(Number);
+    return h*60+m;
+  }
+
+  function startCountdown(todayRow){
+    if(countdownTimer) clearInterval(countdownTimer);
+
+    function clearActiveWaktu(){
+      document.querySelectorAll(".waktu-item").forEach(el => el.classList.remove("now"));
+    }
+    function markActiveWaktu(activeKey){
+      const el = document.querySelector(`.waktu-item[data-key="${activeKey}"]`);
+      if(el) el.classList.add("now");
+    }
+
+    function tick(){
+      const now = new Date();
+      const nowMin = now.getHours()*60 + now.getMinutes() + now.getSeconds()/60;
+
+      let next = null;
+      for(const key of WAJIB){
+        if(!todayRow[key]) continue;
+        if(toMinutes(todayRow[key]) > nowMin){ next = key; break; }
+      }
+
+      clearActiveWaktu();
+      const nextEl = $("#nextPrayer");
+      if(!next){
+        nextEl.innerHTML = `Waktu Isya sudah lewat. Waktu sholat berikutnya: <b>Subuh</b> besok.`;
+        return;
+      }
+      const target = toMinutes(todayRow[next]);
+      const diff = Math.max(0, target - nowMin);
+      const h = Math.floor(diff/60);
+      const m = Math.floor(diff%60);
+      const s = 59 - now.getSeconds();
+      const labelMap = {subuh:"Subuh", dzuhur:"Dzuhur", ashar:"Ashar", maghrib:"Maghrib", isya:"Isya"};
+      nextEl.innerHTML = `Menuju waktu <b>${labelMap[next]} — ${todayRow[next]}</b><span class="countdown">⏳ ${String(h).padStart(2,"0")}:${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}</span>`;
+
+      markActiveWaktu(next);
+    }
+
+    tick();
+    countdownTimer = setInterval(tick, 1000);
+  }
+
+  // ---------- Status online/offline ----------
+  function updateOnlineStatus(){
+    const banner = $("#offlineBanner");
+    if(banner) banner.style.display = navigator.onLine ? "none" : "block";
+  }
+  window.addEventListener("online", updateOnlineStatus);
+  window.addEventListener("offline", updateOnlineStatus);
+  updateOnlineStatus();
+
+  if("serviceWorker" in navigator){
+    window.addEventListener("load", ()=>{
+      navigator.serviceWorker.register("./sw.js").catch(err=> console.warn("SW gagal:", err));
+    });
+  }
+
+  loadProvinsi();
+})();
+</script>
+</body>
+</html>
