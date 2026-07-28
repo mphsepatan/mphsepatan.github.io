@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Maulid Al-Barzanji — Musholla An-Nur MPHS</title>
+<meta name="description" content="Bacaan Maulid Al-Barzanji lengkap dengan teks Arab, transliterasi, dan terjemahan. Persembahan Musholla An-Nur MPHS.">
+<meta name="theme-color" content="#1B4332">
+<link rel="icon" href="https://raw.githubusercontent.com/mphsepatan/mphsepatan.github.io/refs/heads/main/logomusholla.jpeg">
+<link rel="apple-touch-icon" href="https://raw.githubusercontent.com/mphsepatan/mphsepatan.github.io/refs/heads/main/logomusholla.jpeg">
+<link rel="manifest" href="manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Scheherazade+New:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     ROOT VARIABLES — Konsisten dengan website utama
+     ============================================================ */
+  :root {
+    --hijau-tua: #1B4332;
+    --hijau: #2D6A4F;
+    --hijau-muda: #40916C;
+    --hijau-pudar: #D8E8DF;
+    --emas: #C9A227;
+    --emas-muda: #E8D89A;
+    --krem: #FBF7EE;
+    --krem-kartu: #FFFFFF;
+    --krem-gelap: #F1E9D8;
+    --teks: #22301F;
+    --teks-muda: #6B7A6E;
+    --garis: #E4DFD1;
+    --shadow: 0 4px 20px rgba(27, 67, 50, 0.08);
+    --shadow-hover: 0 8px 30px rgba(27, 67, 50, 0.15);
+    --radius: 16px;
+    --radius-sm: 10px;
+    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* ============================================================
+     RESET & BASE
+     ============================================================ */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--krem);
+    color: var(--teks);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  img {
+    max-width: 100%;
+    display: block;
+  }
+  button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    background: none;
+  }
+
+  /* ============================================================
+     NAVIGASI UTAMA — Sama dengan website utama
+     ============================================================ */
+  .top-nav {
+    background: var(--hijau-tua);
+    color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.18);
+  }
+
+  .nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 700;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+
+  .nav-brand .logo-wrapper {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-brand .logo-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .nav-brand .brand-text {
+    line-height: 1.2;
+  }
+
+  .nav-brand .brand-text small {
+    display: block;
+    font-weight: 400;
+    opacity: 0.75;
+    font-size: 11px;
+    letter-spacing: 0.3px;
+  }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .nav-btn {
+    padding: 8px 18px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: var(--transition);
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .nav-btn:hover {
+    background: rgba(255, 255, 255, 0.18);
+    transform: translateY(-1px);
+  }
+
+  .nav-btn-primary {
+    background: var(--emas);
+    color: var(--hijau-tua);
+    border-color: var(--emas);
+  }
+
+  .nav-btn-primary:hover {
+    background: #dbb12e;
+    border-color: #dbb12e;
+  }
+
+  /* ============================================================
+     SUB NAVIGASI
+     ============================================================ */
+  .sub-nav {
+    background: var(--hijau);
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .sub-nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .sub-nav-inner::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sub-nav-link {
+    padding: 12px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: var(--transition);
+    flex-shrink: 0;
+    letter-spacing: 0.2px;
+  }
+
+  .sub-nav-link:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .sub-nav-link.active {
+    color: #fff;
+    border-bottom-color: var(--emas);
+  }
+
+  /* ============================================================
+     HERO SECTION
+     ============================================================ */
+  .hero {
+    position: relative;
+    background: linear-gradient(165deg, var(--hijau-tua) 0%, var(--hijau) 55%, var(--hijau-muda) 100%);
+    color: #fff;
+    padding: 50px 20px 70px;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 15% 25%, rgba(255, 255, 255, 0.06) 0 2px, transparent 3px),
+      radial-gradient(circle at 85% 55%, rgba(255, 255, 255, 0.05) 0 2px, transparent 3px),
+      radial-gradient(circle at 50% 90%, rgba(255, 255, 255, 0.04) 0 2px, transparent 3px);
+    background-size: 100px 100px;
+    pointer-events: none;
+  }
+
+  .hero-ornament {
+    width: 100px;
+    height: 60px;
+    margin: 0 auto 16px;
+    opacity: 0.9;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero .arabic-title {
+    font-family: 'Scheherazade New', serif;
+    font-size: clamp(30px, 4.5vw, 40px);
+    color: var(--emas-muda);
+    display: block;
+    margin-bottom: 6px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero h1 {
+    font-family: 'Amiri', serif;
+    font-size: clamp(28px, 4vw, 40px);
+    margin: 0 0 6px;
+    position: relative;
+    z-index: 1;
+    letter-spacing: 1px;
+  }
+
+  .hero p {
+    max-width: 540px;
+    margin: 0 auto;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 15px;
+    position: relative;
+    z-index: 1;
+    font-weight: 400;
+  }
+
+  .hero .badge-info {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 8px 20px;
+    background: rgba(255, 255, 255, 0.10);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 999px;
+    font-size: 13px;
+    color: var(--emas-muda);
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero .badge-info span {
+    font-weight: 700;
+  }
+
+  /* ============================================================
+     MAIN CONTAINER
+     ============================================================ */
+  .container {
+    max-width: 1100px;
+    margin: -40px auto 0;
+    padding: 0 20px 60px;
+    position: relative;
+    z-index: 5;
+  }
+
+  /* Search */
+  .search-wrap {
+    max-width: 500px;
+    margin: 0 auto 28px;
+    position: relative;
+  }
+
+  .search-wrap .search-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--teks-muda);
+    font-size: 16px;
+    pointer-events: none;
+  }
+
+  .search-wrap input {
+    width: 100%;
+    padding: 14px 16px 14px 44px;
+    border-radius: 999px;
+    border: 1.5px solid var(--garis);
+    font-size: 14px;
+    font-family: inherit;
+    box-shadow: var(--shadow);
+    outline: none;
+    background: var(--krem-kartu);
+    color: var(--teks);
+    transition: var(--transition);
+  }
+
+  .search-wrap input:focus {
+    border-color: var(--hijau-muda);
+    box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.15), var(--shadow);
+  }
+
+  /* Chapters Grid */
+  .chapter-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+
+  .chapter-card {
+    background: var(--krem-kartu);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    box-shadow: var(--shadow);
+    border: 1.5px solid transparent;
+    transition: var(--transition);
+    cursor: pointer;
+  }
+
+  .chapter-card:hover {
+    border-color: var(--hijau-muda);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+  }
+
+  .chapter-card:active {
+    transform: scale(0.98);
+  }
+
+  .chapter-card .num {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--emas);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+
+  .chapter-card .title {
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--teks);
+  }
+
+  .chapter-card .title-ar {
+    font-family: 'Scheherazade New', serif;
+    font-size: 18px;
+    color: var(--hijau);
+    margin-top: 4px;
+    display: block;
+  }
+
+  .chapter-card .preview {
+    font-size: 13px;
+    color: var(--teks-muda);
+    margin-top: 8px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.6;
+  }
+
+  /* ============================================================
+     DETAIL VIEW
+     ============================================================ */
+  .detail-view {
+    display: none;
+  }
+
+  .detail-view.show {
+    display: block;
+    animation: fadeUp 0.4s ease;
+  }
+
+  .list-view.hide {
+    display: none;
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .detail-header {
+    background: var(--hijau-tua);
+    color: #fff;
+    border-radius: var(--radius);
+    padding: 28px 28px 24px;
+    margin-bottom: 22px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .detail-header::after {
+    content: '';
+    position: absolute;
+    top: -60%;
+    right: -20%;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.03);
+    pointer-events: none;
+  }
+
+  .detail-header .back-btn {
+    background: rgba(255, 255, 255, 0.10);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #fff;
+    padding: 8px 18px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 16px;
+    transition: var(--transition);
+    position: relative;
+    z-index: 1;
+  }
+
+  .detail-header .back-btn:hover {
+    background: rgba(255, 255, 255, 0.20);
+  }
+
+  .detail-header .arabic-title-detail {
+    font-family: 'Scheherazade New', serif;
+    font-size: 28px;
+    color: var(--emas-muda);
+    margin-bottom: 4px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .detail-header h2 {
+    font-family: 'Amiri', serif;
+    font-size: 24px;
+    margin: 0 0 4px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .detail-header .meta-row {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    opacity: 0.85;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Content Tabs */
+  .detail-tabs {
+    display: flex;
+    gap: 4px;
+    background: var(--krem-kartu);
+    border-radius: 12px;
+    padding: 4px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .detail-tabs button {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--teks-muda);
+    transition: var(--transition);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .detail-tabs button:hover {
+    color: var(--teks);
+    background: var(--hijau-pudar);
+  }
+
+  .detail-tabs button.active {
+    background: var(--hijau);
+    color: #fff;
+  }
+
+  .tab-content {
+    display: none;
+  }
+
+  .tab-content.active {
+    display: block;
+    animation: fadeUp 0.3s ease;
+  }
+
+  /* Arabic text content */
+  .arabic-content {
+    font-family: 'Scheherazade New', serif;
+    font-size: 22px;
+    line-height: 2.2;
+    text-align: right;
+    direction: rtl;
+    background: var(--krem-kartu);
+    padding: 24px 28px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    color: #182617;
+    white-space: pre-wrap;
+  }
+
+  .latin-content {
+    font-size: 15px;
+    line-height: 2;
+    background: var(--krem-kartu);
+    padding: 24px 28px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    color: var(--teks);
+    font-style: italic;
+  }
+
+  .translation-content {
+    font-size: 15px;
+    line-height: 2;
+    background: var(--krem-kartu);
+    padding: 24px 28px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    color: var(--teks);
+  }
+
+  .translation-content strong {
+    color: var(--hijau);
+  }
+
+  /* ============================================================
+     READING MODES
+     ============================================================ */
+  body.mode-sepia {
+    --krem: #F3ECDA;
+    --krem-kartu: #F8F2E2;
+    --krem-gelap: #EBE2CE;
+    --garis: #DDD4C0;
+  }
+
+  body.mode-sepia .chapter-card,
+  body.mode-sepia .arabic-content,
+  body.mode-sepia .latin-content,
+  body.mode-sepia .translation-content,
+  body.mode-sepia .detail-tabs {
+    background: #F8F2E2;
+  }
+
+  body.mode-gelap {
+    --krem: #12211A;
+    --krem-kartu: #17301F;
+    --krem-gelap: #1F3D2C;
+    --teks: #E7EFE9;
+    --teks-muda: #93A69A;
+    --garis: #243B30;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.4);
+  }
+
+  body.mode-gelap .chapter-card,
+  body.mode-gelap .arabic-content,
+  body.mode-gelap .latin-content,
+  body.mode-gelap .translation-content,
+  body.mode-gelap .detail-tabs {
+    background: #17301F;
+  }
+
+  body.mode-gelap .arabic-content {
+    color: #EAF3EC;
+  }
+
+  body.mode-gelap .chapter-card .title-ar {
+    color: #EAF3EC;
+  }
+
+  body.mode-gelap .search-wrap input {
+    background: #17301F;
+    color: #fff;
+    border-color: #243B30;
+  }
+
+  body.mode-gelap .search-wrap input:focus {
+    border-color: var(--emas);
+  }
+
+  body.mode-gelap .detail-tabs button:hover {
+    background: #1F3D2C;
+    color: #E7EFE9;
+  }
+
+  body.mode-gelap .detail-tabs button.active {
+    background: var(--hijau);
+    color: #fff;
+  }
+
+  body.mode-gelap .detail-header {
+    background: #0D1E15;
+  }
+
+  /* ============================================================
+     FOOTER
+     ============================================================ */
+  .footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: var(--teks-muda);
+    font-size: 13px;
+    border-top: 1.5px solid var(--garis);
+    margin-top: 20px;
+  }
+
+  .footer a {
+    color: var(--hijau);
+    font-weight: 600;
+    transition: var(--transition);
+  }
+
+  .footer a:hover {
+    color: var(--emas);
+  }
+
+  /* ============================================================
+     OFFLINE BANNER
+     ============================================================ */
+  #offlineBanner {
+    display: none;
+    background: #96631A;
+    color: #fff;
+    text-align: center;
+    padding: 10px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+    z-index: 110;
+  }
+
+  /* ============================================================
+     LOADING & ERROR
+     ============================================================ */
+  .loading-text {
+    text-align: center;
+    color: var(--teks-muda);
+    padding: 50px 0;
+    font-size: 14px;
+    grid-column: 1 / -1;
+  }
+
+  .error-box {
+    text-align: center;
+    padding: 30px;
+    background: #fff3f0;
+    border: 1px solid #f3c8bc;
+    border-radius: var(--radius);
+    color: #9c3a20;
+    font-size: 14px;
+  }
+
+  .error-box button {
+    margin-top: 12px;
+    background: var(--hijau);
+    color: #fff;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: var(--transition);
+  }
+
+  .error-box button:hover {
+    background: var(--hijau-tua);
+  }
+
+  /* ============================================================
+     RESPONSIVE
+     ============================================================ */
+  @media (max-width: 768px) {
+    .nav-container {
+      padding: 10px 16px;
+    }
+
+    .nav-brand .brand-text {
+      font-size: 14px;
+    }
+
+    .nav-btn {
+      padding: 6px 14px;
+      font-size: 12px;
+    }
+
+    .sub-nav-inner {
+      padding: 0 12px;
+    }
+
+    .sub-nav-link {
+      padding: 10px 14px;
+      font-size: 12px;
+    }
+
+    .hero {
+      padding: 36px 16px 60px;
+    }
+
+    .hero .arabic-title {
+      font-size: 26px;
+    }
+
+    .hero h1 {
+      font-size: 26px;
+    }
+
+    .container {
+      margin-top: -30px;
+      padding: 0 14px 40px;
+    }
+
+    .chapter-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .detail-header {
+      padding: 20px 18px;
+    }
+
+    .detail-header .arabic-title-detail {
+      font-size: 22px;
+    }
+
+    .detail-header h2 {
+      font-size: 20px;
+    }
+
+    .arabic-content {
+      font-size: 18px;
+      padding: 18px 16px;
+    }
+
+    .latin-content,
+    .translation-content {
+      padding: 18px 16px;
+      font-size: 14px;
+    }
+
+    .detail-tabs button {
+      padding: 8px 14px;
+      font-size: 12px;
+    }
+
+    .hero .badge-info {
+      font-size: 12px;
+      padding: 6px 16px;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .nav-brand .logo-wrapper {
+      width: 34px;
+      height: 34px;
+    }
+
+    .nav-brand .brand-text {
+      font-size: 12px;
+    }
+
+    .nav-brand .brand-text small {
+      font-size: 10px;
+    }
+
+    .nav-btn {
+      padding: 5px 12px;
+      font-size: 11px;
+    }
+
+    .search-wrap input {
+      padding: 12px 14px 12px 40px;
+      font-size: 13px;
+    }
+
+    .arabic-content {
+      font-size: 16px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     OFFLINE BANNER
+     ============================================================ -->
+<div id="offlineBanner">📴 Anda sedang offline — menampilkan data yang sudah tersimpan di perangkat ini.</div>
+
+<!-- ============================================================
+     NAVIGASI UTAMA
+     ============================================================ -->
+<nav class="top-nav">
+  <div class="nav-container">
+    <a href="https://mphsepatan.github.io/" class="nav-brand">
+      <div class="logo-wrapper">
+        <img src="https://raw.githubusercontent.com/mphsepatan/mphsepatan.github.io/refs/heads/main/logomusholla.jpeg" alt="Logo Musholla An-Nur MPHS" loading="eager">
+      </div>
+      <div class="brand-text">
+        Musholla An-Nur
+        <small>MPHS · Maulid Barzanji</small>
+      </div>
+    </a>
+    <div class="nav-actions">
+      <a href="https://mphsepatan.github.io/" class="nav-btn">🏠 Beranda</a>
+      <a href="jadwal-sholat.html" class="nav-btn">🕋 Jadwal</a>
+      <a href="tahlil-doa.html" class="nav-btn">📿 Tahlil</a>
+      <a href="quran.html" class="nav-btn">📖 Al-Qur'an</a>
+    </div>
+  </div>
+
+  <!-- Sub Navigation -->
+  <div class="sub-nav">
+    <div class="sub-nav-inner">
+      <a href="quran.html" class="sub-nav-link">📖 Al-Qur'an</a>
+      <a href="jadwal-sholat.html" class="sub-nav-link">🕋 Jadwal Sholat</a>
+      <a href="tahlil-doa.html" class="sub-nav-link">📿 Tahlil &amp; Doa</a>
+      <a href="maulid-barzanji.html" class="sub-nav-link active">🌙 Maulid Al-Barzanji</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<header class="hero">
+  <svg class="hero-ornament" viewBox="0 0 120 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M10 70V38C10 18 26 4 60 4C94 4 110 18 110 38V70" stroke="#E8D89A" stroke-width="2.5"/>
+    <path d="M25 70V42C25 27 38 16 60 16C82 16 95 27 95 42V70" stroke="#C9A227" stroke-width="1.5" opacity="0.7"/>
+    <circle cx="60" cy="12" r="3.5" fill="#E8D89A"/>
+  </svg>
+
+  <span class="arabic-title">مَوْلِدُ الْبَرْزَنْجِيِّ</span>
+  <h1>Maulid Al-Barzanji</h1>
+  <p>Kitab maulid yang berisi pujian dan sejarah Nabi Muhammad ﷺ, dilengkapi teks Arab, transliterasi, dan terjemahan.</p>
+  <div class="badge-info" id="totalBadge">📚 <span id="totalCount">0</span> bab bacaan</div>
+
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input id="searchInput" type="text" placeholder="Cari bab… misal: Mahallul Qiyam, Yâ nabî salam">
+  </div>
+</header>
+
+<!-- ============================================================
+     MAIN
+     ============================================================ -->
+<main class="container">
+
+  <!-- LIST VIEW -->
+  <section class="list-view" id="listView">
+    <div id="chapterGrid" class="chapter-grid">
+      <div class="loading-text">⏳ Memuat data Maulid Al-Barzanji…</div>
+    </div>
+  </section>
+
+  <!-- DETAIL VIEW -->
+  <section class="detail-view" id="detailView">
+    <div id="detailContent"></div>
+  </section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer">
+  Sumber data: <a href="https://raw.githubusercontent.com/mphsepatan/mphsepatan.github.io/refs/heads/main/barzanji.json" target="_blank" rel="noopener">Repository MPHS</a>,
+  bersumber dari Kitab Maulid Al-Barzanji.<br>
+  © 2026 Musholla An-Nur MPHS — dibuat dengan ❤️ untuk kemudahan ibadah warga.
+</footer>
+
+<!-- ============================================================
+     SCRIPT
+     ============================================================ -->
+<script>
+  (function() {
+    "use strict";
+
+    const DATA_URL = "https://raw.githubusercontent.com/mphsepatan/mphsepatan.github.io/refs/heads/main/barzanji.json";
+    const LS_MODE = "mphs_quran_mode"; // reuse same mode storage
+    const LS_BOOKMARK = "mphs_barzanji_bookmark";
+
+    let allData = null;
+    let chapters = [];
+
+    const $ = (sel, ctx) => (ctx || document).querySelector(sel);
+    const $$ = (sel, ctx) => Array.from((ctx || document).querySelectorAll(sel));
+
+    const chapterGrid = $("#chapterGrid");
+    const listView = $("#listView");
+    const detailView = $("#detailView");
+    const detailContent = $("#detailContent");
+    const searchInput = $("#searchInput");
+    const totalCount = $("#totalCount");
+
+    // ---------- Load data ----------
+    async function loadData() {
+      try {
+        const res = await fetch(DATA_URL);
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        const json = await res.json();
+        allData = json;
+        chapters = json.chapters || [];
+        totalCount.textContent = chapters.length;
+        renderGrid(chapters);
+        checkBookmark();
+      } catch (err) {
+        chapterGrid.innerHTML = `
+          <div class="error-box">
+            ⚠️ Gagal memuat data Maulid Al-Barzanji. Periksa koneksi internet Anda.<br>
+            <button id="retryBtn">🔄 Coba Lagi</button>
+          </div>
+        `;
+        $("#retryBtn")?.addEventListener("click", loadData);
+        console.error(err);
+      }
+    }
+
+    function renderGrid(list) {
+      if (!list.length) {
+        chapterGrid.innerHTML = `<div class="loading-text">🔍 Bab tidak ditemukan.</div>`;
+        return;
+      }
+      chapterGrid.innerHTML = list.map(ch => `
+        <div class="chapter-card" data-id="${ch.id}" tabindex="0" role="button" aria-label="Buka bab ${ch.title}">
+          <div class="num">Bab ${ch.id}</div>
+          <div class="title">${ch.title}</div>
+          <span class="title-ar">${ch.arabic ? ch.arabic.split('\n')[0].slice(0, 50) + (ch.arabic.split('\n')[0].length > 50 ? '…' : '') : ''}</span>
+          <div class="preview">${ch.translation ? ch.translation.slice(0, 120) + (ch.translation.length > 120 ? '…' : '') : ''}</div>
+        </div>
+      `).join("");
+
+      $$(".chapter-card").forEach(card => {
+        card.addEventListener("click", () => openDetail(card.dataset.id));
+        card.addEventListener("keypress", e => { if (e.key === "Enter") openDetail(card.dataset.id); });
+      });
+    }
+
+    // ---------- Search ----------
+    searchInput.addEventListener("input", applySearch);
+
+    function applySearch() {
+      const q = searchInput.value.trim().toLowerCase();
+      if (!q) {
+        renderGrid(chapters);
+        return;
+      }
+      const filtered = chapters.filter(ch =>
+        ch.title.toLowerCase().includes(q) ||
+        (ch.translation || "").toLowerCase().includes(q) ||
+        String(ch.id) === q
+      );
+      renderGrid(filtered);
+    }
+
+    // ---------- Detail view ----------
+    function openDetail(id) {
+      const ch = chapters.find(c => String(c.id) === String(id));
+      if (!ch) return;
+
+      listView.classList.add("hide");
+      detailView.classList.add("show");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      location.hash = `bab/${id}`;
+
+      // Save bookmark
+      localStorage.setItem(LS_BOOKMARK, JSON.stringify({ id: ch.id, title: ch.title, ts: Date.now() }));
+      checkBookmark();
+
+      renderDetail(ch);
+    }
+
+    function closeDetail() {
+      listView.classList.remove("hide");
+      detailView.classList.remove("show");
+      location.hash = "";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function renderDetail(ch) {
+      const hasArabic = ch.arabic && ch.arabic.trim().length > 0;
+      const hasLatin = ch.transliteration && ch.transliteration.trim().length > 0;
+      const hasTranslation = ch.translation && ch.translation.trim().length > 0;
+
+      detailContent.innerHTML = `
+        <div class="detail-header">
+          <button class="back-btn" id="backBtn">← Daftar Bab</button>
+          <div class="arabic-title-detail">${hasArabic ? ch.arabic.split('\n')[0].slice(0, 60) : ''}</div>
+          <h2>${ch.title}</h2>
+          <div class="meta-row">
+            <span>📖 Bab ${ch.id}</span>
+            ${hasArabic ? '<span>🇸🇦 Teks Arab</span>' : ''}
+            ${hasLatin ? '<span>🔤 Transliterasi</span>' : ''}
+            ${hasTranslation ? '<span>🇮🇩 Terjemahan</span>' : ''}
+          </div>
+        </div>
+
+        <div class="detail-tabs" id="detailTabs">
+          ${hasArabic ? `<button class="active" data-tab="arabic">🇸🇦 Arab</button>` : ''}
+          ${hasLatin ? `<button data-tab="latin" class="${!hasArabic ? 'active' : ''}">🔤 Latin</button>` : ''}
+          ${hasTranslation ? `<button data-tab="translation" class="${(!hasArabic && !hasLatin) ? 'active' : ''}">🇮🇩 Terjemahan</button>` : ''}
+        </div>
+
+        ${hasArabic ? `<div class="tab-content active" id="tab-arabic"><div class="arabic-content">${ch.arabic}</div></div>` : ''}
+        ${hasLatin ? `<div class="tab-content" id="tab-latin"><div class="latin-content">${ch.transliteration}</div></div>` : ''}
+        ${hasTranslation ? `<div class="tab-content" id="tab-translation"><div class="translation-content">${ch.translation}</div></div>` : ''}
+      `;
+
+      // Back button
+      $("#backBtn").addEventListener("click", closeDetail);
+
+      // Tabs
+      const tabs = $$("#detailTabs button");
+      tabs.forEach(btn => {
+        btn.addEventListener("click", () => {
+          tabs.forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          $$(".tab-content").forEach(tc => tc.classList.remove("active"));
+          const target = document.getElementById(`tab-${btn.dataset.tab}`);
+          if (target) target.classList.add("active");
+        });
+      });
+    }
+
+    // ---------- Bookmark ----------
+    function getBookmark() {
+      try { return JSON.parse(localStorage.getItem(LS_BOOKMARK)); } catch (e) { return null; }
+    }
+
+    function checkBookmark() {
+      // We show bookmark in hero via badge or just use it for redirect
+      // Not needed for this page but kept for consistency
+    }
+
+    // ---------- Mode ----------
+    function setMode(mode) {
+      document.body.classList.remove("mode-sepia", "mode-gelap");
+      if (mode === "sepia") document.body.classList.add("mode-sepia");
+      if (mode === "gelap") document.body.classList.add("mode-gelap");
+      localStorage.setItem(LS_MODE, mode);
+    }
+
+    // ---------- Online/Offline ----------
+    function updateOnlineStatus() {
+      const banner = $("#offlineBanner");
+      if (!banner) return;
+      banner.style.display = navigator.onLine ? "none" : "block";
+    }
+    window.addEventListener("online", updateOnlineStatus);
+    window.addEventListener("offline", updateOnlineStatus);
+    updateOnlineStatus();
+
+    // ---------- Service Worker ----------
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./sw.js").catch(err => {
+          console.warn("Service worker gagal didaftarkan:", err);
+        });
+      });
+    }
+
+    // ---------- Init ----------
+    const savedMode = localStorage.getItem(LS_MODE);
+    if (savedMode) setMode(savedMode);
+
+    loadData().then(() => {
+      const hash = location.hash.match(/bab\/(\d+)/);
+      if (hash) {
+        const ch = chapters.find(c => String(c.id) === String(hash[1]));
+        if (ch) openDetail(ch.id);
+      }
+    });
+
+    window.addEventListener("popstate", () => {
+      const hash = location.hash.match(/bab\/(\d+)/);
+      if (hash) {
+        const ch = chapters.find(c => String(c.id) === String(hash[1]));
+        if (ch) openDetail(ch.id);
+      } else closeDetail();
+    });
+
+  })();
+</script>
+</body>
+</html>
