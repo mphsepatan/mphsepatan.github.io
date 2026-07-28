@@ -2,7 +2,7 @@
 // Tujuan: setelah surah pernah dibuka sekali, halaman & datanya tersimpan di perangkat
 // sehingga load berikutnya jadi instan (ringan) dan tetap bisa diakses saat offline.
 
-const VERSION = "v2";
+const VERSION = "v3";
 const SHELL_CACHE = `mphs-quran-shell-${VERSION}`;
 const DATA_CACHE = `mphs-quran-data-${VERSION}`;
 const AUDIO_CACHE = `mphs-quran-audio-${VERSION}`;
