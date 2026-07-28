@@ -12,10 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Scheherazade+New:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
-<!-- Canonical URL -->
-<link rel="canonical" href="https://mphsepatan.github.io/">
-<!-- Google tag (gtag.js) -->
+  <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GHBLKDEWBE"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -38,7 +35,7 @@
   button{font-family:inherit;cursor:pointer;}
 
   .nav{position:sticky;top:0;z-index:50;background:var(--hijau-tua);color:#fff;box-shadow:0 2px 12px rgba(0,0,0,.15);}
-  .nav-inner{max-width:1100px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+  .nav-inner{max-width:1100px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
   .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:15px;}
   .brand-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;border:1.5px solid rgba(255,255,255,.35);background:#fff;}
   .brand-icon img{width:100%;height:100%;object-fit:cover;display:block;}
@@ -63,8 +60,11 @@
   .tab-panel{display:none;}
   .tab-panel.active{display:block;}
 
-  .toolbar-row{display:flex;justify-content:flex-end;margin-bottom:16px;}
+  .toolbar-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:16px;}
   .print-btn{background:var(--krem-kartu);border:1px solid var(--garis);padding:9px 16px;border-radius:10px;font-size:13px;font-weight:600;box-shadow:var(--shadow);}
+  .dropdown-version{display:flex;align-items:center;gap:8px;background:var(--krem-kartu);padding:4px 12px 4px 16px;border-radius:10px;border:1px solid var(--garis);box-shadow:var(--shadow);}
+  .dropdown-version label{font-size:13px;font-weight:600;color:var(--teks-muda);}
+  .dropdown-version select{padding:6px 8px;border-radius:8px;border:1px solid var(--garis);background:var(--krem);font-weight:600;font-size:13px;color:var(--teks);}
 
   .section-card{background:var(--krem-kartu);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px;margin-bottom:16px;}
   .section-card h2{font-family:'Amiri',serif;font-size:19px;margin:0 0 4px;color:var(--hijau-tua);display:flex;align-items:center;gap:8px;}
@@ -78,6 +78,10 @@
 
   .doa-grid{display:grid;gap:16px;}
 
+  /* Sembunyikan item yang tidak sesuai versi */
+  .tahlil-item{transition:all 0.3s ease;}
+  .tahlil-item.hidden{display:none;}
+
   footer{text-align:center;padding:26px 20px;color:var(--teks-muda);font-size:12.5px;border-top:1px solid var(--garis);}
   footer a{color:var(--hijau);font-weight:600;}
 
@@ -86,8 +90,9 @@
     .container{margin-top:0;max-width:100%;}
     body{background:#fff;}
     .section-card{box-shadow:none;border:1px solid #ccc;break-inside:avoid;}
+    .tahlil-item.hidden{display:block !important;}
   }
-  @media (max-width:600px){ .arab{font-size:22px;} }
+  @media (max-width:600px){ .arab{font-size:22px;} .toolbar-row{flex-direction:column;align-items:stretch;} }
 </style>
 </head>
 <body>
@@ -127,89 +132,347 @@
   </div>
 
   <div class="toolbar-row">
+    <div class="dropdown-version">
+      <label for="versionSelect">📖 Versi:</label>
+      <select id="versionSelect">
+        <option value="lengkap">Lengkap (39 item)</option>
+        <option value="singkat">Singkat (Inti Tahlil)</option>
+      </select>
+    </div>
     <button class="print-btn" onclick="window.print()">🖨️ Cetak halaman ini</button>
   </div>
 
   <!-- ================= TAHLIL ================= -->
   <section class="tab-panel active" id="panel-tahlil">
 
-    <div class="section-card">
+    <!-- Semua item Tahlil diberi class 'tahlil-item' dan data-version untuk filtering -->
+    
+    <!-- 1. Tawassul & Al-Fatihah -->
+    <div class="section-card tahlil-item" data-version="lengkap singkat">
       <h2>1️⃣ Tawassul &amp; Al-Fatihah</h2>
-      <p class="subtitle">Dibuka dengan mengirimkan hadiah pahala Al-Fatihah kepada Nabi Muhammad ﷺ, para nabi, sahabat, ulama, dan arwah yang dituju.</p>
-      <div class="arti">Ilaa hadhratin Nabiyyil Musthofa Muhammadin shallallahu 'alaihi wasallam, wa 'alaa aalihi wa ash-haabihi wa azwaajihi wa dzurriyyatihi, syai'ul lillaahi lahumul faatihah.</div>
-      <hr class="divider">
-      <div class="arab">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ ﴿١﴾ الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ ﴿٢﴾ الرَّحْمَٰنِ الرَّحِيمِ ﴿٣﴾ مَالِكِ يَوْمِ الدِّينِ ﴿٤﴾ إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ ﴿٥﴾ اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ ﴿٦﴾ صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ ﴿٧﴾</div>
-      <div class="latin">Bismillaahir rahmaanir rahiim. Alhamdu lillaahi rabbil 'aalamiin. Ar-rahmaanir rahiim. Maaliki yaumid diin. Iyyaaka na'budu wa iyyaaka nasta'iin. Ihdinash shiraathal mustaqiim. Shiraathal ladziina an'amta 'alaihim ghairil maghdhuubi 'alaihim walad dhaalliin.</div>
-      <div class="arti">Artinya: Dengan nama Allah Yang Maha Pengasih lagi Maha Penyayang. Segala puji bagi Allah, Tuhan seluruh alam. Yang Maha Pengasih lagi Maha Penyayang. Yang menguasai hari pembalasan. Hanya kepada-Mu kami menyembah dan hanya kepada-Mu kami mohon pertolongan. Tunjukilah kami jalan yang lurus. (yaitu) jalan orang-orang yang telah Engkau beri nikmat, bukan (jalan) mereka yang dimurkai dan bukan (pula jalan) mereka yang sesat.</div>
+      <p class="subtitle">Dibuka dengan mengirimkan hadiah pahala Al-Fatihah kepada Nabi Muhammad ﷺ dan arwah yang dituju.</p>
+      <div class="arab">إِلَى حَضْرَةِ النَّبِيِّ الْمُصْطَفَى سَيِّدِنَا مُحمَّدٍ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ وَاٰلِهِ وَأَزْوَاجِهِ وَأَوْلَادِهِ وَذُرِّيَّاتِهِ الْفَــاتِحَةُ</div>
+      <div class="latin">Ila ḫadlratin-nabiyyil-musthafâ sayyidinâ Muḫammadin shallallahu ‘alaihi wa sallama wa âlihi wa azwâjihi wa awlâdihi wa dzurriyyâtihi al-fâtiḫah</div>
+      <div class="arti">Artinya: Kepada yang terhormat Nabi Muhammad ﷺ, segenap keluarga, istri-istrinya, anak-anaknya, dan keturunannya. Bacaan Al-Fatihah ini kami tujukan kepada Allah dan pahalanya untuk mereka semua. Al-Fatihah…</div>
     </div>
 
-    <div class="section-card">
-      <h2>2️⃣ Surah Al-Ikhlas</h2>
-      <div class="repeat-tag">Dibaca 3× (atau lebih)</div>
-      <div class="arab">قُلْ هُوَ اللَّهُ أَحَدٌ ﴿١﴾ اللَّهُ الصَّمَدُ ﴿٢﴾ لَمْ يَلِدْ وَلَمْ يُولَدْ ﴿٣﴾ وَلَمْ يَكُنْ لَهُ كُفُوًا أَحَدٌ ﴿٤﴾</div>
-      <div class="latin">Qul huwallaahu ahad. Allaahush shamad. Lam yalid wa lam yuulad. Wa lam yakul lahuu kufuwan ahad.</div>
-      <div class="arti">Artinya: Katakanlah: "Dialah Allah, Yang Maha Esa. Allah tempat bergantung segala sesuatu. Dia tiada beranak dan tidak pula diperanakkan. Dan tidak ada seorang pun yang setara dengan Dia."</div>
+    <!-- 2. Tawassul kepada Para Nabi, Wali, dan Ulama -->
+    <div class="section-card tahlil-item" data-version="lengkap">
+      <h2>2️⃣ Tawassul kepada Para Nabi, Wali, dan Ulama</h2>
+      <div class="arab">ثُمَّ إِلَى حَضْرَةِ إِخْوَانِهِ مِنَ الْأَنْبِيَاءِ وَالْمُرْسَلِيْنَ وَالْأَوْلِيَاءِ وَالشُّهَدَاءِ وَالصَّالِحِيْنَ وَالصَّحَابَةِ وَالتَّابِعِيْنَ وَالْعُلَمَاءِ الْعَامِلِيْنَ وَالْمُصَنِّفِيْنَ الْمُخْلِصِيْنَ وَجَمِيْعِ الْمَلَائِكَةِ الْمُقَرَّبِيْنَ، خُصُوْصًا إِلَى سَيِّدِنَا الشَّيْخِ عَبْدِ الْقَادِرِ الْجِيْلَانِي وَخُصُوْصًا إِلَى مُؤَسِّسِيْ جَمْعِيَّةِ نَهْضَةِ الْعُلَمَاءِ الْفَــاتِحَةُ</div>
+      <div class="latin">Tsumma ilâ ḫadlrati ikhwânihi minal-anbiya’i wal-mursalîn wal-auliya’i wasy-syuhadâ’i wash-shâlihîn wash-shaḫâbati wat tâbi‘în wal-‘ulamâ’il-‘âmilîn wal-mushannifînal-mukhlishîn wa jamî‘il-malâikatil-muqarrabîn, khusûshan ilâ sayyidinâsy-syaikh ‘abdil qâdir al-jîlânî wa khushûshan ilâ muassisî jam‘iyyah Nahdlatil Ulama, al-fâtiḫah</div>
+      <div class="arti">Artinya: Lalu kepada segenap saudara beliau dari kalangan para nabi, rasul, wali, syuhada, orang-orang saleh, sahabat, tabi‘in, ulama al-amilin (yang mengamalkan ilmunya), ulama penulis yang ikhlas, semua malaikat Muqarrabin, terkhusus kepada Syekh Abdul Qadir al-Jilani dan para pendiri organisasi Nahdlatul Ulama. Bacaan Al-Fatihah ini kami tujukan kepada Allah dan pahalanya untuk mereka semua. Al-Fatihah.</div>
     </div>
 
-    <div class="section-card">
-      <h2>3️⃣ Surah Al-Falaq</h2>
-      <div class="arab">قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ ﴿١﴾ مِنْ شَرِّ مَا خَلَقَ ﴿٢﴾ وَمِنْ شَرِّ غَاسِقٍ إِذَا وَقَبَ ﴿٣﴾ وَمِنْ شَرِّ النَّفَّاثَاتِ فِي الْعُقَدِ ﴿٤﴾ وَمِنْ شَرِّ حَاسِدٍ إِذَا حَسَدَ ﴿٥﴾</div>
-      <div class="latin">Qul a'uudzu birabbil falaq. Min syarri maa khalaq. Wa min syarri ghaasiqin idzaa waqab. Wa min syarrin naffaatsaati fil 'uqad. Wa min syarri haasidin idzaa hasad.</div>
-      <div class="arti">Artinya: Katakanlah: "Aku berlindung kepada Tuhan yang menguasai subuh, dari kejahatan makhluk-Nya, dari kejahatan malam apabila telah gelap gulita, dari kejahatan wanita-wanita tukang sihir, dan dari kejahatan orang yang dengki apabila ia dengki."</div>
+    <!-- 3. Tawassul untuk Seluruh Ahli Kubur -->
+    <div class="section-card tahlil-item" data-version="lengkap">
+      <h2>3️⃣ Tawassul untuk Seluruh Ahli Kubur</h2>
+      <div class="arab">ثُمَّ إِلَى جَمِيْعِ أَهْلِ الْقُبُوْرِ مِنَ الْمُسْلِمِيْنَ وَالْمُسْلِمَاتِ وَالْمُؤْمِنِيْنَ وَالْمُؤْمِنَاتِ مِنْ مَشَارِقِ الْأَرْضِ إِلَى مَغَارِبِهَا بَرِّهَا وَبَحْرِهَا خُصُوْصًا إِلَى اٰبَائِنَا وَأُمَّهَاتِنَا وَأَجْدَادِنَا وَجَدَّاتِنَا وَمَشَايِخِنَا وَمَشَايِخِ مَشَايِخِنَا وَأَسَاتِذَةِ أَسَاتِذَتِنَا وَلِمَنْ أَحْسَنَ إِلَيْنَا وَلِمَنِ اجْتَمَعْنَا هٰهُنَا بِسَبَبِهِ الْفَاتِحَةُ</div>
+      <div class="latin">Tsumma ilâ jamî‘i ahlil-qubûri minal-muslimîna wal-muslimâti wal-mu’minîna wal-mu’minâti min masyâriqil-ardli ilâ maghâribihâ barrihâ wa baḫrihâ khushushan ilâ abâ’inâ wa ummahâtinâ wa ajdâdinâ wa jaddâtina wa masyâkhinâ wa masyâyikhi masyâyikhinâ wa asâtidzati asâtidzatinâ wa liman aḫsana ilainâ wa liman ijtama‘nâ hâhunâ bisababihi, al-fâtiḫah</div>
+      <div class="arti">Artinya: Kemudian kepada semua ahli kubur Muslimin, Muslimat, Mukminin, Mukminat dari Timur ke Barat, baik di laut dan di darat, khususnya bapak kami, ibu kami, kakek kami, nenek kami, guru kami, pengajar dari guru kami, mereka yang telah berbuat baik kepada kami, dan bagi ahli kubur/arwah yang menjadi sebab kami berkumpul di sini. Bacaan Al-Fatihah ini kami tujukan kepada Allah dan pahalanya untuk mereka semua. Al-Fatihah.</div>
     </div>
 
-    <div class="section-card">
-      <h2>4️⃣ Surah An-Nas</h2>
-      <div class="arab">قُلْ أَعُوذُ بِرَبِّ النَّاسِ ﴿١﴾ مَلِكِ النَّاسِ ﴿٢﴾ إِلَٰهِ النَّاسِ ﴿٣﴾ مِنْ شَرِّ الْوَسْوَاسِ الْخَنَّاسِ ﴿٤﴾ الَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ ﴿٥﴾ مِنَ الْجِنَّةِ وَالنَّاسِ ﴿٦﴾</div>
-      <div class="latin">Qul a'uudzu birabbin naas. Malikin naas. Ilaahin naas. Min syarril waswaasil khannaas. Alladzii yuwaswisu fii shuduurin naas. Minal jinnati wan naas.</div>
-      <div class="arti">Artinya: Katakanlah: "Aku berlindung kepada Tuhan (yang memelihara dan menguasai) manusia. Raja manusia. Sembahan manusia. Dari kejahatan (bisikan) setan yang bersembunyi. Yang membisikkan (kejahatan) ke dalam dada manusia. Dari (golongan) jin dan manusia."</div>
+    <!-- 4. Tawassul Khusus untuk Nama yang Disebut -->
+    <div class="section-card tahlil-item" data-version="lengkap">
+      <h2>4️⃣ Tawassul Khusus untuk Nama yang Disebut</h2>
+      <div class="arab">ثُمَّ إِلَى جَمِيْعِ أهْلِ الْقُبُوْرِ مِمَّنْ ذُكِرَتْ أَسْمَاؤُهُ فِيْ هٰذِهِ الرِّسَالَةِ حَضْرَةِ رُوْحِ …<br><br>وَحَضْرَةِ رُوْحِ …<br><br>وَحَضْرَةِ رُوْحِ …<br><br>رَحِمَهُمُ اللهُ وَغَفَرَهُمْ، الْفَاتِحَةُ</div>
+      <div class="latin">Tsumma ilâ jamî‘i ahlil-qubûri mimman dzukirot asmâ’uhu fi hâdzihir risâlati, ḫadlrati rûhi…, wa ḫadlrati rûhi…, wa ḫadlrati rûhi…, roḫimahumullâhu wa ghafarahum, al-fâtiḫah</div>
+      <div class="arti">Artinya: Kemudian kepada semua ahli kubur, yang namanya disebutkan dalam risalah ini. Kepada…, dan kepada…, dan kepada…. Semoga Allah merahmati dan mengampuni mereka. Bacaan Al-Fatihah ini kami tujukan kepada Allah dan pahalanya untuk mereka semua. Al-Fatihah.</div>
     </div>
 
-    <div class="section-card">
-      <h2>5️⃣ Permulaan Surah Al-Baqarah</h2>
+    <!-- 5. Surah Al-Ikhlas -->
+    <div class="section-card tahlil-item" data-version="lengkap singkat">
+      <h2>5️⃣ Surah Al-Ikhlas</h2>
+      <div class="repeat-tag">Dibaca 3×</div>
+      <div class="arab">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ<br><br>قُلْ هُوَ اللّٰهُ اَحَدٌۚ، اَللّٰهُ الصَّمَدُۚ، لَمْ يَلِدْ وَلَمْ يُوْلَدْۙ، وَلَمْ يَكُنْ لَّهٗ كُفُوًا اَحَـــــدٌ</div>
+      <div class="latin">Bismillâhir-raḫmânir-raḫîm(i), Qul huwallâhu aḫad, Allâhush-shamad, lam yalid wa lam yûlad, wa lam yakul lahû kufuwan aḫad (3x)</div>
+      <div class="arti">Artinya: Dengan menyebut nama Allah yang maha pengasih lagi maha penyayang. Katakanlah (Muhammad), “Dialah Allah, Yang Maha Esa. Allah tempat meminta segala sesuatu. (Allah) tidak beranak dan tidak pula diperanakkan. Dan tidak ada sesuatu yang setara dengan Dia.” (3 kali).</div>
+    </div>
+
+    <!-- 6. Tahlil & Takbir -->
+    <div class="section-card tahlil-item" data-version="lengkap singkat">
+      <h2>6️⃣ Tahlil &amp; Takbir</h2>
+      <div class="arab">لَا إِلٰهَ إِلَّا اللهُ وَاللهُ أَكْبَرُ</div>
+      <div class="latin">Lâ ilâha illâllâhu wallâhu akbar</div>
+      <div class="arti">Artinya: Tiada tuhan yang layak disembah kecuali Allah. Allah maha besar.</div>
+    </div>
+
+    <!-- 7. Surah Al-Falaq -->
+    <div class="section-card tahlil-item" data-version="lengkap singkat">
+      <h2>7️⃣ Surah Al-Falaq</h2>
+      <div class="arab">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ<br><br>قُلْ اَعُوْذُ بِرَبِّ الْفَلَقِۙ، مِنْ شَرِّ مَـــا خَلَقَۙ، وَمِنْ شَرِّ غَاسِقٍ اِذَا وَقَبَۙ، وَمِنْ شَرِّ النَّفّٰثٰتِ فِى الْعُقَدِۙ، وَمِنْ شَرِّ حَاسِدٍ اِذَا حَسَدَ</div>
+      <div class="latin">Bismillâhir-raḫmânir-raḫîm(i), Qul a‘udzu bi rabbil-falaq, min syarri mâ khalaq, wa min syarri ghâsiqin idzâ waqab, wa min syarrin-naffâtsâti fîl-‘uqad, wa min syarri ḫâsidin idzâ ḫasad</div>
+      <div class="arti">Artinya: Dengan menyebut nama Allah yang maha pengasih lagi maha penyayang. Katakanlah, “Aku berlindung kepada Tuhan yang menguasai subuh (fajar), dari kejahatan (makhluk yang) Dia ciptakan, dan dari kejahatan malam apabila telah gelap gulita, dan dari kejahatan (perempuan-perempuan) penyihir yang meniup pada buhul-buhul (talinya), dan dari kejahatan orang yang dengki apabila dia dengki.”</div>
+    </div>
+
+    <!-- 8. Tahlil & Takbir -->
+    <div class="section-card tahlil-item" data-version="lengkap singkat">
+      <h2>8️⃣ Tahlil &amp; Takbir</h2>
+      <div class="arab">لَا إِلٰهَ إِلَّا اللهُ وَاللهُ أَكْبَرُ</div>
+      <div class="latin">Lâ ilâha illâllâhu wallâhu akbar</div>
+      <div class="arti">Artinya: Tiada tuhan yang layak disembah kecuali Allah. Allah maha besar.</div>
+    </div>
+
+    <!-- 9. Surah An-Nas -->
+    <div class="section-card tahlil-item" data-version="lengkap singkat">
+      <h2>9️⃣ Surah An-Nas</h2>
+      <div class="arab">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ<br><br>قُلْ اَعُوْذُ بِرَبِّ النَّاسِۙ، مَلِكِ النَّـــاسِۙ، اِلٰهِ النَّاسِۙ، مِنْ شَرِّ الْوَسْوَاسِ ەۙ الْخَنَّاسِۖ، الَّذِيْ يُوَسْوِسُ فِيْ صُدُوْرِ النَّاسِۙ، مِنَ الْجِنَّةِ وَالنَّــاسِ</div>
+      <div class="latin">Bismillâhir-raḫmânir-raḫîm(i), Qul a‘udzû bi rabbin-nâs, malikin-nâs, ilahin-nâs, min syarril-waswâsil khannâs, alladzi yuwaswisu fî shudûrin-nâs, minal-jinnati wan-nâs.</div>
+      <div class="arti">Artinya: Dengan menyebut nama Allah yang maha pengasih lagi maha penyayang. Katakanlah, “Aku berlindung kepada Tuhannya manusia, raja manusia, sembahan manusia, dari kejahatan (bisikan) setan yang bersembunyi, yang membisikkan (kejahatan) ke dalam dada manusia, dari (golongan) jin dan manusia.”</div>
+    </div>
+
+    <!-- 10. Tahlil & Takbir -->
+    <div class="section-card tahlil-item" data-version="lengkap singkat">
+      <h2>🔟 Tahlil &amp; Takbir</h2>
+      <div class="arab">لَا إِلٰهَ إِلَّا اللهُ وَاللهُ أَكْبَرُ</div>
+      <div class="latin">Lâ ilâha illâllâhu wa Allâhu Akbar</div>
+      <div class="arti">Artinya: Tiada tuhan yang layak disembah kecuali Allah. Allah maha besar.</div>
+    </div>
+
+    <!-- 11. Surah Al-Fatihah -->
+    <div class="section-card tahlil-item" data-version="lengkap singkat">
+      <h2>1️⃣1️⃣ Surah Al-Fatihah</h2>
+      <div class="arab">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ، اَلْحَمْدُ لِلّٰهِ رَبِّ الْعٰلَمِيْنَۙ، الرَّحْمٰنِ الرَّحِيْمِۙ، مٰلِكِ يَوْمِ الدِّيْنِۗ، اِيَّاكَ نَعْبُدُ وَاِيَّاكَ نَسْتَعِيْنُۗ، اِهْدِنَا الصِّرَاطَ الْمُسْتَقِيْمَۙ، صِرَاطَ الَّذِيْنَ اَنْعَمْتَ عَلَيْهِمْ ەۙ غَيْرِ الْمَغْضُوْبِ عَلَيْهِمْ وَلَا الضَّاۤلِّيْنَ</div>
+      <div class="latin">Bismillâhir-raḫmânir-raḫîm(i), al-ḫamdu lillâhi rabbil-‘âlamîn, Ar-raḫmânir-raḫîm, mâliki yaumid-dîn, iyyâka na‘budu wa iyyâka nasta‘în, ihdinâsh-shirâthal-mustaqîm, shirâtal ladzîna an‘amta ‘alaihim ghairil-maghdlûbi ‘alaihim wa lâdl-dlâllîn. Âmîn</div>
+      <div class="arti">Artinya: Dengan menyebut nama Allah yang maha pengasih lagi maha penyayang. Segala puji bagi Allah, Tuhan semesta alam. Yang maha pengasih lagi maha penyayang. Yang menguasai hari pembalasan. Hanya kepada-Mu kami menyembah. Hanya kepada-Mu pula kami memohon pertolongan. Tunjukkanlah kami ke jalan yang lurus, yaitu jalan orang-orang yang telah Kauanugerahi nikmat kepada mereka, bukan jalan mereka yang dimurkai dan bukan pula jalan mereka yang sesat. Semoga Kaukabulkan permohonan kami.</div>
+    </div>
+
+    <!-- 12. Awal Surah Al-Baqarah -->
+    <div class="section-card tahlil-item" data-version="lengkap">
+      <h2>1️⃣2️⃣ Awal Surah Al-Baqarah</h2>
       <p class="subtitle">Ayat 1–5</p>
-      <div class="arab">الم ﴿١﴾ ذَٰلِكَ الْكِتَابُ لَا رَيْبَ ۛ فِيهِ ۛ هُدًى لِلْمُتَّقِينَ ﴿٢﴾ الَّذِينَ يُؤْمِنُونَ بِالْغَيْبِ وَيُقِيمُونَ الصَّلَاةَ وَمِمَّا رَزَقْنَاهُمْ يُنْفِقُونَ ﴿٣﴾ وَالَّذِينَ يُؤْمِنُونَ بِمَا أُنْزِلَ إِلَيْكَ وَمَا أُنْزِلَ مِنْ قَبْلِكَ وَبِالْآخِرَةِ هُمْ يُوقِنُونَ ﴿٤﴾ أُولَٰئِكَ عَلَىٰ هُدًى مِنْ رَبِّهِمْ ۖ وَأُولَٰئِكَ هُمُ الْمُفْلِحُونَ ﴿٥﴾</div>
-      <div class="latin">Alif laam miim. Dzaalikal kitaabu laa raiba fiih, hudal lil muttaqiin. Alladziina yu'minuuna bil ghaibi wa yuqiimuunash shalaata wa mimmaa razaqnaahum yunfiquun. Walladziina yu'minuuna bimaa unzila ilaika wa maa unzila min qablik, wa bil aakhirati hum yuuqinuun. Ulaa'ika 'alaa hudam mir rabbihim wa ulaa'ika humul muflihuun.</div>
+      <div class="arab">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ، الۤــــــمّۤۚ، ذٰلِكَ الْكِتٰبُ لَا رَيْبَۛ فِيْهِۛ هُدًى لِّلْمُتَّقِيْنَۙ، الَّذِيْنَ يُؤْمِنُوْنَ بِالْغَيْبِ وَيُقِيْمُوْنَ الصَّلٰوةَ وَمِمَّا رَزَقْنٰهُمْ يُنْفِقُوْنَۙ، وَالَّذِيْنَ يُؤْمِنُوْنَ بِمَآ اُنْزِلَ اِلَيْكَ وَمَآ اُنْزِلَ مِنْ قَبْلِكَ ۚ وَبِالْاٰخِرَةِ هُمْ يُوْقِنُوْنَۗ، اُولٰۤىِٕكَ عَلٰى هُدًى مِّنْ رَّبِّهِمْۙ وَاُولٰۤىِٕكَ هُمُ الْمُفْلِحُوْنَ</div>
+      <div class="latin">Bismillâhir-rahmânir-rahîm(i), Alif Lâm Mîm, dzâlikal-kitâbu lâ raiba fîhi, hudal-lilmuttaqîn, al-ladzîna yu’minûna bil-ghaibi wa yuqîmûnash-shalâta wa mimmâ razaqnâhum yunfiqûn, wal-ladzîna yu’minûna bimâ unzila ilaika wa mâ unzila min qablika, wa bil-âkhirati hum yûqinûn, ulâ’ika ‘alâ hudam mir rabbihim wa ulâ’ika humul-mufliḫûn.</div>
+      <div class="arti">Artinya: Dengan menyebut nama Allah yang maha pengasih lagi maha penyayang. Alif lam mim. Demikian itu kitab ini tidak ada keraguan padanya. Sebagai petunjuk bagi mereka yang bertakwa. Yaitu mereka yang beriman kepada yang ghaib, yang mendirikan shalat, dan menafkahkan sebagian rezeki yang kami anugerahkan kepada mereka. Dan mereka yang beriman kepada kitab Al-Qur’an yang telah diturunkan kepadamu (Muhammad ﷺ) dan kitab-kitab yang telah diturunkan sebelumnya, serta mereka yakin akan adanya kehidupan akhirat. Mereka itulah yang tetap mendapat petunjuk dari tuhannya. Merekalah orang orang yang beruntung.</div>
     </div>
 
-    <div class="section-card">
-      <h2>6️⃣ Ayat Kursi</h2>
+    <!-- 13. Tauhid -->
+    <div class="section-card tahlil-item" data-version="lengkap">
+      <h2>1️⃣3️⃣ Tauhid</h2>
+      <div class="arab">وَإِلٰهُكُمْ إِلٰهٌ وَّاحِدٌ لَا إِلٰهَ إِلَّا هُوَ الرَّحْمٰنُ الرَّحِيمُ</div>
+      <div class="latin">Wa ilâhukum ilâhuw wâḫidul lâ ilâha illa Huwar-raḫmânur-raḫîm.</div>
+      <div class="arti">Artinya, “Dan Tuhan kalian adalah Tuhan yang maha esa. Tiada tuhan yang layak disembah kecuali Dia yang maha pengasih lagi maha penyayang.”</div>
+    </div>
+
+    <!-- 14. Ayat Kursi -->
+    <div class="section-card tahlil-item" data-version="lengkap singkat">
+      <h2>1️⃣4️⃣ Ayat Kursi</h2>
       <p class="subtitle">Al-Baqarah ayat 255</p>
-      <div class="arab">اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ ۚ لَهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ ۗ مَنْ ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلَّا بِإِذْنِهِ ۚ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ ۖ وَلَا يُحِيطُونَ بِشَيْءٍ مِنْ عِلْمِهِ إِلَّا بِمَا شَاءَ ۚ وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ ۖ وَلَا يَئُودُهُ حِفْظُهُمَا ۚ وَهُوَ الْعَلِيُّ الْعَظِيمُ</div>
-      <div class="latin">Allaahu laa ilaaha illaa huwal hayyul qayyuum, laa ta'khudzuhuu sinatuw walaa naum, lahuu maa fis samaawaati wa maa fil ardh, man dzalladzii yasyfa'u 'indahuu illaa bi idznih, ya'lamu maa baina aidiihim wa maa khalfahum, wa laa yuhiithuuna bi syai'im min 'ilmihii illaa bimaa syaa'a, wasi'a kursiyyuhus samaawaati wal ardha wa laa ya'uuduhuu hifdzuhumaa, wa huwal 'aliyyul 'azhiim.</div>
-      <div class="arti">Artinya: Allah, tidak ada Tuhan (yang berhak disembah) melainkan Dia Yang Hidup kekal lagi terus-menerus mengurus (makhluk-Nya). Tidak mengantuk dan tidak tidur. Kepunyaan-Nya apa yang di langit dan di bumi. Tiada yang dapat memberi syafaat di sisi-Nya tanpa izin-Nya… Kursi-Nya meliputi langit dan bumi, dan Dia tidak merasa berat memelihara keduanya, dan Dia Maha Tinggi lagi Maha Besar.</div>
+      <div class="arab">اَللّٰهُ لَآ اِلٰهَ اِلَّا هُوَۚ اَلْحَيُّ الْقَيُّوْمُ ەۚ لَا تَأْخُذُهٗ سِنَةٌ وَّلَا نَوْمٌۗ لَهٗ مَا فِى السَّمٰوٰتِ وَمَا فِى الْاَرْضِۗ مَنْ ذَا الَّذِيْ يَشْفَعُ عِنْدَهٗٓ اِلَّا بِاِذْنِهٖۗ يَعْلَمُ مَا بَيْنَ اَيْدِيْهِمْ وَمَا خَلْفَهُمْۚ وَلَا يُحِيْطُوْنَ بِشَيْءٍ مِّنْ عِلْمِهٖٓ اِلَّا بِمَا شَاۤءَۚ وَسِعَ كُرْسِيُّهُ السَّمٰوٰتِ وَالْاَرْضَۚ وَلَا يَـُٔوْدُهٗ حِفْظُهُمَاۚ وَهُوَ الْعَلِيُّ الْعَظِيْمُ</div>
+      <div class="latin">Allahu lâ ilâha illa huwal-ḫayyul-qayyûm(u). Lâ ta’khudzuhû sinatuw wa lâ naûm(u). Lahû mâ fis-samâwâti wa mâ fil-ardl. Man dzal ladzî yasyfa’u ‘indahû illâ bi idznih(i). Ya’lamu mâ baina aidîhim wa mâ khalfahum. Wa lâ yuḫithûna bi syai’in min ‘ilmihî illâ bimâ syâ’a wasi’a kursiyyuhus-samawâti wal-ardl. Wa lâ ya’ûduhu ḫifdhuhumâ wahuwal-‘aliyyul-adhîm.</div>
+      <div class="arti">Artinya: Allah, tiada yang layak disembah kecuali Dia yang hidup kekal lagi berdiri sendiri. Tidak mengantuk dan tidak tidur. Milik-Nya apa yang ada di langit dan di bumi. Tiada yang dapat memberikan syafaat di sisi-Nya kecuali dengan izin-Nya. Dia mengetahui apa yang ada di hadapan dan di belakang mereka. Mereka tidak mengetahui sesuatu dari ilmu-Nya kecuali apa yang dikehendaki-Nya. Kursi Allah meliputi langit dan bumi. Dia tidak merasa berat menjaga keduanya. Dia maha tinggi lagi maha agung.</div>
     </div>
 
-    <div class="section-card">
-      <h2>7️⃣ Kalimat Tahlil</h2>
-      <div class="repeat-tag">Dibaca 33× / 100× sesuai kesepakatan majelis</div>
-      <div class="arab">لَا إِلَٰهَ إِلَّا اللَّهُ</div>
-      <div class="latin">Laa ilaaha illallaah</div>
-      <div class="arti">Artinya: Tiada Tuhan selain Allah.</div>
-      <hr class="divider">
-      <div class="arab">سُبْحَانَ اللَّهِ وَالْحَمْدُ لِلَّهِ وَلَا إِلَٰهَ إِلَّا اللَّهُ وَاللَّهُ أَكْبَرُ</div>
-      <div class="latin">Subhaanallaahi wal hamdu lillaahi wa laa ilaaha illallaahu wallaahu akbar</div>
-      <div class="arti">Artinya: Maha Suci Allah, segala puji bagi Allah, tiada Tuhan selain Allah, dan Allah Maha Besar.</div>
+    <!-- 15. Penutup Surat Al-Baqarah -->
+    <div class="section-card tahlil-item" data-version="lengkap">
+      <h2>1️⃣5️⃣ Penutup Surat Al-Baqarah</h2>
+      <p class="subtitle">Ayat 284–286</p>
+      <div class="arab">لِلّٰهِ مَا فِى السَّمٰوٰتِ وَمَا فِى الْاَرْضِۗ وَاِنْ تُبْدُوْا مَا فِيْٓ اَنْفُسِكُمْ اَوْ تُخْفُوْهُ يُحَاسِبْكُمْ بِهِ اللّٰهُۗ فَيَغْفِرُ لِمَنْ يَّشَاۤءُ وَيُعَذِّبُ مَنْ يَّشَاۤءُۗ وَاللّٰهُ عَلٰى كُلِّ شَيْءٍ قَدِيْرٌ، اٰمَنَ الرَّسُوْلُ بِمَآ اُنْزِلَ اِلَيْهِ مِنْ رَّبِّهٖ وَالْمُؤْمِنُوْنَۗ كُلٌّ اٰمَنَ بِاللّٰهِ وَمَلٰۤىِٕكَتِهٖ وَكُتُبِهٖ وَرُسُلِهٖۗ لَا نُفَرِّقُ بَيْنَ اَحَدٍ مِّنْ رُّسُلِهٖۗ وَقَالُوْا سَمِعْنَا وَاَطَعْنَا غُفْرَانَكَ رَبَّنَا وَاِلَيْكَ الْمَصِيْرُ، لَا يُكَلِّفُ اللّٰهُ نَفْسًا اِلَّا وُسْعَهَاۗ لَهَا مَا كَسَبَتْ وَعَلَيْهَا مَا اكْتَسَبَتْۗ رَبَّنَا لَا تُؤَاخِذْنَآ اِنْ نَّسِيْنَآ اَوْ اَخْطَأْنَاۚ رَبَّنَا وَلَا تَحْمِلْ عَلَيْنَآ اِصْرًا كَمَا حَمَلْتَهٗ عَلَى الَّذِيْنَ مِنْ قَبْلِنَاۚ رَبَّنَا وَلَا تُحَمِّلْنَا مَا لَا طَاقَةَ لَنَا بِهٖۚ<br>وَاعْفُ عَنَّا وَاغْفِرْ لَنَا وَارْحَمْنَا ×٧<br>أَنْتَ مَوْلَانَا فَانْصُرْنَا عَلَى الْقَوْمِ الْكَافِرِينَ</div>
+      <div class="latin">Lillâhi mâ fis-samawâti wa mâ fil-ardli, wa in tubdû mâ fî anfusikum au tukhfûhu yuḫâsibkum bihillah. Fayaghfiru limay yasyâ’u wa yu‘adzdzibu may yasyâ’u. Wallahu ‘alâ kulli syai’in qadîr. Âmanar-rasûlu bimâ unzila ilaihi mir rabbihi wal-mu’minûn(a), kullun âmana billâhi wa malâ’ikatihi wa kutubihi wa rusulih(i). Lâ nufarriqu baina aḫadim mir-rusulihi wa qâlû sami‘nâ wa atha‘nâ gufrânaka rabbanâ wa ilaikal-mashîr. La yukallifullâhu nafsan illâ wus‘ahâ lahâ mâ kasabat wa ‘alaihâ mâk tasabat. Rabbanâ la tu’akhidhnâ in nasînâ au akhtha’na rabbanâ walâ taḫmil alainâ ishran kamâ ḫamaltahu ‘alal-ladzinâ min qablinâ rabbanâ wa lâ tuḫammilnâ mâ lâ thâqata lanâ bihi<br><br>wa‘fu ‘annâ waghfir lanâ warḫamnâ (7x)<br><br>Anta maulânâ fanshurnâ ‘alal qaumil kâfirîn.</div>
+      <div class="arti">Artinya: Milik Allah-lah apa yang di langit dan apa yang di bumi. Jika kamu melahirkan apa yang ada di dalam hatimu atau menyembunyikannya, niscaya Allah akan membuat perhitungan dengan kamu tentang perbuatanmu itu. Maka Dia mengampuni siapa yang dikehendaki-Nya dan mengazab siapa yang dikehendaki-Nya. Dan Allah Maha Kuasa atas segala sesuatu. Rasul telah beriman kepada Al-Qur’an yang diturunkan kepadanya dari Tuhannya, demikian pula orang-orang yang beriman. Semuanya beriman kepada Allah, malaikat-malaikat-Nya, kitab-kitab-Nya, dan rasul-rasul-Nya. (Mereka mengatakan), “Kami tidak membeda-bedakan seseorang pun di antara rasul-rasul-Nya.” Dan mereka mengatakan, “Kami dengar dan kami taat.” (Mereka berdoa), “Ampunilah kami, ya Tuhan kami, dan kepada Engkaulah tempat kembali.” Allah tidak membebani seseorang melainkan sesuai dengan kesanggupannya. Ia mendapat pahala (dari kebajikan) yang diusahakannya dan ia mendapat siksa (dari kejahatan) yang dikerjakannya. (Mereka berdoa), “Ya Tuhan kami, janganlah Engkau hukum kami jika kami lupa atau kami melakukan kesalahan. Ya Tuhan kami, janganlah Engkau bebankan kepada kami beban yang berat sebagaimana Engkau bebankan kepada orang-orang sebelum kami. Ya Tuhan kami, janganlah Engkau pikulkan kepada kami apa yang tidak sanggup kami memikulnya. (7x) Maafkanlah kami, ampunilah kami, dan rahmatilah kami. Engkaulah pelindung kami, maka tolonglah kami menghadapi orang-orang kafir.”</div>
     </div>
 
-    <div class="section-card">
-      <h2>8️⃣ Istighfar &amp; Sholawat</h2>
-      <div class="arab">أَسْتَغْفِرُ اللَّهَ الْعَظِيمَ</div>
-      <div class="latin">Astaghfirullaahal 'azhiim <span style="opacity:.7">(3× atau lebih)</span></div>
-      <div class="arti">Artinya: Aku memohon ampun kepada Allah Yang Maha Agung.</div>
-      <hr class="divider">
-      <div class="arab">اللَّهُمَّ صَلِّ عَلَىٰ سَيِّدِنَا مُحَمَّدٍ وَعَلَىٰ آلِ سَيِّدِنَا مُحَمَّدٍ</div>
-      <div class="latin">Allaahumma shalli 'alaa sayyidinaa Muhammad, wa 'alaa aali sayyidinaa Muhammad</div>
-      <div class="arti">Artinya: Ya Allah, limpahkanlah rahmat kepada junjungan kami Nabi Muhammad dan keluarganya.</div>
+    <!-- 16. Permohonan Rahmat -->
+    <div class="section-card tahlil-item" data-version="lengkap singkat">
+      <h2>1️⃣6️⃣ Permohonan Rahmat</h2>
+      <div class="repeat-tag">Dibaca 7×</div>
+      <div class="arab">ارْحَمْنَا، يَا أَرْحَمَ الرَّاحِمِيْنَ</div>
+      <div class="latin">Irḫamnâ yâ arḫamar-râḫimîn (7x)</div>
+      <div class="arti">Artinya: Kasihani kami, wahai Tuhan yang maha kasih (7 kali).</div>
     </div>
 
-    <div class="section-card">
-      <h2>9️⃣ Doa Penutup Tahlil</h2>
-      <p class="subtitle">Doa dipimpin oleh imam majelis, isinya memohon ampunan dan rahmat untuk arwah yang dituju serta seluruh kaum muslimin.</p>
-      <div class="arab">اللَّهُمَّ اغْفِرْ لَهُ وَارْحَمْهُ وَعَافِهِ وَاعْفُ عَنْهُ، اللَّهُمَّ اجْعَلِ الْقُرْآنَ الْعَظِيمَ فِي الدُّنْيَا قَرِينَهُ، وَفِي الْقَبْرِ مُؤْنِسَهُ</div>
-      <div class="latin">Allaahummaghfirlahuu warhamhu wa 'aafihi wa'fu 'anhu. Allaahummaj 'alil qur'aanal 'azhiima fid dunyaa qariinahuu wa fil qabri mu'nisahu.</div>
-      <div class="arti">Artinya: Ya Allah, ampunilah dia, kasihanilah dia, sejahterakanlah dia, dan maafkanlah dia. Ya Allah, jadikanlah Al-Qur'an yang agung sebagai teman baginya di dunia dan penghibur baginya di alam kubur.</div>
-      <div class="note-box">📌 Catatan: susunan tahlil dapat menyesuaikan kebiasaan (thariqah) yang berlaku di Musholla An-Nur. Imam/pemimpin majelis dipersilakan menambah atau menyesuaikan bacaan sesuai yang biasa dipakai.</div>
+    <!-- 17. Salam untuk Ahlul Bait -->
+    <div class="section-card tahlil-item" data-version="lengkap">
+      <h2>1️⃣7️⃣ Salam untuk Ahlul Bait</h2>
+      <div class="arab">رَحْمَةُ اللهِ وَبَرَكَاتُهُ عَلَيْكُمْ أَهْلَ الْبَيْتِ إِنَّهُ حَمِيْدٌ مَّجِيْدٌ</div>
+      <div class="latin">Raḫmatul-lâhi wa barakâtuhu ‘alaikum ahlal-baiti innahu ḫamîdun majîd</div>
+      <div class="arti">Artinya: Dan rahmat Allah serta berkah-Nya (kami harapkan) melimpah di atas kamu sekalian wahai ahlul bait. Sungguh Dia maha terpuji lagi maha pemurah.</div>
+    </div>
+
+    <!-- 18. Ayat Pensucian Ahlul Bait -->
+    <div class="section-card tahlil-item" data-version="lengkap">
+      <h2>1️⃣8️⃣ Ayat Pensucian Ahlul Bait</h2>
+      <div class="arab">إِنَّمَا يُريِدُ اللهُ لِيُذْهِبَ عَنْكُمُ الرِّجْسَ أَهْلَ الْبَيْتِ وَيُطَهِّرَكُمْ تَطْهِيْرًا</div>
+      <div class="latin">Innamâ yurîdullâhu liyudzhiba ‘ankumur-rijsa ahlal-baiti wa yuthahhira kum tathhîra</div>
+      <div class="arti">Artinya: Sungguh Allah berkehendak menghilangkan segala kotoran padamu, wahai ahlul bait, dan menyucikanmu sebersih-bersihnya.</div>
+    </div>
+
+    <!-- 19. Perintah Shalawat -->
+    <div class="section-card tahlil-item" data-version="lengkap singkat">
+      <h2>1️⃣9️⃣ Perintah Shalawat</h2>
+      <div class="arab">إِنَّ اللهَ وَمَلَائِكَتَهُ يُصَلُّونَ عَلَى النَّبِيِّ، يَا أَيُّهَا الَّذِيْنَ أٰمَنُوْا صَلُّوْا عَلَيْهِ وَسَلِّمُوْا تَسْلِيْمًا</div>
+      <div class="latin">Innallâha wa malâ’ikatahu yushallûna ‘alan-nabiyyi yâ ayyuhal-ladzina âmanû shallû ‘alaihi wa sallimû taslîmâ</div>
+      <div class="arti">Artinya: Sungguh Allah dan para malaikat-Nya bershalawat untuk nabi. Wahai orang-orang yang beriman, bacalah shalawat untuknya dan ucapkanlah salam penghormatan kepadanya.</div>
+    </div>
+
+    <!-- 20. Shalawat Nariyah (Nur Al-Huda) -->
+    <div class="section-card tahlil-item" data-version="lengkap">
+      <h2>2️⃣0️⃣ Shalawat Nariyah (Nur Al-Huda)</h2>
+      <div class="arab">اَللّٰهُمَّ صَلِّ أَفْضَلَ الصَّلَاةِ عَلَى أَسْعَدِ مَخْلُوْقَاتِكَ نُوْرِ الْهُدَى سَيِّدِنَا مُحَمَّدٍ وَعَلَى اٰلِهِ وَصَحْبِهِ وَسَلِّمْ، عَدَدَ مَعْلُوْمَاتِكَ وَمِدَادَ كَلِمَاتِكَ كُلَّمَا ذَكَرَكَ الذَّاكِرُوْنَ وَغَفَلَ عَنْ ذِكْرِكَ الْغَافِلُوْنَ</div>
+      <div class="latin">Allâhumma shalli afdlalash-shalâti ‘alâ as‘adi makhlûqôtika nûril-hudâ sayyidinâ Muḫammadin wa ‘alâ âlihi wa shaḫbihi wa sallim, ‘adada ma‘lûmâtika wa midâda kalimâtika kullamâ dzakaradz dzâkirûna wa ghafala ‘an dzikrikal ghâfilûn</div>
+      <div class="arti">Artinya: Ya Allah, tambahkanlah rahmat dan kesejahteraan untuk makhluk paling bahagia, cahaya petunjuk, pemimpin dan tuan kami, Nabi Muhammad ﷺ, serta keluarganya, sebanyak pengetahuan-Mu dan sebanyak tinta kalimat-kalimat-Mu pada saat dzikir orang-orang yang ingat dan pada saat lengah orang-orang yang lalai berzikir kepada-Mu.</div>
+    </div>
+
+    <!-- 21. Shalawat Nariyah (Syamsud Duha) -->
+    <div class="section-card tahlil-item" data-version="lengkap">
+      <h2>2️⃣1️⃣ Shalawat Nariyah (Syamsud Duha)</h2>
+      <div class="arab">اَللّٰهُمَّ صَلِّ أَفْضَلَ الصَّلَاةِ عَلَى أَسْعَدِ مَخْلُوْقَاتِكَ شَمْسِ الضُّحَى سَيِّدِنَا مُحَمَّدٍ وَعَلَى اٰلِهِ وَصَحْبِهِ وَسَلِّمْ، عَدَدَ مَعْلُوْمَاتِكَ وَمِدَادَ كَلِمَاتِكَ كُلَّمَا ذَكَرَكَ الذَّاكِرُوْنَ وَغَفَلَ عَنْ ذِكْرِكَ الْغَافِلُوْنَ</div>
+      <div class="latin">Allâhumma shalli afdlalash shalati ‘alâ as‘adi makhlûqôtika syamsidl dluḫâ sayyidinâ Muḫammadin wa ‘alâ âlihi wa shaḫbihi wa sallim, ‘adada ma‘lûmâtika wa midâda kalimâtika kullamâ dzakaradz dzâkirûna wa ghafala ‘an dzikrikal ghâfilûn</div>
+      <div class="arti">Artinya: Ya Allah, tambahkanlah rahmat dan kesejahteraan untuk makhluk paling bahagia, matahari dhuha, pemimpin dan tuan kami, Nabi Muhammad ﷺ, serta keluarganya, sebanyak pengetahuan-Mu dan sebanyak tinta kalimat-kalimat-Mu pada saat dzikir orang-orang yang ingat dan pada saat lengah orang-orang yang lalai berzikir kepada-Mu.</div>
+    </div>
+
+    <!-- 22. Shalawat Nariyah (Badrud Duja) -->
+    <div class="section-card tahlil-item" data-version="lengkap">
+      <h2>2️⃣2️⃣ Shalawat Nariyah (Badrud Duja)</h2>
+      <div class="arab">اَللّٰهُمَّ صَلِّ أَفْضَلَ الصَّلَاةِ عَلَى أَسْعَدِ مَخْلُوْقَاتِكَ بَدْرِ الدُّجَى سَيِّدِنَا مُحَمَّدٍ وَعَلَى اٰلِهِ وَصَحْبِهِ وَسَلِّمْ، عَدَدَ مَعْلُوْمَاتِكَ وَمِدَادَ كَلِمَاتِكَ كُلَّمَا ذَكَرَكَ الذَّاكِرُوْنَ وَغَفَلَ عَنْ ذِكْرِكَ الْغَافِلُوْنَ</div>
+      <div class="latin">Allâhumma shalli afdlalash-shalati ‘alâ as‘adi makhlûqôtika badrid-dujâ sayyidinâ Muḫammadin wa ‘alâ âlihi wa shaḫbihi wa sallim, ‘adada ma‘lûmâtika wa midâda kalimâtika kullamâ dzakaradz-dzâkirûna wa ghafala ‘an dzikrikal-ghâfilûn</div>
+      <div class="arti">Artinya: Ya Allah, tambahkanlah rahmat dan kesejahteraan untuk makhluk paling bahagia, purnama kegelapan, pemimpin dan tuan kami, Nabi Muhammad ﷺ, serta keluarganya, sebanyak pengetahuan-Mu dan sebanyak tinta kalimat-kalimat-Mu pada saat dzikir orang-orang yang ingat dan pada saat lengah orang-orang yang lalai berzikir kepada-Mu.</div>
+    </div>
+
+    <!-- 23. Salam dan Ridha untuk Sahabat -->
+    <div class="section-card tahlil-item" data-version="lengkap">
+      <h2>2️⃣3️⃣ Salam dan Ridha untuk Sahabat</h2>
+      <div class="arab">وَسَلِّمْ وَرَضِيَ اللهُ تَعَالَى عَنْ سَادَاتِنَا أَصْحَابِ رَسُوْلِ اللهِ أَجْمَعِيْنَ</div>
+      <div class="latin">Wa sallim wa radliyallahu ta‘âla ‘an sâdâtinâ ash-ḫabi rasulillah ajma‘în</div>
+      <div class="arti">Artinya: Semoga Allah yang maha suci dan tinggi meridhai seluruh sahabat Rasulullah.</div>
+    </div>
+
+    <!-- 24. Cukuplah Allah bagi Kami -->
+    <div class="section-card tahlil-item" data-version="lengkap singkat">
+      <h2>2️⃣4️⃣ Cukuplah Allah bagi Kami</h2>
+      <div class="arab">حَسْبُنَا اللهُ وَنِعْمَ الْوَكِيْلُ، نِعْمَ الْمَوْلَى وَنِعْمَ النَّصِيْرُ</div>
+      <div class="latin">Ḫasbunâllâhu wa ni‘mal wakîl, ni‘mal maula w ani‘man nashîr</div>
+      <div class="arti">Artinya: Cukup Allah bagi kami. Dia sebaik-baik wakil (Surat Ali Imran ayat 173). Dia sebaik-baik pemimpin dan penolong (Surat Al-Anfal ayat 40).</div>
+    </div>
+
+    <!-- 25. Doa Memohon Pertolongan -->
+    <div class="section-card tahlil-item" data-version="lengkap singkat">
+      <h2>2️⃣5️⃣ Doa Memohon Pertolongan</h2>
+      <div class="arab">وَلَاحَوْلَ وَلَا قُوَّةَ إِلَّا بِاللهِ العَلِيِّ الْعَظِيْمِ</div>
+      <div class="latin">Wa lâ ḫaula wa lâ quwwata illâ billâhil ‘aliyyil-‘adhim</div>
+      <div class="arti">Artinya: Tidak ada daya dan kekuatan kecuali dengan pertolongan Allah yang maha tinggi dan agung.</div>
+    </div>
+
+    <!-- 26. Istighfar -->
+    <div class="section-card tahlil-item" data-version="lengkap singkat">
+      <h2>2️⃣6️⃣ Istighfar</h2>
+      <div class="repeat-tag">Dibaca 3×</div>
+      <div class="arab">أَسْتَغْفِرُ اللهَ الْعَـــظِيْمَ</div>
+      <div class="latin">Astaghfirullâhal-‘adhîm (3x)</div>
+      <div class="arti">Artinya: Saya mohon ampun kepada Allah yang maha agung (3 kali).</div>
+    </div>
+
+    <!-- 27. Keutamaan Tahlil -->
+    <div class="section-card tahlil-item" data-version="lengkap">
+      <h2>2️⃣7️⃣ Keutamaan Tahlil</h2>
+      <div class="arab">أَفْضَلُ الذِّكْرِ فَاعْلَمْ أَنَّهُ لَا إِلٰهَ إِلَّا اللهُ، حَيٌّ مَوْجُوْدٌ</div>
+      <div class="latin">Afdlaludz dzikri fa‘lam annahu lâ ilâha illallâhu ḫayyun maujûd(un)</div>
+      <div class="arti">Artinya: Sebaik-baik dzikir–ketahuilah–adalah lafal ‘Lâ ilâha illallâh’, tiada tuhan selain Allah, Dzat yang Mahahidup dan Wujud.</div>
+    </div>
+
+    <!-- 28. Tahlil: Allah Yang Disembah -->
+    <div class="section-card tahlil-item" data-version="lengkap">
+      <h2>2️⃣8️⃣ Tahlil: Allah Yang Disembah</h2>
+      <div class="arab">لَا إِلٰهَ إِلَّا اللهُ، حَيٌّ مَعْبُوْدٌ</div>
+      <div class="latin">La ilâha illâllâhu ḫayyun ma‘bûd</div>
+      <div class="arti">Artinya: Tiada tuhan selain Allah, Dzat yang mahahidup dan disembah.”</div>
+    </div>
+
+    <!-- 29. Tahlil: Allah Yang Kekal -->
+    <div class="section-card tahlil-item" data-version="lengkap">
+      <h2>2️⃣9️⃣ Tahlil: Allah Yang Kekal</h2>
+      <div class="arab">لَاَ إِلٰهَ إِلَّا اللهُ، حَيٌّ بَاقٍ</div>
+      <div class="latin">La ilâha illâllâhu ḫayyun bâq</div>
+      <div class="arti">Artinya: Tiada tuhan selain Allah, Dzat yang Mahahidup dan kekal.</div>
+    </div>
+
+    <!-- 30. Tahlil 100× -->
+    <div class="section-card tahlil-item" data-version="lengkap singkat">
+      <h2>3️⃣0️⃣ Tahlil 100×</h2>
+      <div class="repeat-tag">Dibaca 100×</div>
+      <div class="arab">لَا إِلٰهَ إِلَّا اللهُ</div>
+      <div class="latin">La ilâha illâllâh (100x)</div>
+      <div class="arti">Artinya: Tiada tuhan selain Allah (100 kali).</div>
+    </div>
+
+    <!-- 31. Shalawat Penutup -->
+    <div class="section-card tahlil-item" data-version="lengkap singkat">
+      <h2>3️⃣1️⃣ Shalawat Penutup</h2>
+      <div class="repeat-tag">Dibaca 2×</div>
+      <div class="arab">اَللّٰهُمَّ صَلِّ عَلَى سَيِّدِنَا مُحَمَّدٍ اَللّٰهُمَّ صَلِّ عَلَيْهِ وَسَلِّمْ</div>
+      <div class="latin">Allâhumma shalli ‘alâ sayyidinâ Muḫammadin, Allâhumma shalli ‘alaihi wa sallim (2x)</div>
+      <div class="arti">Artinya: Ya Allah, limpahkan rahmat takzim dan keselamatan kepada pemimpin kami, Nabi Muhammad (2 kali).</div>
+    </div>
+
+    <!-- 32. Tasbih -->
+    <div class="section-card tahlil-item" data-version="lengkap">
+      <h2>3️⃣2️⃣ Tasbih</h2>
+      <div class="repeat-tag">Dibaca 7×</div>
+      <div class="arab">سُبْحَــانَ اللهِ عَدَدَ مَـــا خَلَقَ اللهُ</div>
+      <div class="latin">Subḫânallâhi ‘adada mâ khalaqallâhu (7x)</div>
+      <div class="arti">Artinya: Mahasuci Allah sebanyak makhluk yang Allah ciptakan (7 kali).</div>
+    </div>
+
+    <!-- 33. Tasbih 33× -->
+    <div class="section-card tahlil-item" data-version="lengkap singkat">
+      <h2>3️⃣3️⃣ Tasbih 33×</h2>
+      <div class="repeat-tag">Dibaca 33×</div>
+      <div class="arab">سُبحَانَ اللهِ وَبِحَمْدِهِ سُبْحَانَ اللهِ الْعَظِيْمِ</div>
+      <div class="latin">Subḫânallâhi wa biḫamdihi subḫânallâhil ‘adhîm (33x)</div>
+      <div class="arti">Artinya: Mahasuci Allah dengan segala pujian untuk-Nya. Mahasuci Allah yang Mahaagung (33 kali)</div>
+    </div>
+
+    <!-- 34. Shalawat untuk Kekasih Allah -->
+    <div class="section-card tahlil-item" data-version="lengkap">
+      <h2>3️⃣4️⃣ Shalawat untuk Kekasih Allah</h2>
+      <div class="repeat-tag">Dibaca 2×</div>
+      <div class="arab">اَللّٰهُمَّ صَلِّ عَلَى حَبِيْبِكَ سَيِّدِنَا مُحَمَّدٍ وَعَلَى اٰلِهِ وَصَحْبِهِ وَسَلِّمْ</div>
+      <div class="latin">Allâhumma shalli ‘alâ ḫabîbika sayyidinâ Muḫammadin wa âlihi wa shaḫbihi wa sallim (2x)</div>
+      <div class="arti">Artinya: Ya Allah, limpahkan rahmat takzim dan keselamatan kepada kekasih-Mu, pemimpin kami, Nabi Muhammad, berikut keluarga dan sahabatnya (2 kali).</div>
+    </div>
+
+    <!-- 35. Shalawat dengan Berkah -->
+    <div class="section-card tahlil-item" data-version="lengkap">
+      <h2>3️⃣5️⃣ Shalawat dengan Berkah</h2>
+      <div class="arab">اَللّٰهُمَّ صَلِّ عَلَى حَبِيْبِكَ سَيِّدِنَا مُحَمَّدٍ وَعَلَى اٰلِهِ وَصَحْبِهِ وَبَارِكْ وَسَلِّمْ أَجْمَعِيْنَ</div>
+      <div class="latin">Allâhumma shalli ‘alâ ḫabîbika sayyidinâ Muḫammadin wa ‘alâ âlihi wa shaḫbihi wa bârik wa sallim ajma‘în</div>
+      <div class="arti">Artinya: Ya Allah, limpahkanlah rahmat kepada kekasih-Mu, pemimpin kami, Nabi Muhammad, berikut keluarga dan sahabatnya. Limpahkanlah pula berkah dan keselamatan kepada mereka semua.</div>
+    </div>
+
+    <!-- 36. Doa Penutup Tahlil (Bagian 1) -->
+    <div class="section-card tahlil-item" data-version="lengkap">
+      <h2>3️⃣6️⃣ Doa Penutup Tahlil (Bagian 1)</h2>
+      <div class="arab">أَعُوْذُ بِاللهِ مِنَ الشَّيْطَانِ الرَّجِيْمِ، بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ، الْحَمْدُ لِلّٰهِ رَبِّ الْعٰلَمِيْنَ، حَمْدَ الشَّاكِرِيْنَ حَمْدَ النَّاعِمِيْنَ، حَمْدًا يُّوَافِي نِعَمَهُ وَيُكَافِئُ مَزِيْدَهُ، يَا رَبَّنَا لَكَ الْحَمْدُ كَمَا يَنْبَغِيْ لِجَلَالِ وَجْهِكَ وَعَظِيْمِ سُلْطَانِكَ، اللّٰهُمَّ صَلِّ عَلَى سَيِّدِنَا مُحَمَّدٍ وَّعَلَى اٰلِ سَيِّدِنَا مُحِمَّدٍ</div>
+      <div class="latin">A‘ûdzubillâhi minasy-syaithâr-rajîm, bismillâhir-raḫmânir-raḫîm, al-ḫamdulillâhi rabbil-‘alamîn, ḫamdasy syâkirin, ḫamdan nâ‘imîn, ḫamdan yuwâfî ni‘amahu wa yukâfî’u mazîdah(u), yâ rabbanâ lakal-ḫamdu kamâ yanbaghî lijalâli wajhika wa ‘adhîmi sulthânika, allâhumma shalli ‘alâ sayyidinâ Muḫammadin wa ‘alâ âli sayyidinâ Muḫammadin.</div>
+      <div class="arti">Artinya: Aku berlindung diri kepada Engkau dari setan yang di rajam. Dengan nama Allah yang Maha Pengasih lagi Maha Penyayang. Segala puji bagi Allah, Tuhan seru sekalian alam, sebagaimana orang-orang yang bersyukur dan orang yang memperoleh nikmat sama memuji, dengan pujian yang sesuai dengan nikmatnya dan memungkinkan di tambah nikmatnya. Tuhan kami, hanya Engkau segala puji, sebagaimana yang patut terhadap kemuliaan Engkau dan keagungan Engkau. Ya Allah tambahkanlah kesejahteraan dan keselamatan kepada penghulu kami Nabi Muhammad dan kepada keluarganya.</div>
+    </div>
+
+    <!-- 37. Doa Penutup Tahlil (Bagian 2) -->
+    <div class="section-card tahlil-item" data-version="lengkap">
+      <h2>3️⃣7️⃣ Doa Penutup Tahlil (Bagian 2)</h2>
+      <div class="arab">اَللّٰهُمَّ تَقَبَّلْ وَأَوْصِلْ ثَوَابَ مَا قَرَأْنَاهُ مِنَ الْقُرْآنِ الْعَظِيْمِ وَمَا هَلَّلْنَا وَمَا سَبَّحْنَا وَمَا اسْتَغْفَرْنَا وَمَا صَلَّيْنَا عَلَى سَيِّدِنَا مُحَمَّدٍ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ هَدِيَّةً وَاصِلَةً وَرَحْمَةً نَازِلَةً وَبَرَكَةً شَامِلَةً إِلَى حَضْرَةِ حَبِيْبِنَا وَشَفِيْعِنَا وَقُرَّةِ أَعْيُنِنَا سَيِّدِنَا وَمَوْلَانَا مُحَمَّدٍ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ، وَإِلَى جَمِيْعِ إِخْوَانِهِ مِنَ الْأَنْبِيَاءِ وَالْمُرْسَلِيْنَ وَالْأَوْلِيَاءِ وَالشُّهَدَاءِ وَالصَّالِحِيْنَ وَالصَّحَابَةِ وَالتَّابِعِيْنَ وَالْعُلَمَاءِ الْعَامِلِيْنَ وَالْمُصَنِّفِيْنَ الْمُخْلِصِيْنَ وَجَمِيْعِ الْمُجَاهِدِيْنَ فِيْ سَبِيْلِ اللهِ رَبِّ الْعَالَمِيْنَ وَالْمَلَائِكَةِ الْمُقَرَّبِيْنَ، خُصُوْصًا إِلَى سَيِّدِنَا الشَّيْخِ عَبْدِ الْقَادِرِ الْجِيْلَانِي، ثُمَّ إِلَى أَرْوَاحِ جَمِيْعِ أَهْلِ الْقُبُوْرِ مِنَ الْمُسْلِمِيْنَ وَالْمُسْلِمَاتِ وَالْمُؤْمِنِيْنَ وَالْمُؤْمِنَاتِ مِنْ مَشَارِقِ الْأَرْضِ وَمَغَارِبِهَا بَرِّهَا وَبَحْرِهَا خُصُوْصًا إِلَى آبَائِنَا وَأُمَّهَاتِنَا وَأَجْدَادِنَا وَجَدَّاتِنَا، وَنَخُصُّ خُصُوْصًا إِلَى مَنِ اجْتَمَعْنَا هَهُنَا بِسَبَبِهِ وَلِأَجْلِهِ.</div>
+      <div class="latin">Allâhumma taqabbal wa aushil tsawâba mâ qara’nâhu minal-qur’anil-‘adhîmi wa mâ hallalnâ wamâ sabbaḫnâ wamâstaghfarnâ wamâ shallainâ ‘alâ sayyidinâ Muḫammadin shallallâhu ‘alaihi wa sallamâ hadiyyatan wâshilatan wa raḫmatan nâzilatan wa barakatan syâmilatan ilâ ḫadlrati ḫabîbinâ wa syafî‘nâ wa qurrati a‘yuninâ sayyidinâ wa maulana Muḫammadin shallallâhu ‘alaihi wa sallamâ, wa ilâ jamî‘i ikhwânihi minal-anbiyâ’i wal mursalîna wal-auliyâ’i wasy-syuhadâ’i wash-shaliḫina wash-shaḫâbati wat-tâbi‘înâ wal-‘ulamâ’il-‘âmilîna wal-mushannifînal-mukhlashîna wa jamî‘il-mujâhidînâ fî sabîlillâhi rabbil-‘âlamîna wal-malâ’ikatil-muqarrabîna, khusûshan ilâ sayyidinâsy-Syaikhi Abdil Qâdir al-Jîlâni, tsumma ilâ arwâhi jami‘i ahlil-qubûri minal-muslimînâ wal-muslimâti wal-mu’minînâ wal-mu’minâti min masyâriqil-ardli wa maghâribihâ barrihâ wa baḫrihâ khusushan ilâ âbâ’inâ wa ummahâtinâ wa ajdâdinâ wa jaddâtinâ, wa nakhushshu khusûshan ilâ man ijtama‘nâ hahunâ bisababihi wa liajlihi.</div>
+      <div class="arti">Artinya: Ya Allah, terimalah dan sampaikanlah pahala dari apa yang kami baca dari Al-Qur'an yang agung, dan apa yang kami tahlilkan, tasbihkan, istighfarkan, dan shalawatkan kepada junjungan kami Nabi Muhammad ﷺ, sebagai hadiah yang tersambung, rahmat yang turun, dan keberkahan yang menyeluruh, kepada kekasih kami, pemberi syafaat kami, penyejuk mata kami, junjungan dan pemimpin kami Nabi Muhammad ﷺ, dan kepada semua saudaranya dari kalangan para nabi, rasul, wali, syuhada, orang-orang saleh, sahabat, tabi'in, ulama yang mengamalkan ilmunya, para penulis yang ikhlas, dan semua pejuang di jalan Allah, Tuhan semesta alam, serta malaikat-malaikat yang didekatkan, terutama kepada Syekh Abdul Qadir al-Jilani, kemudian kepada semua arwah ahli kubur dari kaum muslimin, muslimah, mukminin, dan mukminat dari timur dan barat, darat dan laut, terutama kepada bapak-bapak, ibu-ibu, kakek-kakek, dan nenek-nenek kami, dan kami khususkan terutama kepada mereka yang menjadi sebab kami berkumpul di sini.</div>
+    </div>
+
+    <!-- 38. Doa Ampunan untuk Ahli Kubur -->
+    <div class="section-card tahlil-item" data-version="lengkap">
+      <h2>3️⃣8️⃣ Doa Ampunan untuk Ahli Kubur</h2>
+      <div class="arab">اَللّٰهُمَّ اغْفِرْ لَهُمْ وَارْحَمْهُمْ وَعَافِهِمْ وَاعْفُ عَنْهُمْ، اَللّٰهُمَّ أَنْزِلِ الرَّحْمَةَ وَالْمَغْفِرَةَ عَلَى أَهْلِ الْقُبُوْرِ مِنْ أَهْلِ لَا إِلٰهَ إِلَّا اللهُ مُحَمَّدٌ رَّسُوْلُ اللهِ</div>
+      <div class="latin">Allâhummaghfirlahum warḫamhum wa ‘âfihim wa‘fu ‘anhum, allâhumma anzilir-raḫmata wal-maghfirata ‘alâ ahlil-qubûri min ahli lâ ilâha illallâhu muḫammadur-rasûlullahi</div>
+      <div class="arti">Artinya: Ya Allah ampunilah mereka, kasihanilah mereka, dan maafkanlah mereka. Ya Allah turunkanlah rahmat, dan ampunan kepada ahlul kubur yang ahli mengucapkan “Laa ilaaha illaallah, Muhammadur rasulullah” (Tidak ada tuhan selain Allah, Muhammad Utusan Allah).</div>
+    </div>
+
+    <!-- 39. Doa Penutup (Istiqomah & Salam) -->
+    <div class="section-card tahlil-item" data-version="lengkap">
+      <h2>3️⃣9️⃣ Doa Penutup (Istiqomah &amp; Salam)</h2>
+      <div class="arab">رَبَّنَا أَرِنَا الْحَقَّ حَقًّا وَّارْزُقْنَا اتِّبَاعَهُ، وَأَرِنَا الْبَاطِلَ بَاطِلًا وَّارْزُقْنَا اجْتِنَابَهُ، رَبَّنَا اٰتِنَا فِي الدُّنْيَا حَسَنَةً وَّفِي الْآخِرَةِ حَسَنَةً وَّقِنَا عَذَابَ النَّارِ، سُبْحَانَ رَبِّكَ رَبِّ الْعِزَّةِ عَمَّا يَصِفُوْنَ وَسَلَامٌ عَلَى الْمُرْسَلِيْنَ وَالْحَمْدُ لِلّٰهِ رَبِّ الْعَلَمِيْنَ، اَلْفَاتِحَة</div>
+      <div class="latin">Rabbanâ arinâl-ḫaqqa ḫaqqan warzuqnât-tibâ‘ah, wa arinâl-bâthila bâthilan warzuqnâj tinâbah. Rabbanâ âtinâ fid-dunyâ ḫasanatan wa fil-âkhirati ḫasanatan wa qinâ ‘adzaban-nâr. Subḫâna rabbika rabbil-‘izzati ‘ammâ yashifun, wa salamun ‘alal-mursalîn, wal-ḫamdulillâhi rabbil-‘âlamîn. Al-fâtiḫah..</div>
+      <div class="arti">Artinya: Tuhan kami, tunjukkanlah kami kebenaran dengan jelas, jadikanlah kami pengikutnya, tunjukkanlah kami perkara batil dengan jelas, dan jadikanlah kami menjauhinya. Tuhan kami, berikanlah kami kebaikan di dunia dan kebaikan di akhirat, dan jagalah kami dari siksa api neraka, Maha Suci Tuhanku, tuhan yang bersih dari sifat yang di berikan oleh orang-orang kafir, semoga keselamatan tetap melimpahkan kepada para Utusannya dan segala puji bagi Allah Tuhan seru sekalian Alam. Al Fatihah.</div>
+    </div>
+
+    <div class="section-card tahlil-item" data-version="lengkap singkat">
+      <div class="note-box">📌 Catatan: susunan tahlil ini sesuai dengan kebiasaan (thariqah) yang umum diamalkan di Musholla An-Nur. Imam/pemimpin majelis dipersilakan menambah atau menyesuaikan bacaan sesuai yang biasa dipakai.</div>
     </div>
 
   </section>
@@ -312,6 +575,7 @@
   const $ = (sel,ctx)=>(ctx||document).querySelector(sel);
   const $$ = (sel,ctx)=>Array.from((ctx||document).querySelectorAll(sel));
 
+  // Tab switching
   $$(".tab-btn").forEach(btn=>{
     btn.addEventListener("click", ()=>{
       $$(".tab-btn").forEach(b=>b.classList.remove("active"));
@@ -321,6 +585,29 @@
     });
   });
 
+  // Dropdown version filter for Tahlil items
+  const versionSelect = document.getElementById("versionSelect");
+  const tahlilItems = document.querySelectorAll(".tahlil-item");
+
+  function filterTahlil(version) {
+    tahlilItems.forEach(item => {
+      const versions = item.dataset.version.split(" ");
+      if (versions.includes(version)) {
+        item.classList.remove("hidden");
+      } else {
+        item.classList.add("hidden");
+      }
+    });
+  }
+
+  versionSelect.addEventListener("change", function() {
+    filterTahlil(this.value);
+  });
+
+  // Set default: tampilkan lengkap
+  filterTahlil("lengkap");
+
+  // Online status
   function updateOnlineStatus(){
     const banner = $("#offlineBanner");
     if(banner) banner.style.display = navigator.onLine ? "none" : "block";
@@ -329,6 +616,7 @@
   window.addEventListener("offline", updateOnlineStatus);
   updateOnlineStatus();
 
+  // Service worker
   if("serviceWorker" in navigator){
     window.addEventListener("load", ()=>{
       navigator.serviceWorker.register("./sw.js").catch(err=> console.warn("SW gagal:", err));
